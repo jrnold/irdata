@@ -222,6 +222,7 @@ def load_war4(src):
         y.where_fought = row['where_fought']
         y.outcome = row['outcome']
         y.bat_death = row['bat_death']
+        y.initiator = (int(row['initiator']) == 1)
         return y
 
     def partic_dates(row, n):
@@ -238,7 +239,7 @@ def load_war4(src):
         y.end_day = row['end_day%d' % n]
         return y
         
-    cols = ("war_num", "war_name", "war_type", "initiator")
+    cols = ("war_num", "war_name", "war_type")
     session = model.SESSION()
     cnt = collections.Counter()
     cnt_bellig = collections.Counter()
@@ -250,7 +251,6 @@ def load_war4(src):
         cnt[war_num] += 1
         cnt_bellig[state_name] +=1 
         if cnt[war_num] == 1:
-            row["initiator"] = int(row["initiator"]) == 2
             session.add(model.CowWar4(**utils.subset(row, cols)))
         if cnt_bellig[row['state_name']] == 1:
             session.add(model.CowWar4Belligerents(belligerent = row['state_name'],

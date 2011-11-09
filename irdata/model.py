@@ -332,9 +332,6 @@ class CowWar4(Base, Mixin):
     war_type = sa.Column(sa.Integer,
                          nullable = False,
                          doc='War type')
-    initiator = sa.Column(sa.Boolean,
-                          nullable = False,
-                          doc = "Did Side B initiate the war?")
 
 class CowWar4Belligerents(Base, Mixin):
     __tablename__ = 'cow_war4_belligerents'
@@ -354,8 +351,13 @@ class CowWar4Participation(Base, Mixin):
     belligerent = sa.Column(sa.Unicode, primary_key=True)
     side = sa.Column(sa.Boolean, primary_key=True)
     where_fought = sa.Column(sa.Integer, nullable = False)
+    ## Countries on the same side can have different outcomes
+    ## see Germany in war 108.
     outcome = sa.Column(sa.Integer, nullable = False)
     bat_death = sa.Column(sa.Integer)
+    ## Initiation is by participant not side
+    initiator = sa.Column(sa.Boolean,
+                          nullable = False)
 
 class CowWar4ParticDate(Base, Mixin):
     __tablename__ = 'cow_war4_partic_dates'
