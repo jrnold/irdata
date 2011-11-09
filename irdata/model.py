@@ -323,3 +323,63 @@ class PolityStateYear(Base, Mixin):
     regtrans = sa.Column(sa.Integer)
 
 
+class CowWar4(Base, Mixin):
+    __tablename__ = 'cow_war4'
+    war_num = sa.Column(sa.Integer, primary_key=True)
+    war_name = sa.Column(sa.Unicode,
+                         nullable = False,
+                         doc="War Name")
+    war_type = sa.Column(sa.Integer,
+                         nullable = False,
+                         doc='War type')
+    initiator = sa.Column(sa.Boolean,
+                          nullable = False,
+                          doc = "Did Side B initiate the war?")
+
+class CowWar4Belligerents(Base, Mixin):
+    __tablename__ = 'cow_war4_belligerents'
+    belligerent = sa.Column(sa.Unicode, primary_key=True)
+    ccode = sa.Column(sa.Integer,
+                      sa.ForeignKey(CowState.__table__.c.ccode))
+
+class CowWar4Participation(Base, Mixin):
+    """ Cow War v.4 Participation
+
+    Country-war-side observations. For each war a country can
+    participate on multiple sides.
+    """
+    __tablename__ = 'cow_war4_participation'
+    war_num = sa.Column(sa.ForeignKey(CowWar4.__table__.c.war_num),
+                       primary_key=True)
+    belligerent = sa.Column(sa.Unicode, primary_key=True)
+    side = sa.Column(sa.Boolean, primary_key=True)
+    where_fought = sa.Column(sa.Integer, nullable = False)
+    outcome = sa.Column(sa.Integer, nullable = False)
+    bat_death = sa.Column(sa.Integer)
+
+class CowWar4ParticDate(Base, Mixin):
+    __tablename__ = 'cow_war4_partic_dates'
+    
+    war_num = sa.Column(sa.Integer,  primary_key=True)
+    belligerent = sa.Column(sa.Unicode, primary_key=True)
+    side = sa.Column(sa.Boolean, primary_key=True)
+    partic_num = sa.Column(sa.Integer, primary_key=True)
+    start_year = sa.Column(sa.Integer,
+                         doc="The year in which sustained combat started")
+    start_month = sa.Column(sa.Integer,
+                          doc="The month in which sustained combat started")  
+    start_day = sa.Column(sa.Integer,
+                          doc="The day in which sustained combat started")  
+    end_year = sa.Column(sa.Integer,
+                         doc="The month in which sustained combat ended")
+    end_month = sa.Column(sa.Integer,
+                        doc="The month in which sustained combat ended")
+    end_day = sa.Column(sa.Integer,
+                        doc="The day in which sustained combat ended")
+    sa.ForeignKeyConstraint(['war_num', 'ccode', 'side'],
+                            [CowWar4Participation.__table__.c.war_num,
+                             CowWar4Participation.__table__.c.belligerent,
+                             CowWar4Participation.__table__.c.side])
+
+
+

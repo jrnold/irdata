@@ -208,6 +208,56 @@ def load_polity(src):
         session.add(model.PolityStateYear(**row))
     session.commit()
 
+def load_war4(src):
+
+    def partic(row):
+        y = model.CowWar4Participation()
+        y.war_num = row['war_num']
+        y.belligerent = row['state_name']
+        y.side = int(row['side']) == 2
+        y.where_fought = row['where_fought']
+        y.outcome = row['outcome']
+        y.bat_death = row['bat_death']
+        return y
+
+    def partic_dates(row, n):
+        y = model.CowWar4ParticDate()
+        y.war_num = row['war_num']
+        y.belligerent = row['state_name']
+        y.side = int(row['side']) == 2
+        y.partic_num = n
+        y.start_year = row['start_year%d' % n]
+        y.start_month = row['start_month%d' % n]
+        y.start_day = row['start_day%d' % n]
+        y.end_year = row['end_year%d' % n]
+        y.end_month = row['end_month%d' % n]
+        y.end_day = row['end_day%d' % n]
+        return y
+        
+    cols = ("war_num", "war_name", "war_type", "initiator")
+    session = model.SESSION()
+    cnt = collections.Counter()
+    cnt_bellig = collections.Counter()
+    reader = csv2.DictReader(src)
+    reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
+    for row in reader:
+        war_num = row['war_num']
+        state_name = row['state_name']
+        cnt[war_num] += 1
+        cnt_bellig[state_name] +=1 
+        if cnt[war_num] == 1:
+            row["initiator"] = int(row["initiator"]) == 2
+            session.add(model.CowWar4(**utils.subset(row, cols)))
+        if cnt_bellig[row['state_name']] == 1:
+            session.add(model.CowWar4Belligerents(belligerent = row['state_name'],
+                                                  ccode = row['ccode']))
+        session.add(partic(row))
+        session.add(partic_dates(row, 1))
+        if row['end_year2'] != '-8':
+            session.add(partic_dates(row, 2))
+    session.commit()
+    
+
 def main():
     model.Base.metadata.bind = sa.create_engine("sqlite:///irdata.db")
     model.Base.metadata.drop_all(checkfirst=True)
@@ -216,15 +266,16 @@ def main():
     load_cow_states(open("external/www.correlatesofwar.org/COW2 Data/SystemMembership/2008/states2008.1.csv", 'rb'))
     load_cow_majors(open("external/www.correlatesofwar.org/COW2 Data/SystemMembership/2008/majors2008.1.csv", 'rb'))
     load_cow_system()
-    load_ksg_states(open("external/privatewww.essex.ac.uk/~ksg/data/iisystem.dat", 'rb'),
-                    open("external/privatewww.essex.ac.uk/~ksg/data/microstatessystem.dat", 'rb'))
-    load_ksg_system()
-    load_ksg2cow()
-    load_nmc_codes(open("data/nmc_codes.yaml", 'r'))
-    ## If not opened with rU then throws 
-    load_nmc(zipfile.ZipFile('external/www.correlatesofwar.org/COW2 Data/Capabilities/NMC_Supplement_v4_0_csv.zip').open('NMC_Supplement_v4_0.csv', 'rU'))
-    load_polity_states(open('data/polity4_states.yaml', 'r'))
-    load_polity(open('data/p4v2010.csv', 'r'))
+    # load_ksg_states(open("external/privatewww.essex.ac.uk/~ksg/data/iisystem.dat", 'rb'),
+    #                 open("external/privatewww.essex.ac.uk/~ksg/data/microstatessystem.dat", 'rb'))
+    # load_ksg_system()
+    # load_ksg2cow()
+    # load_nmc_codes(open("data/nmc_codes.yaml", 'r'))
+    # ## If not opened with rU then throws 
+    # load_nmc(zipfile.ZipFile('external/www.correlatesofwar.org/COW2 Data/Capabilities/NMC_Supplement_v4_0_csv.zip').open('NMC_Supplement_v4_0.csv', 'rU'))
+    # load_polity_states(open('data/polity4_states.yaml', 'r'))
+    # load_polity(open('data/p4v2010.csv', 'r'))
+    load_war4(open("external/www.correlatesofwar.org/COW2 Data/WarData_NEW/InterStateWarData_v4.0.csv", 'r'))
     
     
 if __name__ == '__main__':
