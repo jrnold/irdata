@@ -1,0 +1,396 @@
+## Polity State system membership years
+## From the Polity 4 documentation
+- {ccode: 700, country: 'Afghanistan', end_year: 2010, scode: 'AFG',
+  start_year: 1800}
+- {ccode: 339, country: 'Albania', end_year: 2010, scode: 'ALB',
+  start_year: 1914}
+- {ccode: 615, country: 'Algeria', end_year: 2010, scode: 'ALG',
+  start_year: 1962}
+- {ccode: 540, country: 'Angola', end_year: 2010, scode: 'ANG',
+  start_year: 1975}
+- {ccode: 160, country: 'Argentina', end_year: 2010, scode: 'ARG',
+  start_year: 1825}
+- {ccode: 371, country: 'Armenia', end_year: 2010, scode: 'ARM',
+  start_year: 1991}
+- {ccode: 900, country: 'Australia', end_year: 2010, scode: 'AUL',
+  start_year: 1901}
+- {ccode: 305, country: 'Austria', end_year: 2010, scode: 'AUS',
+  start_year: 1800}
+- {ccode: 373, country: 'Azerbaijan', end_year: 2010, scode: 'AZE',
+  start_year: 1991}
+- {ccode: 267, country: 'Baden', end_year: 1871, scode: 'BAD',
+  start_year: 1819}
+- {ccode: 692, country: 'Bahrain', end_year: 2010, scode: 'BAH',
+  start_year: 1971}
+- {ccode: 771, country: 'Bangladesh', end_year: 2010, scode: 'BNG',
+  start_year: 1972}
+- {ccode: 245, country: 'Bavaria', end_year: 1871, scode: 'BAV',
+  start_year: 1800}
+- {ccode: 370, country: 'Belarus', end_year: 2010, scode: 'BLR',
+  start_year: 1991}
+- {ccode: 211, country: 'Belgium', end_year: 2010, scode: 'BEL',
+  start_year: 1830}
+- {ccode: 434, country: 'Benin', end_year: 2010, scode: 'BEN',
+  start_year: 1960}
+- {ccode: 760, country: 'Bhutan', end_year: 2010, scode: 'BHU',
+  start_year: 1907}
+- {ccode: 145, country: 'Bolivia', end_year: 2010, scode: 'BOL',
+  start_year: 1826}
+- {ccode: 346, country: 'Bosnia', end_year: 2010, scode: 'BOS',
+  start_year: 1992}
+- {ccode: 571, country: 'Botswana', end_year: 2010, scode: 'BOT',
+  start_year: 1966}
+- {ccode: 140, country: 'Brazil', end_year: 2010, scode: 'BRA',
+  start_year: 1824}
+- {ccode: 355, country: 'Bulgaria', end_year: 2010, scode: 'BUL',
+  start_year: 1879}
+- {ccode: 439, country: 'Burkina Faso', end_year: 2010, scode: 'BFO',
+  start_year: 1960}
+- {ccode: 516, country: 'Burundi', end_year: 2010, scode: 'BUI',
+  start_year: 1962}
+- {ccode: 811, country: 'Cambodia (Kam puchea)', end_year: 2010,
+  scode: 'CAM', start_year: 1953}
+- {ccode: 471, country: 'Cameroon', end_year: 2010, scode: 'CAO',
+  start_year: 1960}
+- {ccode: 20, country: 'Canada', end_year: 2010, scode: 'CAN',
+  start_year: 1867}
+- {ccode: 482, country: 'Central African Republic', end_year: 2010,
+  scode: 'CEN', start_year: 1960}
+- {ccode: 483, country: 'Chad', end_year: 2010, scode: 'CHA',
+  start_year: 1960}
+- {ccode: 155, country: 'Chile', end_year: 2010, scode: 'CHL',
+  start_year: 1818}
+- {ccode: 710, country: 'China', end_year: 2010, scode: 'CHN',
+  start_year: 1800}
+- {ccode: 100, country: 'Colombia', end_year: 2010, scode: 'COL',
+  start_year: 1832}
+- {ccode: 581, country: 'Comoros', end_year: 2010, scode: 'COM',
+  start_year: 1975}
+- {ccode: 490, country: 'Congo, Kinshasa (Zaire/DRCongo)', end_year: 2010,
+  scode: 'ZAI', start_year: 1960}
+- {ccode: 484, country: 'Congo, Brazzaville', end_year: 2010, scode: 'CON',
+  start_year: 1960}
+- {ccode: 94, country: 'Costa Rica', end_year: 2010, scode: 'COS',
+  start_year: 1838}
+- {ccode: 344, country: 'Croatia', end_year: 2010, scode: 'CRO',
+  start_year: 1991}
+- {ccode: 40, country: 'Cuba', end_year: 2010, scode: 'CUB',
+  start_year: 1902}
+- {ccode: 352, country: 'Cyprus', end_year: 2010, scode: 'CYP',
+  start_year: 1960}
+- {ccode: 316, country: 'Czech Republic', end_year: 2010, scode: 'CZR',
+  start_year: 1993}
+- {ccode: 315, country: 'Czechoslovakia', end_year: 1992, scode: 'CZE',
+  start_year: 1918}
+- {ccode: 390, country: 'Denmark', end_year: 2010, scode: 'DEN',
+  start_year: 1800}
+- {ccode: 522, country: 'Djibouti', end_year: 2010, scode: 'DJI',
+  start_year: 1977}
+- {ccode: 42, country: 'Dominican Republic', end_year: 2010, scode: 'DOM',
+  start_year: 1844}
+- {ccode: 860, country: 'East Timor', end_year: 2010, scode: 'ETM',
+  start_year: 2002}
+- {ccode: 130, country: 'Ecuador', end_year: 2010, scode: 'ECU',
+  start_year: 1830}
+- {ccode: 651, country: 'Egypt', end_year: 2010, scode: 'EGY',
+  start_year: 1922}
+- {ccode: 92, country: 'El Salvador', end_year: 2010, scode: 'SAL',
+  start_year: 1841}
+- {ccode: 411, country: 'Equatorial Guinea', end_year: 2010, scode: 'EQG',
+  start_year: 1968}
+- {ccode: 531, country: 'Eritrea', end_year: 2010, scode: 'ERI',
+  start_year: 1993}
+- {ccode: 366, country: 'Estonia', end_year: 1940, scode: 'EST',
+  start_year: 1917}
+- {ccode: 366, country: 'Estonia', end_year: 2010, scode: 'EST',
+  start_year: 1991}
+- {ccode: 530, country: 'Ethiopia', end_year: 1993, scode: 'ETH',
+  start_year: 1855}
+- {ccode: 529, country: 'Ethiopia', end_year: 2010, scode: 'ETI',
+  start_year: 1993}
+- {ccode: 950, country: 'Fiji', end_year: 2010, scode: 'FJI',
+  start_year: 1970}
+- {ccode: 375, country: 'Finland', end_year: 2010, scode: 'FIN',
+  start_year: 1917}
+- {ccode: 220, country: 'France', end_year: 2010, scode: 'FRN',
+  start_year: 1800}
+- {ccode: 481, country: 'Gabon', end_year: 2010, scode: 'GAB',
+  start_year: 1960}
+- {ccode: 420, country: 'Gam bia', end_year: 2010, scode: 'GAM',
+  start_year: 1965}
+- {ccode: 372, country: 'Georgia', end_year: 2010, scode: 'GRG',
+  start_year: 1991}
+- {ccode: 255, country: 'Germany (Prussia)', end_year: 1945, scode: 'GMY',
+  start_year: 1800}
+- {ccode: 255, country: 'Germany (Prussia)', end_year: 2010, scode: 'GMY',
+  start_year: 1991}
+- {ccode: 265, country: 'Germany, East', end_year: 1990, scode: 'GDR',
+  start_year: 1945}
+- {ccode: 260, country: 'Germany, West', end_year: 1990, scode: 'GFR',
+  start_year: 1945}
+- {ccode: 452, country: 'Ghana', end_year: 2010, scode: 'GHA',
+  start_year: 1960}
+- {ccode: 99, country: 'Gran Colombia', end_year: 1830, scode: 'GCL',
+  start_year: 1821}
+- {ccode: 350, country: 'Greece', end_year: 2010, scode: 'GRC',
+  start_year: 1827}
+- {ccode: 90, country: 'Guatemala', end_year: 2010, scode: 'GUA',
+  start_year: 1839}
+- {ccode: 438, country: 'Guinea', end_year: 2010, scode: 'GUI',
+  start_year: 1958}
+- {ccode: 404, country: 'Guinea-Bissau', end_year: 2010, scode: 'GNB',
+  start_year: 1974}
+- {ccode: 110, country: 'Guyana', end_year: 2010, scode: 'GUY',
+  start_year: 1966}
+- {ccode: 41, country: 'Haiti', end_year: 2010, scode: 'HAI',
+  start_year: 1820}
+- {ccode: 91, country: 'Honduras', end_year: 2010, scode: 'HON',
+  start_year: 1839}
+- {ccode: 310, country: 'Hungary', end_year: 2010, scode: 'HUN',
+  start_year: 1867}
+- {ccode: 395, country: 'Iceland', end_year: 2010, scode: 'ICE',
+  start_year: 1918}
+- {ccode: 750, country: 'India', end_year: 2010, scode: 'IND',
+  start_year: 1950}
+- {ccode: 850, country: 'Indonesia', end_year: 2010, scode: 'INS',
+  start_year: 1945}
+- {ccode: 630, country: 'Iran', end_year: 2010, scode: 'IRN',
+  start_year: 1800}
+- {ccode: 645, country: 'Iraq', end_year: 2010, scode: 'IRQ',
+  start_year: 1924}
+- {ccode: 205, country: 'Ireland', end_year: 2010, scode: 'IRE',
+  start_year: 1922}
+- {ccode: 666, country: 'Israel', end_year: 2010, scode: 'ISR',
+  start_year: 1949}
+- {ccode: 325, country: 'Italy', end_year: 2010, scode: 'ITA',
+  start_year: 1861}
+- {ccode: 437, country: 'Ivory Coast', end_year: 2010, scode: 'IVO',
+  start_year: 1960}
+- {ccode: 51, country: 'Jamaica', end_year: 2010, scode: 'JAM',
+  start_year: 1959}
+- {ccode: 740, country: 'Japan', end_year: 2010, scode: 'JPN',
+  start_year: 1800}
+- {ccode: 663, country: 'Jordan', end_year: 2010, scode: 'JOR',
+  start_year: 1946}
+- {ccode: 705, country: 'Kazakhstan', end_year: 2010, scode: 'KZK',
+  start_year: 1991}
+- {ccode: 501, country: 'Kenya', end_year: 2010, scode: 'KEN',
+  start_year: 1963}
+- {ccode: 730, country: 'Korea', end_year: 1910, scode: 'KOR',
+  start_year: 1800}
+- {ccode: 731, country: 'Korea, North', end_year: 2010, scode: 'PRK',
+  start_year: 1948}
+- {ccode: 732, country: 'Korea, South', end_year: 2010, scode: 'ROK',
+  start_year: 1948}
+- {ccode: 341, country: 'Kosovo', end_year: 2010, scode: 'KOS',
+  start_year: 2008}
+- {ccode: 690, country: 'Kuwait', end_year: 2010, scode: 'KUW',
+  start_year: 1963}
+- {ccode: 703, country: 'Kyrgyzstan', end_year: 2010, scode: 'KYR',
+  start_year: 1991}
+- {ccode: 812, country: 'Laos', end_year: 2010, scode: 'LAO',
+  start_year: 1954}
+- {ccode: 367, country: 'Latvia', end_year: 1940, scode: 'LAT',
+  start_year: 1920}
+- {ccode: 367, country: 'Latvia', end_year: 2010, scode: 'LAT',
+  start_year: 1991}
+- {ccode: 660, country: 'Lebanon', end_year: 2010, scode: 'LEB',
+  start_year: 1943}
+- {ccode: 570, country: 'Lesotho', end_year: 2010, scode: 'LES',
+  start_year: 1966}
+- {ccode: 450, country: 'Liberia', end_year: 2010, scode: 'LBR',
+  start_year: 1847}
+- {ccode: 620, country: 'Libya', end_year: 2010, scode: 'LIB',
+  start_year: 1951}
+- {ccode: 368, country: 'Lithuania', end_year: 1940, scode: 'LIT',
+  start_year: 1918}
+- {ccode: 368, country: 'Lithuania', end_year: 2010, scode: 'LIT',
+  start_year: 1991}
+- {ccode: 343, country: 'Macedonia', end_year: 2010, scode: 'MAC',
+  start_year: 1991}
+- {ccode: 580, country: 'Madagascar', end_year: 2010, scode: 'MAG',
+  start_year: 1961}
+- {ccode: 553, country: 'Malawi', end_year: 2010, scode: 'MAW',
+  start_year: 1964}
+- {ccode: 820, country: 'Malaysia', end_year: 2010, scode: 'MAL',
+  start_year: 1957}
+- {ccode: 432, country: 'Mali', end_year: 2010, scode: 'MLI',
+  start_year: 1960}
+- {ccode: 435, country: 'Mauritania', end_year: 2010, scode: 'MAA',
+  start_year: 1960}
+- {ccode: 590, country: 'Mauritius', end_year: 2010, scode: 'MAS',
+  start_year: 1968}
+- {ccode: 70, country: 'Mexico', end_year: 2010, scode: 'MEX',
+  start_year: 1822}
+- {ccode: 332, country: 'Modena', end_year: 1860, scode: 'MOD',
+  start_year: 1815}
+- {ccode: 359, country: 'Moldova', end_year: 2010, scode: 'MLD',
+  start_year: 1991}
+- {ccode: 712, country: 'Mongolia', end_year: 2010, scode: 'MON',
+  start_year: 1924}
+- {ccode: 348, country: 'Montenegro', end_year: 2010, scode: 'MNT',
+  start_year: 2006}
+- {ccode: 600, country: 'Morocco', end_year: 1912, scode: 'MOR',
+  start_year: 1800}
+- {ccode: 600, country: 'Morocco', end_year: 2010, scode: 'MOR',
+  start_year: 1956}
+- {ccode: 541, country: 'Mozambique', end_year: 2010, scode: 'MZM',
+  start_year: 1975}
+- {ccode: 775, country: 'Myanmar (Burma)', end_year: 2010, scode: 'MYA',
+  start_year: 1948}
+- {ccode: 565, country: 'Namibia', end_year: 2010, scode: 'NAM',
+  start_year: 1990}
+- {ccode: 790, country: 'Nepal', end_year: 2010, scode: 'NEP',
+  start_year: 1800}
+- {ccode: 210, country: 'Netherlands', end_year: 2010, scode: 'NTH',
+  start_year: 1815}
+- {ccode: 920, country: 'New Zealand', end_year: 2010, scode: 'NEW',
+  start_year: 1857}
+- {ccode: 93, country: 'Nicaragua', end_year: 2010, scode: 'NIC',
+  start_year: 1838}
+- {ccode: 436, country: 'Niger', end_year: 2010, scode: 'NIR',
+  start_year: 1960}
+- {ccode: 475, country: 'Nigeria', end_year: 2010, scode: 'NIG',
+  start_year: 1960}
+- {ccode: 385, country: 'Norway', end_year: 2010, scode: 'NOR',
+  start_year: 1814}
+- {ccode: 698, country: 'Oman', end_year: 2010, scode: 'OMA',
+  start_year: 1800}
+- {ccode: 564, country: 'Orange Free State', end_year: 1902, scode: 'OFS',
+  start_year: 1854}
+- {ccode: 769, country: 'Pakistan', end_year: 1971, scode: 'PKS',
+  start_year: 1947}
+- {ccode: 770, country: 'Pakistan', end_year: 2010, scode: 'PAK',
+  start_year: 1972}
+- {ccode: 95, country: 'Panama', end_year: 2010, scode: 'PAN',
+  start_year: 1903}
+- {ccode: 327, country: 'Papal States', end_year: 1870, scode: 'PAP',
+  start_year: 1815}
+- {ccode: 910, country: 'Papua New Guinea', end_year: 2010, scode: 'PNG',
+  start_year: 1975}
+- {ccode: 150, country: 'Paraguay', end_year: 2010, scode: 'PAR',
+  start_year: 1811}
+- {ccode: 335, country: 'Parma', end_year: 1860, scode: 'PMA',
+  start_year: 1815}
+- {ccode: 135, country: 'Peru', end_year: 2010, scode: 'PER',
+  start_year: 1821}
+- {ccode: 840, country: 'Philippines', end_year: 2010, scode: 'PHI',
+  start_year: 1935}
+- {ccode: 290, country: 'Poland', end_year: 2010, scode: 'POL',
+  start_year: 1918}
+- {ccode: 235, country: 'Portugal', end_year: 2010, scode: 'POR',
+  start_year: 1800}
+- {ccode: 694, country: 'Qatar', end_year: 2010, scode: 'QAT',
+  start_year: 1971}
+- {ccode: 360, country: 'Romania', end_year: 2010, scode: 'RUM',
+  start_year: 1859}
+- {ccode: 365, country: 'Russia', end_year: 1921, scode: 'RUS',
+  start_year: 1800}
+- {ccode: 365, country: 'Russia', end_year: 2010, scode: 'RUS',
+  start_year: 1992}
+- {ccode: 517, country: 'Rwanda', end_year: 2010, scode: 'RWA',
+  start_year: 1961}
+- {ccode: 324, country: 'Sardinia', end_year: 1860, scode: 'SAR',
+  start_year: 1815}
+- {ccode: 670, country: 'Saudi Arabia', end_year: 2010, scode: 'SAU',
+  start_year: 1926}
+- {ccode: 269, country: 'Saxony', end_year: 1871, scode: 'SAX',
+  start_year: 1806}
+- {ccode: 433, country: 'Senegal', end_year: 2010, scode: 'SEN',
+  start_year: 1960}
+- {ccode: 342, country: 'Serbia', end_year: 1920, scode: 'SER',
+  start_year: 1830}
+- {ccode: 342, country: 'Serbia', end_year: 2010, scode: 'SER',
+  start_year: 2006}
+- {ccode: 451, country: 'Sierra Leone', end_year: 2010, scode: 'SIE',
+  start_year: 1961}
+- {ccode: 830, country: 'Singapore', end_year: 2010, scode: 'SIN',
+  start_year: 1959}
+- {ccode: 317, country: 'Slovakia', end_year: 2010, scode: 'SLO',
+  start_year: 1993}
+- {ccode: 349, country: 'Slovenia', end_year: 2010, scode: 'SLV',
+  start_year: 1991}
+- {ccode: 940, country: 'Solomon Islands', end_year: 2010, scode: 'SOL',
+  start_year: 1978}
+- {ccode: 520, country: 'Somalia', end_year: 2010, scode: 'SOM',
+  start_year: 1960}
+- {ccode: 560, country: 'South Africa', end_year: 2010, scode: 'SAF',
+  start_year: 1910}
+- {ccode: 230, country: 'Spain', end_year: 2010, scode: 'SPN',
+  start_year: 1800}
+- {ccode: 780, country: 'Sri Lanka', end_year: 2010, scode: 'SRI',
+  start_year: 1948}
+- {ccode: 625, country: 'Sudan', end_year: 2010, scode: 'SUD',
+  start_year: 1954}
+- {ccode: 572, country: 'Swaziland', end_year: 2010, scode: 'SWA',
+  start_year: 1968}
+- {ccode: 380, country: 'Sweden', end_year: 2010, scode: 'SWD',
+  start_year: 1800}
+- {ccode: 225, country: 'Switzerland', end_year: 2010, scode: 'SWZ',
+  start_year: 1848}
+- {ccode: 652, country: 'Syria', end_year: 2010, scode: 'SYR',
+  start_year: 1944}
+- {ccode: 713, country: 'Taiwan', end_year: 2010, scode: 'TAW',
+  start_year: 1949}
+- {ccode: 702, country: 'Tajikistan', end_year: 2010, scode: 'TAJ',
+  start_year: 1991}
+- {ccode: 510, country: 'Tanzania', end_year: 2010, scode: 'TAZ',
+  start_year: 1961}
+- {ccode: 800, country: 'Thailand', end_year: 2010, scode: 'THI',
+  start_year: 1800}
+- {ccode: 461, country: 'Togo', end_year: 2010, scode: 'TOG',
+  start_year: 1961}
+- {ccode: 52, country: 'Trinidad and Tobago', end_year: 2010, scode: 'TRI',
+  start_year: 1962}
+- {ccode: 616, country: 'Tunisia', end_year: 2010, scode: 'TUN',
+  start_year: 1959}
+- {ccode: 640, country: 'Turkey (Ottoman Empire)', end_year: 2010,
+  scode: 'TUR', start_year: 1800}
+- {ccode: 701, country: 'Turkmenistan', end_year: 2010, scode: 'TKM',
+  start_year: 1991}
+- {ccode: 337, country: 'Tuscany', end_year: 1860, scode: 'TUS',
+  start_year: 1815}
+- {ccode: 329, country: 'Two Sicilies', end_year: 1860, scode: 'SIC',
+  start_year: 1816}
+- {ccode: 500, country: 'Uganda', end_year: 2010, scode: 'UGA',
+  start_year: 1962}
+- {ccode: 369, country: 'Ukraine', end_year: 2010, scode: 'UKR',
+  start_year: 1991}
+- {ccode: 364, country: 'Union of Soviet Socialist Republics', end_year: 1991,
+  scode: 'USR', start_year: 1922}
+- {ccode: 696, country: 'United Arab Emirates', end_year: 2010, scode: 'UAE',
+  start_year: 1971}
+- {ccode: 200, country: 'United Kingdom', end_year: 2010, scode: 'UKG',
+  start_year: 1800}
+- {ccode: 89, country: 'United Province of Central America', end_year: 1838,
+  scode: 'UPC', start_year: 1824}
+- {ccode: 2, country: 'United States', end_year: 2010, scode: 'USA',
+  start_year: 1800}
+- {ccode: 165, country: 'Uruguay', end_year: 2010, scode: 'URU',
+  start_year: 1830}
+- {ccode: 704, country: 'Uzbekistan', end_year: 2010, scode: 'UZB',
+  start_year: 1991}
+- {ccode: 101, country: 'Venezuela', end_year: 2010, scode: 'VEN',
+  start_year: 1830}
+- {ccode: 818, country: 'Vietnam', end_year: 2010, scode: 'VIE',
+  start_year: 1976}
+- {ccode: 816, country: 'Vietnam, North', end_year: 1976, scode: 'DRV',
+  start_year: 1954}
+- {ccode: 817, country: 'Vietnam, South', end_year: 1975, scode: 'RVN',
+  start_year: 1955}
+- {ccode: 271, country: 'Wuerttemburg', end_year: 1871, scode: 'WRT',
+  start_year: 1800}
+- {ccode: 679, country: 'Yemen', end_year: 2010, scode: 'YEM',
+  start_year: 1990}
+- {ccode: 678, country: 'Yemen, North', end_year: 1990, scode: 'YAR',
+  start_year: 1918}
+- {ccode: 680, country: 'Yemen, South', end_year: 1990, scode: 'YPR',
+  start_year: 1967}
+- {ccode: 345, country: 'Yugoslavia', end_year: 1991, scode: 'YUG',
+  start_year: 1921}
+- {ccode: 347, country: 'Yugoslavia (Serbia and Montenegro)', end_year: 2006,
+  scode: 'YGS', start_year: 1991}
+- {ccode: 551, country: 'Zambia', end_year: 2010, scode: 'ZAM',
+  start_year: 1964}
+- {ccode: 552, country: 'Zimbabwe', end_year: 2010, scode: 'ZIM',
+  start_year: 1970}

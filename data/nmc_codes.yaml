@@ -1,0 +1,52 @@
+# All from http://www.correlatesofwar.org/COW2%20Data/Capabilities/NMC_Codebook_v4_0.pdf
+nmc_tpopqualitycode:
+  A: Value from identified source
+  B: Linear Interpolation from identified sources
+  C: Linear Interpolation from at least one unidentified source
+  D: Regression from identified sources
+  E: Regression from at least one unidentified source
+  F: Extrapolation from identified sources
+  G: Extrapolation from at least one unidentified source
+  M: Missing value.
+nmc_tpopanomalycode:
+  A: No Anomaly (< 2% change)
+  B: Explained Inconsistency (e.g. change in territory, loss in wartime)
+  C: Change of Sources (between 2 non-UN sources or 1 non-UN to UN source)
+  D: Change of UN Sources
+  E: UN Internal Inconsistency within same UN source
+  F: Internal inconsistency within non-UN source
+  G: Unexplained Anomaly
+nmc_upopqualitycode:
+  A: Value from UN Demographic
+  B: "Assumed 0 (Ex.: Vanuatu)"
+  C: Linear Interpolation from identified sources
+  D: Linear Interpolation from at least one unidentified source
+  E: Extrapolation from identified sources
+  F: Extrapolation from at least one unidentified source
+nmc_irstqualitycode:
+  A: Value from identified source
+  B: No known production—assumed to be zero
+  C: COW2 interpolation
+  D: Data from earlier COW data set, but with missing or unidentified source
+  M: Missing value
+nmc_irstanomalycode:
+  A: No anomaly
+  B: No known production capability to production 
+  C: Changes of sources 
+  D: Internal source inconsistency 
+  E: Unexplained anomaly
+nmc_pecqualitycode:
+  A: All Components Present; or, only electricity interpolated from 1900-1945
+  B: All Components known, but averaged. Often happens when a state changes reporting units (for example, moving fro calendar years to fiscal years or vice-versa). 
+  C: Some (but not all) component data points interpolated
+  D: All component data points interpolated 
+  E: Log Linear Extrapolation based on growth rates 
+  M: Missing Data Values
+nmc_pecanomalycode:
+  A: No Anomaly (< 2% change)
+  B: Explained Inconsistency (e.g. change in territory, loss in wartime)
+  C: Change of Sources (between 2 non-UN sources or 1 non-UN to UN source)
+  D: Change of UN Sources
+  E: UN Internal Inconsistency within same UN source
+  F: Internal inconsistency within non-UN source
+  G: Unexplained Anomaly
