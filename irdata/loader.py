@@ -5,9 +5,9 @@ import zipfile
 import sqlalchemy as sa
 import yaml
 
-import csv2
-from . import model
-from . import utils
+from irdata import csv2
+from irdata import model
+from irdata import utils
 
 
 COW_MAX_YEAR = 2008
