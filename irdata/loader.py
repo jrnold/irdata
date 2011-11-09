@@ -209,6 +209,10 @@ def load_polity(src):
     session.commit()
 
 def load_war4(src):
+    """ COW Inter-State War v 4.0
+
+    updates tables cow_war4, cow_belligerents, cow_war4_participation, cow_war4_partic_dates
+    """
 
     def partic(row):
         y = model.CowWar4Participation()
