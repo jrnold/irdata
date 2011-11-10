@@ -30,7 +30,7 @@ class CowState(Base, Mixin):
                       doc="COW state number")
     state_abb = sa.Column(sa.Unicode(3),
                          doc="COW state abbrevation")
-    state_nme = sa.Column(sa.Unicode(25),
+    state_nme = sa.Column(sa.Unicode,
                          doc="COW state name")
 
 class CowSysMembership(Base, Mixin):
@@ -332,6 +332,7 @@ class CowWar4(Base, Mixin):
     war_type = sa.Column(sa.Integer,
                          nullable = False,
                          doc='War type')
+    intnl = sa.Column(sa.Boolean)
 
 class CowWar4Belligerents(Base, Mixin):
     __tablename__ = 'cow_war4_belligerents'
@@ -346,9 +347,15 @@ class CowWar4Participation(Base, Mixin):
     participate on multiple sides.
     """
     __tablename__ = 'cow_war4_participation'
-    war_num = sa.Column(sa.ForeignKey(CowWar4.__table__.c.war_num),
+    war_num = sa.Column(sa.ForeignKey(CowWar4.__table__.c.war_num,
+                                      deferrable=True,
+                                      initially="DEFERRED"),
                        primary_key=True)
-    belligerent = sa.Column(sa.Unicode, primary_key=True)
+    belligerent = sa.Column(sa.Unicode,
+                            sa.ForeignKey(CowWar4Belligerents.__table__.c.belligerent,
+                                          deferrable=True,
+                                          initially="DEFERRED"),
+                            primary_key=True)
     side = sa.Column(sa.Boolean, primary_key=True)
     where_fought = sa.Column(sa.Integer, nullable = False)
     ## Countries on the same side can have different outcomes
