@@ -342,8 +342,8 @@ def main():
     # load_nmc(zipfile.ZipFile('external/www.correlatesofwar.org/COW2 Data/Capabilities/NMC_Supplement_v4_0_csv.zip').open('NMC_Supplement_v4_0.csv', 'rU'))
     # load_polity_states(open('data/polity4_states.yaml', 'r'))
     # load_polity(open('data/p4v2010.csv', 'r'))
-    load_war4(open("external/www.correlatesofwar.org/COW2 Data/WarData_NEW/InterStateWarData_v4.0.csv", 'rU'))
-    load_war4_intra(open("external/www.correlatesofwar.org/COW2 Data/WarData_NEW/IntraStateWarData_v4.1.csv", 'rU'))
+    load_war4(open("data/InterStateWarData_v4.0.csv", 'rU'))
+    load_war4_intra(open("data/IntraStateWarData_v4.1.csv", 'rU'))
     
     
 if __name__ == '__main__':
