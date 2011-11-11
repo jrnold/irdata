@@ -10,3 +10,10 @@ http://www.systemicpeace.org/inscr/p4v2010d.xls
 http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/InterStateWarData_v4.0.csv
 http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/IntraStateWarData_v4.1.csv
 http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/NonStateWarData_v4.0.csv
+http://www.correlatesofwar.org/cow2%20data/WarData/InterState/Inter-State%20Wars%20(V%203-0).csv
+http://www.correlatesofwar.org/cow2%20data/WarData/InterState/Inter-State%20War%20Participants%20(V%203-0).csv
+http://www.correlatesofwar.org/cow2%20data/WarData/IntraState/Intra-State%20Wars%20(V%203-0).csv
+http://www.correlatesofwar.org/cow2%20data/WarData/IntraState/Intra-State%20War%20Participants%20(V%203-0).csv
+http://www.correlatesofwar.org/cow2%20data/WarData/ExtraState/Extra-State%20Wars%20(V%203-0).csv
+http://www.correlatesofwar.org/cow2%20data/WarData/ExtraState/Extra-State%20War%20Participants%20(V%203-0).csv
+http://www.correlatesofwar.org/COW2%20Data/DirectContiguity/DirectContiguity310.zip
