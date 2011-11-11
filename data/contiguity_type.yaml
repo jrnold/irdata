@@ -1,0 +1,7 @@
+# COW Contiguity categories http://www.correlatesofwar.org/
+cont_type:
+  1: Separated by a land or river border
+  2: Separated by 12 miles of water or less
+  3: Separated by 24 miles of water or less (but more than 12 miles)
+  4: Separated by 150 miles of water or less (but more than 24 miles)
+  5: Separated by 400 miles of water or less (but more than 150 miles)
