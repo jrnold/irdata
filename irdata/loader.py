@@ -10,18 +10,37 @@ from irdata import csv2
 from irdata import model
 from irdata import utils
 
-{'United States' : 'United States of America',
- 'Boliva' : 'Bolivia',
- 'Prussia' : 'Germany',
- 'Austria' : 'Austria-Hungary',
- 
-
-
 COW_MAX_YEAR = 2008
 """ Correlates of War maximum year in the data"""
 
 def row_ymd(row, y, m, d):
     return datetime.date(*(int(row[x]) for x in (y, m, d)))
+
+def replmiss(x, f):
+    return x if not f(x) else None
+
+def load_from_yaml(src, tbl):
+    """ Load from yaml file
+
+    Data must be a list of dicts, with each element in the list
+    being a row, and each key in the dict being a column.
+    """
+    data = yaml.load(src)
+    tbl.insert().execute(data)
+
+def load_enum_from_yaml(src):
+    """ Load dict of dicts into tables with key/value combinations """ 
+    session = model.SESSION()
+    for tbl, v in yaml.load(src).iteritems():
+        data = []
+        for value, label in v.iteritems():
+            data.append({'value': unicode(value),
+                        'label': unicode(label)})
+        model.Base.metadata.tables[tbl].insert().execute(data)
+    session.commit()
+
+def load_cow_war_types(src):
+    load_from_yaml(src, model.CowWarType.__table__)
 
 def load_cow_states(src):
     """ Loads states2008.1.csv into cow_statelist and cow_system_membership tables """
@@ -199,11 +218,27 @@ def load_polity_states(src):
     for x in data:
         ccode = x['ccode']
         cnt[ccode] += 1
-        if cnt[ccode] == 1:
-            session.add(model.PolityState(**utils.subset(x, ('ccode', 'scode', 'country'))))
         x['end_year'] = x['end_year'] if x['end_year'] else POLITY_MAX_YEAR
         session.add(model.PolitySysMembership(interval = cnt[ccode],
                                         **utils.subset(x, ('ccode', ''))))
+    session.commit()
+
+def load_polity_states(src):
+    session = model.SESSION()
+    data = yaml.load(src)
+    cnt = collections.Counter()
+    cols1 = ('ccode', 'scode', 'country')
+    cols2 = ('ccode', 'start_year', 'end_year')
+    for row in data:
+        cnt[row['ccode']] += 1
+        if cnt[row['ccode']] == 1:
+            data1 = utils.subset(row, cols1)
+            session.add(model.PolityState(**data1))
+        if not row['end_year']:
+            row['end_year'] = model.PolitySysMembership.ONGOING
+        data2 = utils.subset(row, cols2)
+        data2['interval'] =  cnt[row['ccode']]
+        session.add(model.PolitySysMembership(**data2))
     session.commit()
 
 def load_polity(src):
@@ -222,7 +257,7 @@ def load_war4(src):
     """
 
     def partic(row):
-        y = model.CowWar4Participation()
+        y = model.War4Partic()
         y.war_num = int(row['war_num'])
         y.belligerent = unicode(row['state_name'])
         y.side = int(row['side']) == 2
@@ -233,7 +268,7 @@ def load_war4(src):
         return y
 
     def partic_dates(row, n):
-        y = model.CowWar4ParticDate()
+        y = model.War4ParticDate()
         y.war_num = row['war_num']
         y.belligerent = row['state_name']
         y.side = int(row['side']) == 2
@@ -241,9 +276,19 @@ def load_war4(src):
         y.start_year = row['start_year%d' % n]
         y.start_month = row['start_month%d' % n]
         y.start_day = row['start_day%d' % n]
-        y.end_year = row['end_year%d' % n]
-        y.end_month = row['end_month%d' % n]
-        y.end_day = row['end_day%d' % n]
+        if row['start_day%d' % n] == "-7":
+            y.end_year = model.War4.ONGOING_DATE.year
+        else:
+            y.end_year = row['end_year%d' % n]
+        if row['end_month%d' % n] == "-7":
+            y.end_month = model.War4.ONGOING_DATE.month
+        else:
+            y.end_month = row['end_month%d' % n]
+        if row['end_month%d' % n] == "-7":        
+            y.end_day = model.War4.ONGOING_DATE.day
+        else:
+            y.end_day = row['end_day%d' % n]
+
         return y
         
     cols = ("war_num", "war_name", "war_type")
@@ -258,9 +303,9 @@ def load_war4(src):
         cnt[war_num] += 1
         cnt_bellig[state_name] +=1 
         if cnt[war_num] == 1:
-            session.add(model.CowWar4(intnl=True, **utils.subset(row, cols)))
+            session.add(model.War4(intnl=True, **utils.subset(row, cols)))
         if cnt_bellig[row['state_name']] == 1:
-            session.add(model.CowWar4Belligerents(belligerent = row['state_name'],
+            session.add(model.War4Belligerents(belligerent = row['state_name'],
                                                   ccode = row['ccode']))
         session.add(partic(row))
         session.add(partic_dates(row, 1))
@@ -281,15 +326,15 @@ def load_war4_intra(src):
 
     def add_belligerent(session, belligerent, ccode):
         if belligerent != "-8":
-            q = session.query(model.CowWar4Belligerents).\
-                filter(model.CowWar4Belligerents.belligerent == belligerent)
+            q = session.query(model.War4Belligerents).\
+                filter(model.War4Belligerents.belligerent == belligerent)
             if q.count() == 0:
-                obj = model.CowWar4Belligerents(ccode = ccode,
+                obj = model.War4Belligerents(ccode = ccode,
                                                 belligerent = belligerent)
                 session.add(obj)
 
     def partic(row, side):
-        y = model.CowWar4Participation()
+        y = model.War4Partic()
         y.war_num = _int(row['war_num'])
         y.belligerent = unicode(row['side_%s' % side])
         y.side = side == "b"
@@ -305,12 +350,11 @@ def load_war4_intra(src):
     reader = csv2.DictReader(src, encoding='latin1')
     reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
     for row in reader:
-        print row
         war_num = row['war_num']
         cnt[war_num] += 1
         ## Add war
         if cnt[war_num] == 1:
-            session.add(model.CowWar4(war_num = war_num,
+            session.add(model.War4(war_num = war_num,
                                       war_name = row['war_name'],
                                       war_type = int(row['war_type']),
                                       intnl = bool(row['intnl'])))
@@ -324,6 +368,117 @@ def load_war4_intra(src):
         
     session.commit()
 
+def cols_integer(tbl):
+    return [x for x in tbl.columns if type(x) == sa.Integer]
+
+def cols_integer(tbl):
+    return [x for x in tbl.columns if type(x) == sa.Float]
+
+def load_war3(src):
+
+    def _dates(row, n):
+        y = model.War3Date()
+        y.war_no = row['war_no']
+        y.spell_no = n
+        y.yr_beg = row['yr_beg%d' % n]
+        y.mon_beg = row['mon_beg%d' % n]
+        y.day_beg = row['day_beg%d' % n]
+        y.yr_end = row['yr_end%d' % n]
+        y.mon_end = row['mon_end%d' % n]
+        y.day_end = row['day_end%d' % n]
+        return y
+
+    session = model.SESSION()
+    reader = csv2.DictReader(src, encoding='latin1')
+    reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
+
+    war_cols = [x.name for x in model.War3.__table__.c]
+    war_cols_int = list(set(cols_integer(model.War3.__table__) + 
+                        cols_integer(model.War3Date.__table__)))
+    war_date_cols = [x.name for x in model.War3Date.__table__.c]
+    for row in reader:
+        for k,v in row.iteritems():
+            row[k] = replmiss(v, lambda x: x in ("-999", "-888"))
+        ## Inter-state war does not have a war_type
+        if 'war_type' not in row.keys():
+            row['war_type'] = 1
+        row['oceania'] = row['oceania'] if row['oceania'] else False
+        session.add(model.War3(**utils.subset(row, war_cols)))
+        ## Dates
+        date1 = model.War3Date(war_no = row['war_no'],
+                               spell_no = 1)
+        for k in ('yr_beg', 'mon_beg', 'day_beg'):
+            setattr(date1, k, row["%s1" % k])
+        session.add(_dates(row, 1))
+        if row['yr_beg2']:
+            session.add(_dates(row, 2))
+    session.commit()
+
+def load_war3_partic(src):
+    """ Cow Inter-State Wars v 3.0 (Participants)"""
+
+    def _dates(row, n):
+        y = model.War3ParticDate()
+        y.war_no = row['war_no']
+        y.state_num = row['state_num']
+        y.partic_no = row['partic_no']
+        y.spell_no = n
+        y.yr_beg = row['yr_beg%d' % n]
+        y.mon_beg = row['mon_beg%d' % n]
+        y.day_beg = row['day_beg%d' % n]
+        y.yr_end = row['yr_end%d' % n]
+        y.mon_end = row['mon_end%d' % n]
+        y.day_end = row['day_end%d' % n]
+        return y
+
+    session = model.SESSION()
+    reader = csv2.DictReader(src, encoding='latin1')
+    reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
+    war_cols = [x.name for x in model.War3Partic.__table__.c]
+    war_date_cols = [x.name for x in model.War3ParticDate.__table__.c]
+    cnt = collections.Counter()
+    for row in reader:
+        ## Account for multiple country-war participations
+        key = (row['war_no'], row['state_num'])
+        cnt[key] += 1
+        row['partic_no'] = cnt[key]
+        ## replace missing values
+        for k,v in row.iteritems():
+            row[k] = replmiss(v, lambda x: x in ("-999", "-888"))
+        session.add(model.War3Partic(**utils.subset(row, war_cols)))
+        ## Dates
+        date1 = model.War3ParticDate(war_no = row['war_no'],
+                                     spell_no = 1)
+        for k in ('yr_beg', 'mon_beg', 'day_beg'):
+            setattr(date1, k, row["%s1" % k])
+        session.add(_dates(row, 1))
+        if row['yr_beg2']:
+            session.add(_dates(row, 2))
+    session.commit()
+
+def load_contdir(src):
+    """ Load direct contiguity data from csv file"""
+    session = model.SESSION()
+    reader = csv2.DictReader(src, encoding='latin1')
+    cols = [x.name for x in model.ContDir.__table__.c]
+    for row in reader:
+        print row
+        start_mon = datetime.date(int(row['begin'][:4]),
+                                  int(row['begin'][4:]), 1)
+        end_mon = datetime.date(int(row['end'][:4]),
+                                int(row['end'][4:]), 1)
+        
+        if end_mon.month == 12:
+            end_mon = datetime.date(end_mon.year + 1, 1, 1)
+        else:
+            end_mon = datetime.date(end_mon.year, end_mon.month + 1, 1)
+        end_mon += datetime.timedelta(days = -1)
+        row['end_date'] = end_mon
+        row['start_date'] = start_mon
+        data = utils.subset(row, cols)
+        session.add(model.ContDir(**data))
+    session.commit()
+
 
 def main():
     model.Base.metadata.bind = sa.create_engine("postgresql://jeff@localhost/irdata")
@@ -333,18 +488,30 @@ def main():
     load_cow_states(open("external/www.correlatesofwar.org/COW2 Data/SystemMembership/2008/states2008.1.csv", 'rb'))
     load_cow_majors(open("external/www.correlatesofwar.org/COW2 Data/SystemMembership/2008/majors2008.1.csv", 'rb'))
     load_cow_system()
-    # load_ksg_states(open("external/privatewww.essex.ac.uk/~ksg/data/iisystem.dat", 'rb'),
-    #                 open("external/privatewww.essex.ac.uk/~ksg/data/microstatessystem.dat", 'rb'))
-    # load_ksg_system()
-    # load_ksg2cow()
-    # load_nmc_codes(open("data/nmc_codes.yaml", 'r'))
-    # ## If not opened with rU then throws 
-    # load_nmc(zipfile.ZipFile('external/www.correlatesofwar.org/COW2 Data/Capabilities/NMC_Supplement_v4_0_csv.zip').open('NMC_Supplement_v4_0.csv', 'rU'))
-    # load_polity_states(open('data/polity4_states.yaml', 'r'))
-    # load_polity(open('data/p4v2010.csv', 'r'))
+    load_ksg_states(open("external/privatewww.essex.ac.uk/~ksg/data/iisystem.dat", 'rb'),
+                    open("external/privatewww.essex.ac.uk/~ksg/data/microstatessystem.dat", 'rb'))
+    load_ksg_system()
+    load_ksg2cow()
+    load_nmc_codes(open("data/nmc_codes.yaml", 'r'))
+    ## If not opened with rU then throws 
+    load_nmc(zipfile.ZipFile('external/www.correlatesofwar.org/COW2 Data/Capabilities/NMC_Supplement_v4_0_csv.zip').open('NMC_Supplement_v4_0.csv', 'rU'))
+    load_polity_states(open('data/polity4_states.yaml', 'r'))
+    load_polity(open('data/p4v2010.csv', 'r'))
+    load_cow_war_types(open("data/cow_war_types.yaml", "r"))
+    load_enum_from_yaml(open("data/war4_enum.yaml", "r"))
     load_war4(open("data/InterStateWarData_v4.0.csv", 'rU'))
     load_war4_intra(open("data/IntraStateWarData_v4.1.csv", 'rU'))
-    
+    load_enum_from_yaml(open("data/war3_enum.yaml", 'r'))
+    load_war3(open("external/www.correlatesofwar.org/cow2 data/WarData/InterState/Inter-State Wars (V 3-0).csv", 'r'))
+    load_war3_partic(open("external/www.correlatesofwar.org/cow2 data/WarData/InterState/Inter-State War Participants (V 3-0).csv", 'r'))
+    load_war3(open("external/www.correlatesofwar.org/cow2 data/WarData/IntraState/Intra-State Wars (V 3-0).csv", 'r'))
+    load_war3_partic(open("external/www.correlatesofwar.org/cow2 data/WarData/IntraState/Intra-State War Participants (V 3-0).csv", 'r'))
+    load_war3(open("external/www.correlatesofwar.org/cow2 data/WarData/ExtraState/Extra-State Wars (V 3-0).csv", 'r'))
+    load_war3_partic(open("external/www.correlatesofwar.org/cow2 data/WarData/ExtraState/Extra-State War Participants (V 3-0).csv", 'r'))
+    load_enum_from_yaml(open("data/contiguity_type.yaml", 'r'))
+    load_contdir(open("data/DirectContiguity310/contdir.csv", "rU"))
+
+
     
 if __name__ == '__main__':
     main()
