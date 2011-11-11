@@ -28,6 +28,8 @@ nmc_irstqualitycode:
   B: No known production—assumed to be zero
   C: COW2 interpolation
   D: Data from earlier COW data set, but with missing or unidentified source
+  E: 
+  F: 
   M: Missing value
 nmc_irstanomalycode:
   A: No anomaly
@@ -40,7 +42,8 @@ nmc_pecqualitycode:
   B: All Components known, but averaged. Often happens when a state changes reporting units (for example, moving fro calendar years to fiscal years or vice-versa). 
   C: Some (but not all) component data points interpolated
   D: All component data points interpolated 
-  E: Log Linear Extrapolation based on growth rates 
+  E: Log Linear Extrapolation based on growth rates
+  F: 
   M: Missing Data Values
 nmc_pecanomalycode:
   A: No Anomaly (< 2% change)
