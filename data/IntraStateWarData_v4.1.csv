@@ -48,7 +48,7 @@
 545,"Mayan Caste War, Phase 1",6,-8,"Mayans",-8,"Yucutan",0,1,15,1847,8,16,1848,-8,-8,-8,-8,-8,-8,-8,1,"Mayans",4,553,-9,1800,4.1
 546,"Second Carlist",4,230,"Spain",-8,"Carlists",0,5,15,1847,5,1,1849,-8,-8,-8,-8,-8,-8,-8,2,"Carlists",1,-8,3000,7000,4.1
 547,"Second Two Sicilies",4,329,"Two Sicilies",-8,"Liberals",0,1,12,1848,1,27,1848,5,15,1848,5,15,1849,-8,2,"Liberals",1,-8,1500,-9,4.1
-548,"First Venezuelan",4,101,"Venezuela",-8,"Paez led Conservatives ",0,2,4,1848,8,15,1849,-8,-8,-8,-8,-8,-8,-8,1,"Paez led Conservatives",1,-8,1500,-9,4.1
+548,"First Venezuelan",4,101,"Venezuela",-8,"Paez led Conservatives",0,2,4,1848,8,15,1849,-8,-8,-8,-8,-8,-8,-8,1,"Paez led Conservatives",1,-8,1500,-9,4.1
 550,"Viennese Revolt",4,300,"Austria-Hungary",-8,"Viennese",0,3,13,1848,10,31,1848,-8,-8,-8,-8,-8,-8,-8,2,"Viennese",1,-8,249,3000,4.1
 551,"Milan Five Day Revolt",5,300,"Austria-Hungary",-8,"Milan",0,3,18,1848,3,23,1848,-8,-8,-8,-8,-8,-8,-8,2,"Milan",4,10,600,430,4.1
 552,"Second French Insurrection",4,220,"France",-8,"French Radicals",0,6,23,1848,6,26,1848,-8,-8,-8,-8,-8,-8,-8,2,"French Radicals",1,-8,1200,1600,4.1
@@ -144,15 +144,15 @@
 673,"Fourth Mexican",4,2,"United States of America",-8,-8,1,3,15,1915,2,5,1917,-8,-8,-8,-8,-8,-8,-8,1,"Conventionists",1,-8,15,-8,4.1
 673,"Fourth Mexican",4,70,"Mexico",-8,"Conventionists",1,11,19,1914,7,28,1920,-8,-8,-8,-8,-8,-8,-8,1,"Conventionists",1,-8,18750,12500,4.1
 675,"Southern China Revolt",5,710,"China",-8,"Yunnan Rebels",0,1,-9,1916,11,17,1918,-8,-8,-8,-8,-8,-8,-8,7,"Yunnan Rebels",1,-8,-9,-9,4.1
-676,"Russia-Turkestan",5,365,"Russia",-8,"Kirghiz & Kazaks",0,7,4,1916,2,27,1917,-8,-8,-8,-8,-8,-8,-8,2,"Kirghiz & Kazables",1,-8,350,1000,4.1
+676,"Russia-Turkestan",5,365,"Russia",-8,"Kirghiz & Kazaks",0,7,4,1916,2,27,1917,-8,-8,-8,-8,-8,-8,-8,2,"Kirghiz & Kazaks",1,-8,350,1000,4.1
 677,"Russian Civil War",4,-8,-8,375,"Finland",1,4,15,1919,4,30,1919,-8,-8,-8,-8,-8,-8,-8,2,"Anti-Bolsheviks",1,-8,-8,50,4.1
 677,"Russian Civil War",4,-8,-8,740,"Japan",1,8,3,1918,10,15,1920,-8,-8,-8,-8,-8,-8,-8,2,"Anti-Bolsheviks",1,-8,-8,1500,4.1
 677,"Russian Civil War",4,365,"USSR",-8,"Anti-Bolsheviks",1,12,9,1917,3,18,1921,-8,-8,-8,-8,-8,-8,-8,2,"Anti-Bolsheviks",1,-8,475000,325000,4.1
 677,"Russian Civil War",4,-8,-8,200,"United Kingdom",1,6,23,1918,3,15,1920,-8,-8,-8,-8,-8,-8,-8,2,"Anti-Bolsheviks",1,-8,-8,350,4.1
 677,"Russian Civil War",4,-8,-8,2,"United States of America",1,7,1,1918,4,20,1920,-8,-8,-8,-8,-8,-8,-8,2,"Anti-Bolsheviks",1,-8,-8,275,4.1
 677,"Russian Civil War",4,-8,-8,220,"France",1,6,23,1918,9,30,1919,-8,-8,-8,-8,-8,-8,-8,2,"Anti-Bolsheviks",1,-8,-8,50,4.1
-680,"Finnish Civil War",4,255,"Germany",-8,-8,1,4,3,1918,5,16,1918,-8,-8,-8,-8,-8,-8,-8,2,"Anti-Bolsheviks",1,-8,950,-8,4.1
-680,"Finnish Civil War",4,-8,-8,365,"USSR",1,1,28,1918,5,16,1918,-8,-8,-8,-8,-8,-8,-8,2,"Anti-Bolsheviks",1,-8,-8,400,4.1
+680,"Finnish Civil War",4,255,"Germany",-8,-8,1,4,3,1918,5,16,1918,-8,-8,-8,-8,-8,-8,-8,2,"Red Guard",1,-8,950,-8,4.1
+680,"Finnish Civil War",4,-8,-8,365,"USSR",1,1,28,1918,5,16,1918,-8,-8,-8,-8,-8,-8,-8,2,"Red Guard",1,-8,-8,400,4.1
 680,"Finnish Civil War",4,375,"Finland",-8,"Red Guard",1,1,28,1918,4,30,1918,-8,-8,-8,-8,-8,-8,-8,2,"Red Guard",1,-8,5300,8500,4.1
 681,"Western Ukrainian",6,-8,"Ukraine Poles",-8,"Ukrainians",0,11,1,1918,2,13,1919,-8,-8,-8,-8,-8,-8,-8,2,"Ukraine Poles",4,109,-9,-9,4.1
 682,"Sparticist Rising",7,-8,"Socialists",-8,"German Freikorps",0,1,6,1919,5,1919,,-8,-8,-8,-8,-8,-8,-8,2,"Socialists",2,-8,"2,100",70,4.1
@@ -177,7 +177,7 @@
 703,"Second Gansu Muslim",5,710,"China",-8,"Gansu Muslims",0,-9,-9,1928,-9,-9,1930,-8,-8,-8,-8,-8,-8,-8,7,"Gansu Muslims",1,-8,-9,-9,4.1
 705,"Second Afghan Anti-Reform",4,700,"Afghanistan",-8,"Habibullah (anti-reformists)",0,11,10,1928,10,15,1929,-8,-8,-8,-8,-8,-8,-8,7,"Habibullah (anti-reformists)",1,-8,7500,7500,4.1
 706,"Intra-Guomindang",4,710,"China",-8,"War Lords",0,3,1,1929,11,4,1930,-8,-8,-8,-8,-8,-8,-8,7,"War Lords",1,-8,-9,-9,4.1
-707,"Escobar Rebellion",4,70,"Mexico",-8,"Escobar Led Rebels",0,3,3,1929,5,4,1929,-8,-8,-8,-8,-8,-8,-8,1,"Escoban Led Rebels",1,-8,400,1600,4.1
+707,"Escobar Rebellion",4,70,"Mexico",-8,"Escobar Led Rebels",0,3,3,1929,5,4,1929,-8,-8,-8,-8,-8,-8,-8,1,"Escobar Led Rebels",1,-8,400,1600,4.1
 708,"Ikhwan Revolt",4,670,"Saudi Arabia",-8,"Ikhwan",0,3,30,1929,1,10,1930,-8,-8,-8,-8,-8,-8,-8,6,"Ikhwan",1,-8,500,5000,4.1
 710,"Chinese Civil War, Phase 1",4,710,"China",-8,"Communists",0,11,15,1930,12,31,1936,-8,-8,-8,-8,-8,-8,-8,7,"Communists",6,-8,200000,300000,4.1
 711,"Xinjiang Muslim Revolt",5,365,"USSR",-8,-8,1,1,-9,1934,8,-9,1934,-8,-8,-8,-8,-8,-8,-8,7,"Central Asian Rebels",1,-8,1000,-8,4.1
@@ -211,8 +211,8 @@
 740,"Argentine Military",4,160,"Argentina",-8,"Military",0,6,15,1955,9,19,1955,-8,-8,-8,-8,-8,-8,-8,1,"Military",2,-8,-9,-9,4.1
 741,"Tibetan Khamba Rebellion",5,710,"China",-8,"Khamba Tibetans",0,3,1,1956,4,14,1959,-8,-8,-8,-8,-8,-8,-8,7,"Khamba Tibetans",1,-8,4000,12000,4.1
 742,"Indonesian Leftists",4,850,"Indonesia",-8,"Leftists",0,12,15,1956,6,4,1962,-8,-8,-8,-8,-8,-8,-8,7,"Leftists",1,-8,3700,23500,4.1
-743,"First Lebanese",4,2,"United States of America",-8,-8,1,7,16,1958,9,15,1958,-8,-8,-8,-8,-8,-8,-8,6,"Leftists",1,-8,1,-8,4.1
-743,"First Lebanese",4,660,"Lebanon",-8,"National Front",1,5,9,1958,9,15,1958,-8,-8,-8,-8,-8,-8,-8,6,"Leftists",1,-8,-9,-9,4.1
+743,"First Lebanese",4,2,"United States of America",-8,-8,1,7,16,1958,9,15,1958,-8,-8,-8,-8,-8,-8,-8,6,"National Front",1,-8,1,-8,4.1
+743,"First Lebanese",4,660,"Lebanon",-8,"National Front",1,5,9,1958,9,15,1958,-8,-8,-8,-8,-8,-8,-8,6,"National Front",1,-8,-9,-9,4.1
 745,"Cuban Revolution",4,40,"Cuba",-8,"Castroites",0,5,24,1958,1,2,1959,-8,-8,-8,-8,-8,-8,-8,1,"Castroites",2,-8,2000,1000,4.1
 746,"Second Burmese",4,775,"Burma",-8,"Karens & Communists",0,11,-9,1958,4,-9,1960,-8,-8,-8,-8,-8,-8,-8,7,"Karens & Communists",7,-8,850,2300,4.1
 747,"Iraq-Shammar",4,645,"Iraq",-8,"Shammar Tribe & Pro-WesternOfficers",0,3,6,1959,3,10,1959,-8,-8,-8,-8,-8,-8,-8,6,"Shammar Tribe & Pro-WesternOfficers",1,-8,-9,-9,4.1
@@ -247,7 +247,7 @@
 771,"First Chad (FROLINAT) Rebellion",5,220,"France",-8,-8,1,8,-9,1968,6,16,1971,-8,-8,-8,-8,-8,-8,-8,4,"Frolinat Rebels",1,-8,50,-8,4.1
 771,"First Chad (FROLINAT) Rebellion",5,483,"Chad",-8,"Frolinat Rebels",1,11,-9,1966,6,16,1971,-8,-8,-8,-8,-8,-8,-8,4,"Frolinat Rebels",1,-8,500,3000,4.1
 772,"Cultural Revolution Phase 1",6,-8,"Red Guard",-8,"Regional military",0,1,9,1967,9,4,1967,-8,-8,-8,-8,-8,-8,-8,7,"Regional military",4,776,-9,-9,4.1
-773,"Third Burmese",5,775,"Burma",-8,"Karens & Communists",0,6,-9,1967,10,22,1980,-8,-8,-8,-8,-8,-8,-8,7,"Karens",7,-8,6800,22400,4.1
+773,"Third Burmese",5,775,"Burma",-8,"Karens & Communists",0,6,-9,1967,10,22,1980,-8,-8,-8,-8,-8,-8,-8,7,"Karens & Communists",7,-8,6800,22400,4.1
 775,"Biafra",5,475,"Nigeria",-8,"Biafrans",0,7,6,1967,1,12,1970,-8,-8,-8,-8,-8,-8,-8,4,"Nigeria",1,-8,-9,-9,4.1
 776,"Cultural Revolution Phase 2",4,710,"China",-8,"Red Guard",0,9,5,1967,9,1,1968,-8,-8,-8,-8,-8,-8,772,7,"Red Guard",1,-8,-9,-9,4.1
 777,"Third Iraqi Kurds",5,645,"Iraq",-8,"Kurds",0,1,3,1969,3,11,1970,-8,-8,-8,-8,-8,-8,-8,6,"Iraq",3,-8,800,3200,4.1
@@ -286,10 +286,10 @@
 805,"Second Ogaden Phase 1",5,40,"Cuba",-8,-8,1,7,1,1976,7,22,1977,-8,-8,-8,-8,-8,-8,-8,4,"WSLF",4,187,1500,-8,4.1
 805,"Second Ogaden Phase 1",5,-8,-8,520,"Somalia",1,7,1,1976,7,22,1977,-8,-8,-8,-8,-8,-8,-8,4,"WSLF",4,187,-8,1900,4.1
 805,"Second Ogaden Phase 1",5,530,"Ethiopia",-8,"WSLF",1,7,1,1976,7,22,1977,-8,-8,-8,-8,-8,-8,-8,4,"WSLF",4,187,9000,20000,4.1
-806,"East Timorese War Phase 3",5,850,"Indonesia",-8,"Fretilin",0,7,18,1976,5,26,1979,-8,-8,-8,-8,-8,-8,472,7,"Fretelin",1,-8,1800,-9,4.1
-807,"Third Lebanese",7,,"Lebanese Forces",-8,"PLO & Shiite militia",1,2,1,1978,10,4,1978,-8,-8,-8,-8,-8,-8,-8,6,"Syria & PLO",6,-8,1500,800,4.1
-807,"Third Lebanese",7,-8,-8,652,"Syria",1,2,1,1978,10,4,1978,-8,-8,-8,-8,-8,-8,-8,6,"Syria & PLO",6,-8,-8,800,4.1
-807,"Third Lebanese",7,666,"Israel",-8,-8,1,3,14,1978,10,4,1978,-8,-8,-8,-8,-8,-8,-8,6,"Syria & PLO",6,-8,-9,-8,4.1
+806,"East Timorese War Phase 3",5,850,"Indonesia",-8,"FreTiLin",0,7,18,1976,5,26,1979,-8,-8,-8,-8,-8,-8,472,7,"FreTiLin",1,-8,1800,-9,4.1
+807,"Third Lebanese",7,,"Lebanese Forces",-8,"PLO & Shiite militia",1,2,1,1978,10,4,1978,-8,-8,-8,-8,-8,-8,-8,6,"PLO & Shiite militia",6,-8,1500,800,4.1
+807,"Third Lebanese",7,-8,-8,652,"Syria",1,2,1,1978,10,4,1978,-8,-8,-8,-8,-8,-8,-8,6,"Syria",6,-8,-8,800,4.1
+807,"Third Lebanese",7,666,"Israel",-8,-8,1,3,14,1978,10,4,1978,-8,-8,-8,-8,-8,-8,-8,6,"Syria",6,-8,-9,-8,4.1
 808,"Second Ogaden Phase 3",5,40,"Cuba",-8,-8,1,3,10,1978,12,3,1980,-8,-8,-8,-8,-8,-8,187,4,"Ogaden, WSLF",1,-8,-9,-8,4.1
 808,"Second Ogaden Phase 3",5,530,"Ethiopia",-8,"Ogaden, WSLF",1,3,10,1978,12,3,1980,-8,-8,-8,-8,-8,-8,187,4,"Ogaden, WSLF",1,-8,2000,20000,4.1
 808,"Second Ogaden Phase 3",5,-8,-8,520,"Somalia",1,11,22,1980,12,3,1980,-8,-8,-8,-8,-8,-8,187,4,"Ogaden, WSLF",1,-8,-8,2000,4.1
@@ -318,9 +318,9 @@
 828,"Contra War",4,93,"Nicaragua",-8,"Contras",0,3,18,1982,4,19,1990,-8,-8,-8,-8,-8,-8,-8,1,"Contras",6,-8,7000,25200,4.1
 831,"Matabeleland",4,552,"Zimbabwe",-8,"ZAPU",0,1,-9,1983,12,27,1987,-8,-8,-8,-8,-8,-8,-8,4,"Zimbabwe",1,-8,-9,-9,4.1
 832,"Fourth Burmese",5,775,"Burma",-8,"Karen & Kachin Rebels",0,2,1,1983,1,-9,1988,-8,-8,-8,-8,-8,-8,-8,7,"Karen & Kachin Rebels",1,-8,2800,1200,4.1
-833,"Fourth Lebanese Civil",4,2,"United States of America",-8,-8,1,4,18,1983,2,29,1984,-8,-8,-8,-8,-8,-8,-8,6,"Druze",2,-8,273,-8,4.1
-833,"Fourth Lebanese Civil",4,220,"France",-8,-8,1,4,18,1983,2,29,1984,-8,-8,-8,-8,-8,-8,-8,6,"Druze",2,-8,95,-8,4.1
-833,"Fourth Lebanese Civil",4,660,"Lebanon",-8,"Shi'ites & Druze",1,4,18,1983,2,29,1984,-8,-8,-8,-8,-8,-8,-8,6,"Druze",2,-8,-9,-9,4.1
+833,"Fourth Lebanese Civil",4,2,"United States of America",-8,-8,1,4,18,1983,2,29,1984,-8,-8,-8,-8,-8,-8,-8,6,"Shi'ites & Druze",2,-8,273,-8,4.1
+833,"Fourth Lebanese Civil",4,220,"France",-8,-8,1,4,18,1983,2,29,1984,-8,-8,-8,-8,-8,-8,-8,6,"Shi'ites & Druze",2,-8,95,-8,4.1
+833,"Fourth Lebanese Civil",4,660,"Lebanon",-8,"Shi'ites & Druze",1,4,18,1983,2,29,1984,-8,-8,-8,-8,-8,-8,-8,6,"Shi'ites & Druze",2,-8,-9,-9,4.1
 835,"First Sri Lanka Tamil",5,750,"India",-8,-8,1,7,25,1987,5,24,1990,-8,-8,-8,-8,-8,-8,-8,7,"Tamils",3,-8,1155,-8,4.1
 835,"First Sri Lanka Tamil",5,780,"Sri Lanka",-8,"Tamils",1,7,25,1983,2,22,2002,-8,-8,-8,-8,-8,-8,-8,7,"Tamils",3,-8,8500,17000,4.1
 836,"Second South Sudan",4,625,"Sudan",-8,"SPLA-Garang faction",0,11,17,1983,8,27,1991,4,15,1992,1,10,2005,-8,6,"SPLA-Garang faction",3,-8,-9,-9,4.1
