@@ -462,7 +462,6 @@ def load_contdir(src):
     reader = csv2.DictReader(src, encoding='latin1')
     cols = [x.name for x in model.ContDir.__table__.c]
     for row in reader:
-        print row
         start_mon = datetime.date(int(row['begin'][:4]),
                                   int(row['begin'][4:]), 1)
         end_mon = datetime.date(int(row['end'][:4]),
@@ -510,7 +509,6 @@ def main():
     load_war3_partic(open("external/www.correlatesofwar.org/cow2 data/WarData/ExtraState/Extra-State War Participants (V 3-0).csv", 'r'))
     load_enum_from_yaml(open("data/contiguity_type.yaml", 'r'))
     load_contdir(open("data/DirectContiguity310/contdir.csv", "rU"))
-
 
     
 if __name__ == '__main__':

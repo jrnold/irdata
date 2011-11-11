@@ -2,10 +2,57 @@ import datetime
 
 import sqlalchemy as sa
 from sqlalchemy import orm
+from sqlalchemy import types
 from sqlalchemy.ext import declarative
 
 Base = declarative.declarative_base()
 SESSION = orm.sessionmaker()
+
+class IntegerConstrained(sa.Integer, types.SchemaType):
+    """Integer that can only take on constrained values
+
+    An integer column with a check constraint on valid values.
+    It is like an integer version of the Enum type.
+    
+    """
+    def __init__(self, name=None, *values):
+        """Construct a day
+
+        :param name: if a CHECK constraint is generated, specify
+          the name of the constraint.
+
+        """
+        self.values = values
+        self.name = name
+
+    def _set_table(self, column, table):
+        e = sa.schema.CheckConstraint(
+                        column.in_(self.values),
+                        name=self.name)
+        table.append_constraint(e)
+        
+class Day(IntegerConstrained, types.SchemaType):
+    """Day of the month
+
+    An integer column with a check constraint that the
+    values are in 1-31.
+    
+    """
+    values = range(1, 32)
+    
+    def __init__(self, name=None):
+        self.name = name
+
+class Month(IntegerConstrained, types.SchemaType):
+    """ Month
+
+    An integer column with a check constraint that the
+    values are in 1-12.
+    """
+    values = range(1, 13)
+    
+    def __init__(self, name=None):
+        self.name = name
 
 class Mixin(object):
     pass
@@ -323,13 +370,13 @@ class PolityStateYear(Base, Mixin):
     exconst = sa.Column(sa.Integer)
     polcomp = sa.Column(sa.Integer)
     prior = sa.Column(sa.Integer)
-    emonth = sa.Column(sa.Integer)
-    eday = sa.Column(sa.Integer)
+    emonth = sa.Column(Month)
+    eday = sa.Column(Day)
     eyear = sa.Column(sa.Integer)
     eprec = sa.Column(sa.Integer)
     interim = sa.Column(sa.Integer)
-    bmonth = sa.Column(sa.Integer)
-    bday = sa.Column(sa.Integer)
+    bmonth = sa.Column(Month)
+    bday = sa.Column(Day)
     byear = sa.Column(sa.Integer)
     bprec = sa.Column(sa.Integer)
     post = sa.Column(sa.Integer)
@@ -417,15 +464,15 @@ class War4ParticDate(Base, Mixin):
     partic_num = sa.Column(sa.Integer, primary_key=True)
     start_year = sa.Column(sa.Integer,
                          doc="The year in which sustained combat started")
-    start_month = sa.Column(sa.Integer,
+    start_month = sa.Column(Month,
                           doc="The month in which sustained combat started")  
-    start_day = sa.Column(sa.Integer,
+    start_day = sa.Column(Day,
                           doc="The day in which sustained combat started")  
     end_year = sa.Column(sa.Integer,
                          doc="The month in which sustained combat ended")
-    end_month = sa.Column(sa.Integer,
-                        doc="The month in which sustained combat ended")
-    end_day = sa.Column(sa.Integer,
+    end_month = sa.Column(Month,
+                          doc="The month in which sustained combat ended")
+    end_day = sa.Column(Day,
                         doc="The day in which sustained combat ended")
     sa.ForeignKeyConstraint(['war_num', 'ccode', 'side'],
                             [War4Partic.__table__.c.war_num,
@@ -574,15 +621,15 @@ class War3Date(Base, Mixin):
     yr_beg = sa.Column(sa.Integer,
                        nullable = False,
                        doc="beginning year of war")
-    mon_beg = sa.Column(sa.Integer,
+    mon_beg = sa.Column(Month,
                        doc="beginning month of war")
-    day_beg = sa.Column(sa.Integer,
+    day_beg = sa.Column(Day,
                        doc="beginning day of war")
     yr_end = sa.Column(sa.Integer,
                       doc="ending year of war")
-    mon_end = sa.Column(sa.Integer,
+    mon_end = sa.Column(Month,
                        doc="ending month of war")
-    day_end = sa.Column(sa.Integer,
+    day_end = sa.Column(Day,
                        doc="ending day of war")
     
 
@@ -664,15 +711,15 @@ class War3ParticDate(Base, Mixin):
     yr_beg = sa.Column(sa.Integer,
                        nullable = False,
                        doc="beginning year of war")
-    mon_beg = sa.Column(sa.Integer,
+    mon_beg = sa.Column(Month,
                         doc="beginning month of war")
-    day_beg = sa.Column(sa.Integer,
+    day_beg = sa.Column(Day,
                         doc="beginning day of war")
     yr_end = sa.Column(sa.Integer,
                        doc="ending year of war")
-    mon_end = sa.Column(sa.Integer,
+    mon_end = sa.Column(Month,
                         doc="ending month of war")
-    day_end = sa.Column(sa.Integer,
+    day_end = sa.Column(Day,
                         doc="ending day of war")
     
     sa.ForeignKey(['war_no', 'state_num'],
@@ -701,6 +748,11 @@ class ContDir(Base, Mixin):
     the US-Mexico border). Water contiguity is divided into four
     categories, based on a seperation by water of 12, 24, 150, and 400
     miles.
+
+    Some corrections made to the raw data are
+
+    - Montenegro country-code converted from 349 to 341, the value
+      used in states 
 
     """
     __tablename__ = 'contdir'
