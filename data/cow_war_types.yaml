@@ -1,0 +1,26 @@
+# Correlates of War War Typology
+# See http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/COW%20Website%20-%20Typology%20of%20war.pdf
+- value: 1
+  label: Inter state war
+  category: "Inter-State War"
+- value: 2
+  label: State conflict with colony
+  category: "Extra-State War"
+- value: 3
+  label: State conflict with non-state actor
+  category: Extra-State War
+- value: 4
+  label: Civil war for control of central government
+  category: Intra-State War
+- value: 5
+  label: Conflict over local issues
+  category: Intra-State War
+- value: 6
+  label: Inter-commnual conflict
+  category: Intra-State War
+- value: 7
+  label: wars between or among non-state entities that take place in non-state territory
+  category: "Non-State War"
+- value: 8
+  label: wars between NSAs that take place across state borders
+  category: "Non-State War"

@@ -1,0 +1,38 @@
+war3_outcomes:
+  1 : on winning side
+  2 : on losing side
+  3 : on side A of a tie
+  4 : on side B of a tie
+  5 : on side A of ongoing war
+  6 : on side B of ongoing war
+war3_sys_stat:
+  1 : neither central sub-system member nor major power
+  2 : central sub-system member only [only relevant 1816 through 1919]
+  3 : central sub-system member & a major power [only relevant 1816 through 1919]
+  4 : major power only
+war3_winner:
+  1 : state/government
+  2 : colony/non-state/opposition
+  3 : state/government after war becomes an inter-state war
+  4 : colony/non-state/opposition after war becomes an inter-state war
+  5 : no winner/war ongoing as of 10/98
+  6 : stalemate
+  7 : no winner/war ongoing as of 10/98 after becoming inter-state war
+war3_int_side:
+  0 : NA/state is primary actor in war or is undergoing intra-state war
+  1 : on side of state/government
+  2 : on side of colony/non-state/opposition
+  3 : on neither side
+war3_war_type:
+  1 : Inter state war
+  2 : State conflict with colony
+  3 : State conflict with non-state actor
+  4 : Civil war for control of central government
+  5 : Conflict over local issues
+  6 : Inter-commnual conflict
+war3_edition:
+  0: "1972 original"
+  1: "1982 update"
+  2: "1990 update"
+  3: "1992 update"
+  4: "1998 update"
