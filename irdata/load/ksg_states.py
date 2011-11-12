@@ -1,7 +1,9 @@
+""" Load KSG state system data """
 import collections
 import datetime
 import zipfile
 import re
+from os import path
 
 import sqlalchemy as sa
 import yaml
@@ -59,7 +61,8 @@ def load_ksg_system():
     session.commit()
 
 def load_ksg2cow():
-    """
+    """ Load data into ksg_to_cow
+    
     see cowfilter.pl in http://privatewww.essex.ac.uk/~ksg/data/exptradegdpv4.1.zip
 
     Apart from disagreements in the dates in which countries were in the system,
@@ -75,6 +78,7 @@ def load_ksg2cow():
     ## COW
     ## YAR,678,Yemen Arab Republic,1926,9,2,1990,5,21,2008.1
     ## YEM,679,Yemen,1990,5,22,2008,6,30,2008.1
+    COW_MAX_YEAR = model.CowSysMembership.ONGOING_DATE.year
     for y in range(1991,COW_MAX_YEAR + 1):
         session.add(model.Ksg2Cow(year = y,
                             ksg_ccode = 678,
@@ -86,3 +90,12 @@ def load_ksg2cow():
                             ksg_ccode = 260,
                             cow_ccode = 255))
     session.commit()
+
+def load_all(external):
+    """ Load all KSG data """
+    load_ksg_states(open(path.join(external, "privatewww.essex.ac.uk/~ksg/data/iisystem.dat"),
+                         'rb'),
+                    open(path.join(external, "privatewww.essex.ac.uk/~ksg/data/microstatessystem.dat"),
+                         'rb'))
+    load_ksg_system()
+    load_ksg2cow()

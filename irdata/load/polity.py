@@ -2,13 +2,14 @@ import collections
 import datetime
 import zipfile
 import re
+from os import path
 
 import sqlalchemy as sa
 import yaml
 
 from irdata import csv2
 from irdata import model
-from irdata import utils
+from irdata.load import utils
 
 def load_polity_states(src):
     POLITY_MAX_YEAR = model.PolitySysMembership.ONGOING
@@ -49,3 +50,10 @@ def load_polity(src):
             del row[k]
         session.add(model.PolityStateYear(**row))
     session.commit()
+
+def load_all(data, external):
+    """ Load all Polity 4 data """
+    load_polity_states(open(path.join(data, 'polity4_states.yaml'), 'r'))
+    load_polity(open(path.join(data, 'p4v2010.csv'), 'r'))
+    
+

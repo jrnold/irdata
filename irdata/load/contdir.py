@@ -1,3 +1,16 @@
+import collections
+import datetime
+import zipfile
+import re
+from os import path
+
+import sqlalchemy as sa
+import yaml
+
+from irdata import csv2
+from irdata import model
+from irdata.load import utils
+
 def load_contdir(src):
     """ Load direct contiguity data from csv file"""
     session = model.SESSION()
@@ -21,3 +34,7 @@ def load_contdir(src):
     session.commit()
 
 
+def load_all(data, external):
+    """ Load all direct contiguity data """
+    utils.load_enum_from_yaml(open(path.join(data, "contiguity_type.yaml"), 'r'))
+    load_contdir(open(path.join(data, "DirectContiguity310/contdir.csv"), "rU"))

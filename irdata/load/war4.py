@@ -2,18 +2,22 @@ import collections
 import datetime
 import zipfile
 import re
+from os import path
 
 import sqlalchemy as sa
 import yaml
 
 from irdata import csv2
 from irdata import model
-from irdata import utils
-from .utils import replmiss
+from irdata.load import utils
+
+def load_cow_war_types(src):
+    """ Load data into cow_war_types table """
+    utils.load_from_yaml(src, model.CowWarType.__table__)
 
 def load_war4(src):
-    """ COW Inter-State War v 4.0
-
+    """ Add Inter-state war data to war4_* tables
+    
     updates tables cow_war4, cow_belligerents, cow_war4_participation, cow_war4_partic_dates
     """
 
@@ -67,9 +71,11 @@ def load_war4(src):
             session.add(model.War4(intnl=True, **utils.subset(row, cols)))
             for side in (False, True):
                 session.add(model.War4Side(side=side, war_num=row['war_num']))
+            session.flush()
         if cnt_bellig[row['state_name']] == 1:
             session.add(model.War4Belligerent(belligerent = row['state_name'],
-                                                  ccode = row['ccode']))
+                                              ccode = row['ccode']))
+            session.flush()
         session.add(partic(row))
         session.add(partic_dates(row, 1))
         if row['end_year2'] != '-8':
@@ -77,6 +83,10 @@ def load_war4(src):
     session.commit()
 
 def load_war4_intra(src):
+    """ Add Intra-state war data to war4_* tables
+
+    updates tables cow_war4, cow_belligerents, cow_war4_participation, cow_war4_partic_dates
+    """
     def _int(x):
         try:
             y = int(re.sub(',', '', x))
@@ -95,7 +105,7 @@ def load_war4_intra(src):
                 obj = model.War4Belligerent(ccode = ccode,
                                                 belligerent = belligerent)
                 session.add(obj)
-
+            session.flush()
     def partic(row, side):
         y = model.War4Partic()
         y.war_num = _int(row['war_num'])
@@ -123,6 +133,7 @@ def load_war4_intra(src):
                                       intnl = bool(row['intnl'])))
             for side in (False, True):
                 session.add(model.War4Side(side=side, war_num=row['war_num']))
+            session.flush()
         add_belligerent(session, row['side_a'], _int(row['ccode_a']))
         add_belligerent(session, row['side_b'], _int(row['ccode_b']))
         if _side(row['side_a']):
@@ -132,3 +143,11 @@ def load_war4_intra(src):
         session.flush()
         
     session.commit()
+
+def load_all(data, external):
+    """ Load all COW War v. 4 data """
+    load_cow_war_types(open(path.join(data, "cow_war_types.yaml"), "r"))
+    utils.load_enum_from_yaml(open(path.join(data, "war4_enum.yaml"), "r"))
+    load_war4(open(path.join(data, "InterStateWarData_v4.0.csv"), 'rU'))
+    load_war4_intra(open(path.join(data, "IntraStateWarData_v4.1.csv"), 'rU'))
+    

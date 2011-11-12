@@ -72,6 +72,12 @@ class CharFactorMixin(FactorMixin):
 class IntFactorMixin(FactorMixin):
     value = sa.Column(sa.Integer, primary_key=True)
 
+class Version(Base, Mixin):
+    """ Database version number """
+    __tablename__ = 'version'
+    version = sa.Column(sa.Unicode, primary_key=True)
+
+
 class CowState(Base, Mixin):
     """COW state numbers, abbrevations, and names (2008.1)
 

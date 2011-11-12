@@ -4,17 +4,29 @@ import zipfile
 import re
 
 import sqlalchemy as sa
+from sqlalchemy import types
 import yaml
 
 from irdata import csv2
 from irdata import model
-from irdata import utils
 
-def cols_integer(tbl):
-    return [x for x in tbl.columns if type(x) == sa.Integer]
 
-def cols_integer(tbl):
-    return [x for x in tbl.columns if type(x) == sa.Float]
+def camel2under(x):
+    """Convert Camelcase words to underscore separated words
+
+    >>> camel2under("HelloWorld")
+    hello_world
+
+    """
+    return re.sub(r"(?<=[a-z])([A-Z])", r"_\1", x).lower()
+
+def subset(d, keys):
+    """ Subset a dictionary """
+    return dict((k, v) for k, v in d.iteritems() if k in keys)
+
+def cols_by_type(tbl, _type):
+    """ Names of columns in a Table of a certain type"""
+    return [x for x in tbl.columns if type(x) == _type]
 
 def row_ymd(row, y, m, d):
     return datetime.date(*(int(row[x]) for x in (y, m, d)))

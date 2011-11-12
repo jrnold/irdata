@@ -1,3 +1,5 @@
+""" Loading COW Interstate System Data """
+from os import path
 import collections
 import datetime
 import zipfile
@@ -8,10 +10,10 @@ import yaml
 
 from irdata import csv2
 from irdata import model
-from irdata import utils
+from irdata.load import utils
 
 def load_cow_states(src):
-    """ Loads states2008.1.csv into cow_statelist and cow_system_membership tables """
+    """ Load data for tables cow_statelist and cow_system_membership """
     session = model.SESSION()
     reader = csv2.DictReader(src)
     reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
@@ -23,8 +25,8 @@ def load_cow_states(src):
             session.add(model.CowState(ccode = ccode,
                                        state_abb = row['state_abb'],
                                        state_nme = row['state_nme']))
-        st_date = row_ymd(row, 'st_year', 'st_month', 'st_day')
-        end_date = row_ymd(row, 'end_year', 'end_month', 'end_day')
+        st_date = utils.row_ymd(row, 'st_year', 'st_month', 'st_day')
+        end_date = utils.row_ymd(row, 'end_year', 'end_month', 'end_day')
         session.add(model.CowSysMembership(ccode = ccode,
                                            interval = cnt[ccode],
                                            st_date = st_date,
@@ -32,7 +34,7 @@ def load_cow_states(src):
     session.commit()
 
 def load_cow_majors(src):
-    """ Loads majors2008.1.csv into cow_majors """
+    """ Load data for table cow_majors """
     session = model.SESSION()
     reader = csv2.DictReader(src)
     reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
@@ -40,8 +42,8 @@ def load_cow_majors(src):
     for row in reader:
         ccode = row['ccode']
         cnt[row['ccode']] +=1
-        st_date = row_ymd(row, 'st_year', 'st_month', 'st_day')
-        end_date = row_ymd(row, 'end_year', 'end_month', 'end_day')
+        st_date = utils.row_ymd(row, 'st_year', 'st_month', 'st_day')
+        end_date = utils.row_ymd(row, 'end_year', 'end_month', 'end_day')
         session.add(model.CowMajor(ccode = ccode,
                                     interval = cnt[ccode],
                                     st_date = st_date,
@@ -49,7 +51,7 @@ def load_cow_majors(src):
     session.commit()
 
 def load_cow_system():
-    """ Create cow_system table """ 
+    """ load data from table cow_system """ 
     session = model.SESSION()
     for st in session.query(model.CowSysMembership):
         for yr in range(st.st_date.year, st.end_date.year + 1):
@@ -57,3 +59,12 @@ def load_cow_system():
                                         year = yr))
         session.flush()
     session.commit()
+    
+
+def load_all(external):
+    """ Load all COW System data """
+    load_cow_states(open(path.join(external, "www.correlatesofwar.org/COW2 Data/SystemMembership/2008/states2008.1.csv"), 'rb'))
+    load_cow_majors(open(path.join(external, "www.correlatesofwar.org/COW2 Data/SystemMembership/2008/majors2008.1.csv"), 'rb'))
+    load_cow_system()
+    
+
