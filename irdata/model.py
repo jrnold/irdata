@@ -55,6 +55,12 @@ class Month(IntegerConstrained, types.SchemaType):
         self.name = name
 
 class Mixin(object):
+    """ Mixin class
+
+    All objects mapping to tables in this database inherit
+    from this class. 
+
+    """
     pass
 
 class FactorMixin():
@@ -385,6 +391,16 @@ class PolityStateYear(Base, Mixin):
     sf = sa.Column(sa.Integer)
     regtrans = sa.Column(sa.Integer)
 
+    @property
+    def edate(self):
+        if self.eyear and self.emonth and self.eday:
+            return datetime.date(self.eyear, self.emonth, self.eday)
+
+    @property
+    def edate(self):
+        if self.byear and self.bmonth and self.bday:
+            return datetime.date(self.byear, self.bmonth, self.bday)
+
 
 class War4Outcome(Base, IntFactorMixin):
     """ COW War Data v. 4 outcome values """
@@ -410,7 +426,7 @@ class War4(Base, Mixin):
                          doc='War type')
     intnl = sa.Column(sa.Boolean)
 
-class War4Belligerents(Base, Mixin):
+class War4Belligerent(Base, Mixin):
     """ COW War Data v. 4 Belligerents 
 
     The list of *all* participants in wars, both states and non-state
@@ -425,6 +441,23 @@ class War4Belligerents(Base, Mixin):
     ccode = sa.Column(sa.Integer,
                       sa.ForeignKey(CowState.__table__.c.ccode))
 
+class War4Side(Base, Mixin):
+    """ Cow War v. 4 Sides
+
+    Each war has two sides.  This table is needed because
+    some values of Non-State Wars are defined as properties
+    of a side rather than of a participant.
+    
+    """ 
+    __tablename__ = 'war4_sides'
+    war_num = sa.Column(sa.ForeignKey(War4.__table__.c.war_num,
+                                      deferrable=True,
+                                      initially="DEFERRED"),
+                       primary_key=True)
+    side = sa.Column(sa.Boolean, primary_key=True)
+    bat_death = sa.Column(sa.Integer)
+    
+
 class War4Partic(Base, Mixin):
     """ Cow War v.4 Participation
 
@@ -432,14 +465,9 @@ class War4Partic(Base, Mixin):
     participate on multiple sides.
     """
     __tablename__ = 'war4_partic'
-    war_num = sa.Column(sa.ForeignKey(War4.__table__.c.war_num,
-                                      deferrable=True,
-                                      initially="DEFERRED"),
-                       primary_key=True)
+    war_num = sa.Column(sa.Integer, primary_key=True)
     belligerent = sa.Column(sa.Unicode,
-                            sa.ForeignKey(War4Belligerents.__table__.c.belligerent,
-                                          deferrable=True,
-                                          initially="DEFERRED"),
+                            sa.ForeignKey(War4Belligerent.__table__.c.belligerent),
                             primary_key=True)
     side = sa.Column(sa.Boolean, primary_key=True)
     where_fought = sa.Column(sa.Integer,
@@ -452,8 +480,12 @@ class War4Partic(Base, Mixin):
                         nullable = False)
     bat_death = sa.Column(sa.Integer)
     ## Initiation is by participant not side
-    initiator = sa.Column(sa.Boolean,
-                          nullable = False)
+    initiator = sa.Column(sa.Boolean, nullable = False)
+    sa.ForeignKey(['war_num', 'side'],
+                  [War4Side.__table__.c.war_num,
+                   War4Side.__table__.c.side],
+                  initially="DEFERRED", deferrable=True)
+
 
 class War4ParticDate(Base, Mixin):
     __tablename__ = 'war4_partic_dates'
@@ -477,7 +509,20 @@ class War4ParticDate(Base, Mixin):
     sa.ForeignKeyConstraint(['war_num', 'ccode', 'side'],
                             [War4Partic.__table__.c.war_num,
                              War4Partic.__table__.c.belligerent,
-                             War4Partic.__table__.c.side])
+                             War4Partic.__table__.c.side],
+                            initially="DEFERRED", deferrable=True)
+
+    @property
+    def start_date(self):
+        if self.start_year and self.start_month and self.start_day:
+            return datetime.date(self.start_year, self.start_month, self.start_day)
+
+    @property
+    def end_date(self):
+        if self.end_year and self.end_month and self.end_day:
+            return datetime.date(self.end_year, self.end_month, self.end_day)
+
+
 
 class War3Outcome(Base, IntFactorMixin):
     """ War Outcomes for Participants in Inter-State Wars
@@ -631,7 +676,17 @@ class War3Date(Base, Mixin):
                        doc="ending month of war")
     day_end = sa.Column(Day,
                        doc="ending day of war")
-    
+
+    @property
+    def date_beg(self):
+        if self.yr_beg and self.mon_beg and self.day_beg:
+            return datetime.date(self.yr_beg, self.mon_beg, self.day_beg)
+
+    @property
+    def date_end(self):
+        if self.yr_end and self.mon_end and self.day_end:
+            return datetime.date(self.yr_end, self.mon_end, self.day_end)
+
 
 class War3Partic(Base, Mixin):
     """ COW Inter-State Wars v 3.0 (Participants)
@@ -726,6 +781,17 @@ class War3ParticDate(Base, Mixin):
                   [War3Partic.__table__.c.war_no,
                    War3Partic.__table__.c.state_num,
                    War3Partic.__table__.c.partic_no])
+
+    @property
+    def date_beg(self):
+        if self.yr_beg and self.mon_beg and self.day_beg:
+            return datetime.date(self.yr_beg, self.mon_beg, self.day_beg)
+
+    @property
+    def date_end(self):
+        if self.yr_end and self.mon_end and self.day_end:
+            return datetime.date(self.yr_end, self.mon_end, self.day_end)
+
 
 class ContType(Base, IntFactorMixin):
     """COW contiguity categories"""
