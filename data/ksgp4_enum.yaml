@@ -1,0 +1,18 @@
+# From http://privatewww.essex.ac.uk/~ksg/data/ksgp4_readme.asc
+ksgp4use_origin:
+  0: Observation from Polity 4 data
+  1: Observation from old Polity data (98d)
+  2: Polity score estimated from Freedom House data 
+  3: Extrapolated polity score
+  4: Guesstimated polity score
+ksgp4duse_origin:
+  0: Observation and date from Polity 4D data 
+  -1: Observation and date from old Polity data (98d)
+  1:  Observation from Polity data, truncated start date
+  2: Observation from Polity data, truncated end date
+  3: Observation from Polity data, truncated start and end date
+  4:  Extrapolated start date
+  5: Extrapolated end date
+  6: Extrapolated start and end date
+  7: Polity score estimated from Freedom House data 
+  8: Guesstimated polity score

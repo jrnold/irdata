@@ -118,7 +118,6 @@ def load_war4_intra(src):
         return y
     
     session = model.SESSION()
-    session = model.SESSION()
     cnt = collections.Counter()
     reader = csv2.DictReader(src, encoding='latin1')
     reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]

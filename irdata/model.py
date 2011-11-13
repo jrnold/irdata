@@ -61,9 +61,11 @@ class Mixin(object):
     from this class. 
 
     """
-    pass
+    @classmethod
+    def columns(kls):
+        return [x.name for x in kls.__table__.c]
 
-class FactorMixin():
+class FactorMixin(object):
     label = sa.Column(sa.Unicode)
     
 class CharFactorMixin(FactorMixin):
@@ -408,12 +410,12 @@ class PolityStateYear(Base, Mixin):
             return datetime.date(self.byear, self.bmonth, self.bday)
 
 
-class War4Outcome(Base, IntFactorMixin):
+class War4Outcome(Base, IntFactorMixin, Mixin):
     """ COW War Data v. 4 outcome values """
     __tablename__ = 'war4_outcomes'
 
 
-class War4WhereFought(Base, IntFactorMixin):
+class War4WhereFought(Base, IntFactorMixin, Mixin):
     """ COW War Data v. 4 outcome values """
     __tablename__ = 'war4_where_fought'
 
@@ -530,7 +532,7 @@ class War4ParticDate(Base, Mixin):
 
 
 
-class War3Outcome(Base, IntFactorMixin):
+class War3Outcome(Base, IntFactorMixin, Mixin):
     """ War Outcomes for Participants in Inter-State Wars
 
     See http://www.correlatesofwar.org/cow2%20data/WarData/InterState/Inter-State%20War%20Format%20(V%203-0).htm
@@ -538,7 +540,7 @@ class War3Outcome(Base, IntFactorMixin):
     """
     __tablename__ = 'war3_outcomes'
 
-class War3SysStat(Base, IntFactorMixin):
+class War3SysStat(Base, IntFactorMixin, Mixin):
     """ COW War Data v. 3 SysStat codes
 
     System membership status of state
@@ -547,7 +549,7 @@ class War3SysStat(Base, IntFactorMixin):
     """
     __tablename__ = 'war3_sys_stat'
 
-class War3Winner(Base, IntFactorMixin):
+class War3Winner(Base, IntFactorMixin, Mixin):
     """ COW War Data v. 3 Intra- and Extra-State war winner values
 
     Victorious side in war 
@@ -556,21 +558,21 @@ class War3Winner(Base, IntFactorMixin):
     """
     __tablename__ = "war3_winner"
 
-class War3WarType(Base, IntFactorMixin):
+class War3WarType(Base, IntFactorMixin, Mixin):
     """ Correlates of War Data v. 3 WarType values
 
     See http://www.correlatesofwar.org/cow2%20data/WarData/IntraState/Intra-State%20War%20Format%20(V%203-0).htm
     """
     __tablename__ = 'war3_war_type'
 
-class War3IntSide(Base, IntFactorMixin):
+class War3IntSide(Base, IntFactorMixin, Mixin):
     """ Correlates of War Data v. 3 intside values
 
     On which side did participant intervene? 
     """
     __tablename__ = 'war3_int_side'
     
-class War3Edition(Base, IntFactorMixin):
+class War3Edition(Base, IntFactorMixin, Mixin):
     """ Correlates of War Data v. 3 edition values
 
     Update code for Inter-State wars. Which edition of COW War data
@@ -799,7 +801,7 @@ class War3ParticDate(Base, Mixin):
             return datetime.date(self.yr_end, self.mon_end, self.day_end)
 
 
-class ContType(Base, IntFactorMixin):
+class ContType(Base, IntFactorMixin, Mixin):
     """COW contiguity categories"""
     __tablename__ = 'cont_type'
     
@@ -843,4 +845,59 @@ class ContDir(Base, Mixin):
                          sa.ForeignKey(ContType.__table__.c.value))
     notes = sa.Column(sa.Unicode)
     #version = sa.Column(sa.Unicode)
+
+class KsgP4dOrigin(Base, Mixin, IntFactorMixin):
+    """ Observation Origin codes for table ksgp4duse """
+    __tablename__ = 'ksgp4duse_origin'
+
+class KsgP4Origin(Base, Mixin, IntFactorMixin):
+    """ Observation Origin codes for table ksgp4use """
+    __tablename__ = 'ksgp4use_origin'
+
+class KsgP4duse(Base, Mixin):
+    """ Polity 4 (2008) data modified for KSG statelist
+
+    See http://privatewww.essex.ac.uk/~ksg/polity.html
+    """ 
+    __tablename__ = 'ksgp4duse'
+
+    ccode = sa.Column(sa.Integer,
+                      sa.ForeignKey(KsgState.__table__.c.idnum),
+                      primary_key=True)
+    startdate = sa.Column(sa.Date, primary_key=True)
+    enddate = sa.Column(sa.Date, primary_key=True)
+    xrreg = sa.Column(sa.Integer)
+    xrcomp = sa.Column(sa.Integer)
+    xropen = sa.Column(sa.Integer) 
+    xconst = sa.Column(sa.Integer)
+    parreg = sa.Column(sa.Integer)
+    parcomp = sa.Column(sa.Integer)
+    democracy = sa.Column(sa.Integer)
+    autocracy = sa.Column(sa.Integer)
+    polity = sa.Column(sa.Integer)
+    origin = sa.Column(sa.Integer,
+                       sa.ForeignKey(KsgP4dOrigin.__table__.c.value))
+
+class KsgP4use(Base, Mixin):
+    """ Polity 4 (2008) data modified for KSG statelist
+
+    See http://privatewww.essex.ac.uk/~ksg/polity.html
+    """ 
+    __tablename__ = 'ksgp4use'
+
+    ccode = sa.Column(sa.Integer,
+                      sa.ForeignKey(KsgState.__table__.c.idnum),
+                      primary_key=True)
+    year = sa.Column(sa.Integer, primary_key=True)
+    xrreg = sa.Column(sa.Integer)
+    xrcomp = sa.Column(sa.Integer)
+    xropen = sa.Column(sa.Integer) 
+    xconst = sa.Column(sa.Integer)
+    parreg = sa.Column(sa.Integer)
+    parcomp = sa.Column(sa.Integer)
+    democracy = sa.Column(sa.Integer)
+    autocracy = sa.Column(sa.Integer)
+    polity = sa.Column(sa.Integer)
+    origin = sa.Column(sa.Integer,
+                       sa.ForeignKey(KsgP4dOrigin.__table__.c.value))
 
