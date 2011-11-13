@@ -29,7 +29,7 @@ def load_ksgp4duse(src):
         for k, v in row.iteritems():
             if v == '.':
                 row[k] = None
-        model.KsgP4duse(**utils.subset(row, cols))
+        session.add(model.KsgP4duse(**utils.subset(row, cols)))
     session.commit()    
 
 def load_ksgp4use(src):
@@ -42,12 +42,12 @@ def load_ksgp4use(src):
         for k, v in row.iteritems():
             if v == '.':
                 row[k] = None
-        model.KsgP4use(**utils.subset(row, cols))
-    session.commit()    
+        session.add(model.KsgP4use(**utils.subset(row, cols)))
+    session.commit()
 
 
 def load_all(data, external):
     utils.load_enum_from_yaml(open(path.join(data, "ksgp4_enum.yaml"), "r"))
-    load_ksgp4duse(open(path.join(external, 'privatewww.essex.ac.uk/~ksg/data/ksgp4duse.asc')))
-    load_ksgp4use(open(path.join(external, 'privatewww.essex.ac.uk/~ksg/data/ksgp4use.asc')))    
+    load_ksgp4duse(open(path.join(data, 'ksgp4duse.asc'), 'r'))
+    load_ksgp4use(open(path.join(data, 'ksgp4use.asc'), 'r'))    
     
