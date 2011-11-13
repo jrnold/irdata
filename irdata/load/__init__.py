@@ -22,11 +22,11 @@ def main():
     version.load_all()
     cow_states.load_all(EXTERNAL)
     ksg_states.load_all(EXTERNAL)
-    # nmc.load_all(DATA, EXTERNAL)
-    # polity.load_all(DATA, EXTERNAL)
-    # war4.load_all(DATA, EXTERNAL)
-    # war3.load_all(DATA, EXTERNAL)
-    # contdir.load_all(DATA, EXTERNAL)
+    nmc.load_all(DATA, EXTERNAL)
+    polity.load_all(DATA, EXTERNAL)
+    war4.load_all(DATA, EXTERNAL)
+    war3.load_all(DATA, EXTERNAL)
+    contdir.load_all(DATA, EXTERNAL)
     ksg_polity.load_all(DATA, EXTERNAL)
 
 if __name__ == '__main__':
