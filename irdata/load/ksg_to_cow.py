@@ -1,4 +1,6 @@
+""" Create tables linking COW to KSG """ 
 import datetime
+import calendar
 
 import sqlalchemy as sa
 from sqlalchemy import orm
@@ -176,11 +178,46 @@ def load_ksg2cow():
     #                         cow_ccode = 255))
     session.commit()
 
+def load_ksg2cowyear():
+    """ Load data into ksg_to_cow_year
+
+    all data derived from ksg_to_cow table
+    """
+    session = model.SESSION()
+    for x in session.query(model.KsgToCow):
+        start_date = x.start_date
+        end_date = x.end_date
+        yr = start_date.year
+        while yr <= end_date.year:
+            yrdays = 366 if calendar.isleap(yr) else 365
+            start_year = start_date <= datetime.date(yr, 1, 1)
+            end_year = end_date >= datetime.date(yr, 12, 31)
+            mid_year = (end_date >= datetime.date(yr, 6, 30)
+                        and start_date <= datetime.date(yr, 6, 30))
+            frac_year = ((min(datetime.date(yr, 12, 31), end_date) - 
+                          max(datetime.date(yr, 1, 1), start_date)).days + 1.0) / yrdays
+            session.add(model.KsgToCowYear(cow_ccode = x.cow_ccode,
+                                           ksg_ccode = x.ksg_ccode,
+                                           year = yr,
+                                           start_year = start_year,
+                                           end_year = end_year,
+                                           mid_year = mid_year,
+                                           frac_year = frac_year))
+            yr += 1
+        session.flush()
+    session.commit()
+
+def load_all():
+    load_ksg2cow()
+    load_ksg2cowyear()
 
 if __name__ == '__main__':
     model.SESSION.close_all()
     model.KsgToCow.__table__.drop(checkfirst=True)
     model.KsgToCow.__table__.create()
+    model.KsgToCowYear.__table__.drop(checkfirst=True)
+    model.KsgToCowYear.__table__.create()
     load_ksg2cow()
+    load_ksg2cowyear()
 
 

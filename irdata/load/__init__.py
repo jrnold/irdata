@@ -22,6 +22,7 @@ def main():
     version.load_all()
     cow_states.load_all(EXTERNAL)
     ksg_states.load_all(EXTERNAL)
+    ksg_to_cow.load_all(EXTERNAL)
     nmc.load_all(DATA, EXTERNAL)
     polity.load_all(DATA, EXTERNAL)
     war4.load_all(DATA, EXTERNAL)

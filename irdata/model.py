@@ -217,7 +217,7 @@ class KsgSystem(Base, Mixin):
     
 
 class KsgToCow(Base, Mixin):
-    """ KSG-COW state-year links
+    """ KSG-COW date interval links
 
     see cowfilter.pl in http://privatewww.essex.ac.uk/~ksg/data/exptradegdpv4.1.zip
 
@@ -238,6 +238,26 @@ class KsgToCow(Base, Mixin):
                           sa.ForeignKey(CowState.__table__.c.ccode))
     start_date  = sa.Column(sa.Date)
     end_date  = sa.Column(sa.Date)
+
+class KsgToCowYear(Base, Mixin):
+    """ KSG-COW state-year links
+
+    Derived from the ksg_to_cow table
+    
+    """
+
+    __tablename__ = 'ksg_to_cow_year'
+
+    rowid = sa.Column(sa.Integer, primary_key=True)
+    ksg_ccode = sa.Column(sa.Integer,
+                          sa.ForeignKey(KsgState.__table__.c.idnum))
+    cow_ccode = sa.Column(sa.Integer,
+                          sa.ForeignKey(CowState.__table__.c.ccode))
+    year = sa.Column(sa.Integer)
+    start_year = sa.Column(sa.Boolean)
+    end_year = sa.Column(sa.Boolean)
+    mid_year = sa.Column(sa.Boolean)
+    frac_year = sa.Column(sa.Float)
 
 
 class NmcPecqualitycode(Base, Mixin, CharFactorMixin):
