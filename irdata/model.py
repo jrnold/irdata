@@ -194,6 +194,7 @@ class KsgSysMembership(Base, Mixin):
     """ System membership in K.S. Gleditsch's statelist v. 4
     """ 
     __tablename__ = 'ksg_sys_membership'
+    ONGOING_DATE = datetime.date(2008, 11, 1)
     ccode = sa.Column(sa.Integer,
                       sa.ForeignKey(KsgState.__table__.c.idnum,
                                     deferrable = True,
@@ -215,24 +216,28 @@ class KsgSystem(Base, Mixin):
                      primary_key=True)
     
 
-class Ksg2Cow(Base, Mixin):
-    """ KSG statelist to COW statelist 
+class KsgToCow(Base, Mixin):
+    """ KSG-COW state-year links
 
     see cowfilter.pl in http://privatewww.essex.ac.uk/~ksg/data/exptradegdpv4.1.zip
 
-    Apart from disagreements in the dates in which countries were in the system,
+    Apart from disagreements in the dates at which countries were in the system,
     which can be handled by merging, the main differences are in the following countries:
     
     - Yemen post-1991
     - Germany post-1991
+    
     """
 
     __tablename__ = 'ksg_to_cow'
-    year = sa.Column(sa.Integer,
-                     primary_key=True)
-    ksg_ccode = sa.Column(sa.ForeignKey(KsgState.__table__.c.idnum),
-                          primary_key=True)
-    cow_ccode = sa.Column(sa.ForeignKey(CowState.__table__.c.ccode))
+
+    rowid = sa.Column(sa.Integer, primary_key=True)
+    ksg_ccode = sa.Column(sa.Integer,
+                          sa.ForeignKey(KsgState.__table__.c.idnum))
+    cow_ccode = sa.Column(sa.Integer,
+                          sa.ForeignKey(CowState.__table__.c.ccode))
+    start_date  = sa.Column(sa.Date)
+    end_date  = sa.Column(sa.Date)
 
 
 class NmcPecqualitycode(Base, Mixin, CharFactorMixin):
