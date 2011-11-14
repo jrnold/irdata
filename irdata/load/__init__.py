@@ -1,4 +1,6 @@
-""" irdata load """
+""" Load all data into the irdata database  """
+from os import path
+
 import sqlalchemy as sa
 
 from irdata import model
@@ -9,11 +11,17 @@ def download_files():
     # TODO: remove wget dependency
     pass
 
-def main():
-    DATA = "./data"
-    EXTERNAL = "./external"
-    ENGINE = "postgresql://jeff@localhost/irdata"
-    kwargs = {}
+def main(config):
+    """ Load ALL data into the database
+
+    :param config: yaml configuration file. See the self-documented
+    example included with the distribution.
+    
+    """
+    DATA = path.join(path.dirname(__file__), '..', 'data')
+    EXTERNAL = path.join(config['dir'], 'external')
+    ENGINE = config['engine']
+    kwargs = config['engine_kwargs']
     # reload database
     model.Base.metadata.bind = sa.create_engine(ENGINE, **kwargs)
     model.Base.metadata.drop_all(checkfirst=True)

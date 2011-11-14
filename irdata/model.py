@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*- 
 """ irdata Database model """ 
 import datetime
 
@@ -149,7 +150,7 @@ class CowSysMembership(Base, Mixin):
     """
     __tablename__ = "cow_sys_membership"
 
-    ONGOING_DATE = 
+    ONGOING_DATE = COW_ONGOING_DATE
     """ Last day in this dataset """
 
     ccode = sa.Column(sa.Integer,
@@ -180,7 +181,7 @@ class CowMajor(Base, Mixin):
 
     __tablename__ = "cow_majors"
 
-    ONGOING_DATE = datetime.date(2008, 6, 30)
+    ONGOING_DATE = COW_ONGOING_DATE
     """ Last date in the dataset """
 
     ccode = sa.Column(sa.Integer,
