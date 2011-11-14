@@ -51,9 +51,30 @@ def load_polity(src):
         session.add(model.PolityStateYear(**row))
     session.commit()
 
+def load_polityd(src):
+    session = model.SESSION()
+    reader = csv2.DictReader(src)
+    columns = [x.name for x in model.PolityCase.__table__.c]
+    cnt = collections.Counter()
+    for row in reader:
+        ccode = row['ccode']
+        cnt[ccode] += 1
+        row['pcase'] = cnt[ccode]
+        row['present'] = row['present'] == '1'
+        for i in ('e', 'b'):
+            row['%sday' % i] = utils.replmiss(row['%sday' % i], lambda x: x == '99')
+            row['%smonth' % i] = utils.replmiss(row['%smonth' % i], lambda x: x == '99')
+            row['%syear' % i] = utils.replmiss(row['%syear' % i], lambda x: x == '9999')
+        if row['byear']:
+            row['bdate'] = utils.row_ymd(row, 'byear', 'bmonth', 'bday')
+        if row['eyear']:
+            row['edate'] = utils.row_ymd(row, 'eyear', 'emonth', 'eday')
+        session.add(model.PolityCase(**utils.subset(row, columns)))
+    session.commit()
+
 def load_all(data, external):
     """ Load all Polity 4 data """
     load_polity_states(open(path.join(data, 'polity4_states.yaml'), 'r'))
     load_polity(open(path.join(data, 'p4v2010.csv'), 'r'))
-    
+    load_polityd(open(path.join(data, 'p4v2010d.csv'), 'r'))    
 

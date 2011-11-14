@@ -8,6 +8,7 @@ from sqlalchemy.ext import declarative
 Base = declarative.declarative_base()
 SESSION = orm.sessionmaker()
 
+
 class IntegerConstrained(sa.Integer, types.SchemaType):
     """Integer that can only take on constrained values
 
@@ -30,6 +31,7 @@ class IntegerConstrained(sa.Integer, types.SchemaType):
                         column.in_(self.values),
                         name=self.name)
         table.append_constraint(e)
+
         
 class Day(IntegerConstrained, types.SchemaType):
     """Day of the month
@@ -43,6 +45,7 @@ class Day(IntegerConstrained, types.SchemaType):
     def __init__(self, name=None):
         self.name = name
 
+
 class Month(IntegerConstrained, types.SchemaType):
     """ Month
 
@@ -53,6 +56,7 @@ class Month(IntegerConstrained, types.SchemaType):
     
     def __init__(self, name=None):
         self.name = name
+
 
 class Mixin(object):
     """ Mixin class
@@ -65,14 +69,18 @@ class Mixin(object):
     def columns(kls):
         return [x.name for x in kls.__table__.c]
 
+
 class FactorMixin(object):
     label = sa.Column(sa.Unicode)
+
     
 class CharFactorMixin(FactorMixin):
     value = sa.Column(sa.Unicode, primary_key=True)
 
+
 class IntFactorMixin(FactorMixin):
     value = sa.Column(sa.Integer, primary_key=True)
+
 
 class Version(Base, Mixin):
     """ Database version number """
@@ -93,6 +101,7 @@ class CowState(Base, Mixin):
                          doc="COW state abbrevation")
     state_nme = sa.Column(sa.Unicode,
                          doc="COW state name")
+
 
 class CowWarType(Base, Mixin):
     """ COW War Typology
@@ -133,6 +142,7 @@ class CowSysMembership(Base, Mixin):
                        doc="International system membership start date")
     end_date = sa.Column(sa.Date, nullable = False,
                         doc="International system membership end date")
+
 
 class CowMajor(Base, Mixin):
     """COW major power list
@@ -224,33 +234,41 @@ class Ksg2Cow(Base, Mixin):
                           primary_key=True)
     cow_ccode = sa.Column(sa.ForeignKey(CowState.__table__.c.ccode))
 
+
 class NmcPecqualitycode(Base, Mixin, CharFactorMixin):
     """ NMC Primary Energy Consumption quality codes"""
     __tablename__ = 'nmc_pecqualitycode'
+
 
 class NmcPecanomalycode(Base, Mixin, CharFactorMixin):
     """ NMC Primary Energy Consumption anomaly codes"""
     __tablename__ = 'nmc_pecanomalycode'
 
+
 class NmcIrstqualitycode(Base, Mixin, CharFactorMixin):
     """ NMC Iron and Steel Production quality codes"""
     __tablename__ = 'nmc_irstqualitycode'
+
 
 class NmcIrstanomalycode(Base, Mixin, CharFactorMixin):
     """ NMC Iron and Steel Production anomaly codes"""
     __tablename__ = 'nmc_irstanomalycode'
 
+
 class NmcTpopqualitycode(Base, Mixin, CharFactorMixin):
     """ NMC Total Population quality codes"""
     __tablename__ = 'nmc_tpopqualitycode'
+
 
 class NmcTpopanomalycode(Base, Mixin, CharFactorMixin):
     """ NMC Total Population anomaly codes"""
     __tablename__ = 'nmc_tpopanomalycode'
 
+
 class NmcUpopqualitycode(Base, Mixin, CharFactorMixin):
     """ NMC Total Population quality codes"""    
     __tablename__ = 'nmc_upopqualitycode'
+
 
 class Nmc(Base, Mixin):
     """ National Military Capabilities
@@ -410,6 +428,37 @@ class PolityStateYear(Base, Mixin):
             return datetime.date(self.byear, self.bmonth, self.bday)
 
 
+class PolityCase(Base, Mixin):
+    """ Polity IV Polity-Case Format
+
+    Source: http://www.systemicpeace.org/inscr/p4v2010d.xls
+
+    Documentation: http://www.systemicpeace.org/inscr/p4manualv2009.pdf
+
+    """ 
+    __tablename__ = 'polity_case'
+
+    ccode = sa.Column(sa.Integer, 
+                      sa.ForeignKey(PolityState.__table__.c.ccode),
+                      primary_key=True)
+    bdate = sa.Column(sa.Date, primary_key=True)
+    edate = sa.Column(sa.Date, nullable = True)
+    present = sa.Column(sa.Boolean, nullable = False)
+    persist = sa.Column(sa.Integer)
+    democ = sa.Column(sa.Integer)
+    autoc = sa.Column(sa.Integer)
+    polity = sa.Column(sa.Integer)
+    xrreg = sa.Column(sa.Integer)
+    xrcomp = sa.Column(sa.Integer)
+    xropen = sa.Column(sa.Integer)
+    xconst = sa.Column(sa.Integer)
+    parreg = sa.Column(sa.Integer)
+    parcomp = sa.Column(sa.Integer)
+    exrec = sa.Column(sa.Integer)
+    exconst = sa.Column(sa.Integer)
+    polcomp = sa.Column(sa.Integer)
+
+
 class War4Outcome(Base, IntFactorMixin, Mixin):
     """ COW War Data v. 4 outcome values """
     __tablename__ = 'war4_outcomes'
@@ -433,6 +482,7 @@ class War4(Base, Mixin):
                          nullable = False,
                          doc='War type')
     intnl = sa.Column(sa.Boolean)
+
 
 class War4Belligerent(Base, Mixin):
     """ COW War Data v. 4 Belligerents 
@@ -498,7 +548,8 @@ class War4Partic(Base, Mixin):
 class War4ParticDate(Base, Mixin):
     __tablename__ = 'war4_partic_dates'
     
-    war_num = sa.Column(sa.Integer,  primary_key=True)
+    war_num = sa.Column(sa.Integer,
+                        primary_key=True)
     belligerent = sa.Column(sa.Unicode, primary_key=True)
     side = sa.Column(sa.Boolean, primary_key=True)
     partic_num = sa.Column(sa.Integer, primary_key=True)
@@ -846,13 +897,16 @@ class ContDir(Base, Mixin):
     notes = sa.Column(sa.Unicode)
     #version = sa.Column(sa.Unicode)
 
+
 class KsgP4dOrigin(Base, Mixin, IntFactorMixin):
     """ Observation Origin codes for table ksgp4duse """
     __tablename__ = 'ksgp4duse_origin'
 
+
 class KsgP4Origin(Base, Mixin, IntFactorMixin):
     """ Observation Origin codes for table ksgp4use """
     __tablename__ = 'ksgp4use_origin'
+
 
 class KsgP4duse(Base, Mixin):
     """ Polity 4 (2008) data modified for KSG statelist
@@ -877,6 +931,7 @@ class KsgP4duse(Base, Mixin):
     polity = sa.Column(sa.Integer)
     origin = sa.Column(sa.Integer,
                        sa.ForeignKey(KsgP4dOrigin.__table__.c.value))
+
 
 class KsgP4use(Base, Mixin):
     """ Polity 4 (2008) data modified for KSG statelist

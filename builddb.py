@@ -1,7 +1,6 @@
 import sys
 sys.path.append("irdata")
 
-import irdata.loader
-
+import irdata.load
 if __name__ == '__main__':
-    irdata.loader.main()
+    irdata.load.main()
