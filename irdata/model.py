@@ -1,3 +1,4 @@
+""" irdata Database model """ 
 import datetime
 
 import sqlalchemy as sa
@@ -8,6 +9,8 @@ from sqlalchemy.ext import declarative
 Base = declarative.declarative_base()
 SESSION = orm.sessionmaker()
 
+COW_ONGOING_DATE = datetime.date(2008, 6, 30)
+""" COW maximal date """
 
 class IntegerConstrained(sa.Integer, types.SchemaType):
     """Integer that can only take on constrained values
@@ -34,7 +37,7 @@ class IntegerConstrained(sa.Integer, types.SchemaType):
 
         
 class Day(IntegerConstrained, types.SchemaType):
-    """Day of the month
+    """Day of the month column type
 
     An integer column with a check constraint that the
     values are in 1-31.
@@ -47,7 +50,7 @@ class Day(IntegerConstrained, types.SchemaType):
 
 
 class Month(IntegerConstrained, types.SchemaType):
-    """ Month
+    """ Month column type
 
     An integer column with a check constraint that the
     values are in 1-12.
@@ -59,7 +62,7 @@ class Month(IntegerConstrained, types.SchemaType):
 
 
 class Mixin(object):
-    """ Mixin class
+    """ Project mixin class
 
     All objects mapping to tables in this database inherit
     from this class. 
@@ -67,31 +70,45 @@ class Mixin(object):
     """
     @classmethod
     def columns(kls):
+        """ names of columns in the table mapped to the class """ 
         return [x.name for x in kls.__table__.c]
 
 
 class FactorMixin(object):
+    """ Factor (Categorical) data table
+    """
     label = sa.Column(sa.Unicode)
-
     
 class CharFactorMixin(FactorMixin):
+    """ Factor (Categorical) data table with character values """
     value = sa.Column(sa.Unicode, primary_key=True)
 
 
 class IntFactorMixin(FactorMixin):
+    """ Factor (Categorical) data table with integer values """
     value = sa.Column(sa.Integer, primary_key=True)
 
 
 class Version(Base, Mixin):
-    """ Database version number """
+    """ Version number """
     __tablename__ = 'version'
     version = sa.Column(sa.Unicode, primary_key=True)
 
 
 class CowState(Base, Mixin):
-    """COW state numbers, abbrevations, and names (2008.1)
+    """COW state numbers, abbrevations, and names
 
-    """
+    Contains the COW identifying numbers, abbreviations and names of
+    states.  The years in which these states are within the COW system
+    is contained in :class:`CowSysMembership`.
+
+    See
+
+    - http://www.correlatesofwar.org/COW%20State%20list.xls
+    - www.correlatesofwar.org/COW2%20Data/SystemMembership/2008/System2008.html
+    
+    """ 
+
     __tablename__ = 'cow_statelist'
     
     ccode = sa.Column(sa.Integer,
@@ -106,7 +123,11 @@ class CowState(Base, Mixin):
 class CowWarType(Base, Mixin):
     """ COW War Typology
 
-    See http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/COW%20Website%20-%20Typology%20of%20war.pdf
+    COW categorizes war into 4 categories (Inter-, Intra-, Extra-, and
+    Non-State), and 8 types.
+
+    See the `COW New War data documentation
+    `http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/COW%20Website%20-%20Typology%20of%20war.pdf>`_.
     """
     __tablename__ = "cow_war_types"
     value = sa.Column(sa.Integer, primary_key=True)
@@ -117,17 +138,19 @@ class CowWarType(Base, Mixin):
     
 
 class CowSysMembership(Base, Mixin):
-    """COW system membership (2008.1)
+    """COW system membership
 
-    Date intervals in which COW states are part of the international
-    system.
+    Entry and exit dates of states into and out of the international system.
+
+    From 
+
+      Correlates of War Project. 2008. “State System Membership List, v2008.1.” Online, http://correlatesofwar.org.
     
     """
-
     __tablename__ = "cow_sys_membership"
 
-    ONGOING_DATE = datetime.date(2008, 6, 30)
-    """ Last date in the dataset """
+    ONGOING_DATE = 
+    """ Last day in this dataset """
 
     ccode = sa.Column(sa.Integer,
                       sa.ForeignKey(CowState.__table__.c.ccode,
@@ -145,7 +168,14 @@ class CowSysMembership(Base, Mixin):
 
 
 class CowMajor(Base, Mixin):
-    """COW major power list
+    """COW Major Power list
+
+    Entry and exit dates for states to be designated major powers.
+
+    From
+    
+          Correlates of War Project. 2008. “State System Membership List, v2008.1.” Online, http://correlatesofwar.org.
+    
     """
 
     __tablename__ = "cow_majors"
@@ -177,11 +207,7 @@ class CowSystem(Base, Mixin):
 
 
 class KsgState(Base, Mixin):
-    """ State in K.S. Gleditsch's statelist v. 4
-
-    States in KSG but not 
-
-    """ 
+    """ State in K.S. Gleditsch's statelist v. 4 """ 
     __tablename__ = 'ksg_statelist'
 
     idnum = sa.Column(sa.Integer, primary_key=True)
@@ -191,8 +217,7 @@ class KsgState(Base, Mixin):
 
 
 class KsgSysMembership(Base, Mixin):
-    """ System membership in K.S. Gleditsch's statelist v. 4
-    """ 
+    """ System membership in K.S. Gleditsch's statelist v. 4 """
     __tablename__ = 'ksg_sys_membership'
     ONGOING_DATE = datetime.date(2008, 11, 1)
     ccode = sa.Column(sa.Integer,
