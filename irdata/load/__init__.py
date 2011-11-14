@@ -3,7 +3,7 @@ import sqlalchemy as sa
 
 from irdata import model
 from irdata.load import ksg_states
-from irdata.load import (version, cow_states, ksg_states, nmc, polity, war4, war3, contdir, ksg_polity)
+from irdata.load import (version, cow_states, ksg_states, nmc, polity, war4, war3, contdir, ksg_polity, ksg_to_cow)
 
 def download_files():
     # TODO: remove wget dependency
@@ -22,7 +22,7 @@ def main():
     version.load_all()
     cow_states.load_all(EXTERNAL)
     ksg_states.load_all(EXTERNAL)
-    ksg_to_cow.load_all(EXTERNAL)
+    ksg_to_cow.load_all()
     nmc.load_all(DATA, EXTERNAL)
     polity.load_all(DATA, EXTERNAL)
     war4.load_all(DATA, EXTERNAL)

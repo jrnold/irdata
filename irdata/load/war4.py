@@ -129,7 +129,7 @@ def load_war4_intra(src):
             session.add(model.War4(war_num = war_num,
                                       war_name = row['war_name'],
                                       war_type = int(row['war_type']),
-                                      intnl = bool(row['intnl'])))
+                                      intnl = row['intnl'] == '1'))
             for side in (False, True):
                 session.add(model.War4Side(side=side, war_num=row['war_num']))
             session.flush()
