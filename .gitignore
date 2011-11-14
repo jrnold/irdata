@@ -2,3 +2,4 @@ external
 *.db
 /sadisplay/*
 *.dump
+/config.yaml
