@@ -45,7 +45,7 @@ def load_nmc(src):
         del row['version']
         for k in ['ccode', 'irst', 'milex', 'milper', 'tpop', 'upop']:
                 row[k] = _int(row[k])
-        for k in ["pec", 'upopgrowth']:
+        for k in ["pec", 'upopgrowth', 'cinc']:
             v = _float(row[k])
             if v < 0:
                 v = None
