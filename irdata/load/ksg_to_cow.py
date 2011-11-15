@@ -134,28 +134,29 @@ def load_ksg2cow():
     for x in NEWDATA:
         session.add(model.KsgToCow(**x))
 
+    ## This doesn't work with multiple intervals
     ## Any KSG without any matches
-    for ksg in session.query(model.KsgSysMembership):
-        q = session.query(model.KsgToCow).\
-            filter(ksg.ccode == model.KsgToCow.ksg_ccode).\
-            filter(ksg.start_date <= model.KsgToCow.end_date).\
-            filter(ksg.end_date >= model.KsgToCow.start_date)
-        if q.count() == 0:
-            session.add(model.KsgToCow(ksg_ccode = ksg.ccode,
-                                       cow_ccode = None,
-                                       start_date = ksg.start_date,
-                                       end_date = min(ksg.end_date,
-                                                      model.CowSysMembership.ONGOING_DATE)))
-    for cow in session.query(model.CowSysMembership):
-        q = session.query(model.KsgToCow).\
-            filter(cow.ccode == model.KsgToCow.cow_ccode).\
-            filter(cow.st_date <= model.KsgToCow.end_date).\
-            filter(cow.end_date >= model.KsgToCow.start_date)
-        if q.count() == 0:
-            session.add(model.KsgToCow(cow_ccode = cow.ccode,
-                                       ksg_ccode = None,
-                                       start_date = cow.st_date,
-                                       end_date = cow.end_date))
+    # for ksg in session.query(model.KsgSysMembership):
+    #     q = session.query(model.KsgToCow).\
+    #         filter(ksg.ccode == model.KsgToCow.ksg_ccode).\
+    #         filter(ksg.start_date <= model.KsgToCow.end_date).\
+    #         filter(ksg.end_date >= model.KsgToCow.start_date)
+    #     if q.count() == 0:
+    #         session.add(model.KsgToCow(ksg_ccode = ksg.ccode,
+    #                                    cow_ccode = None,
+    #                                    start_date = ksg.start_date,
+    #                                    end_date = min(ksg.end_date,
+    #                                                   model.CowSysMembership.ONGOING_DATE)))
+    # for cow in session.query(model.CowSysMembership):
+    #     q = session.query(model.KsgToCow).\
+    #         filter(cow.ccode == model.KsgToCow.cow_ccode).\
+    #         filter(cow.st_date <= model.KsgToCow.end_date).\
+    #         filter(cow.end_date >= model.KsgToCow.start_date)
+    #     if q.count() == 0:
+    #         session.add(model.KsgToCow(cow_ccode = cow.ccode,
+    #                                    ksg_ccode = None,
+    #                                    start_date = cow.st_date,
+    #                                    end_date = cow.end_date))
     # for row in new_data:
     #     session.add(
     ## KSG start date
