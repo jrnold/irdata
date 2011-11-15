@@ -7,7 +7,7 @@ from os import path
 import sqlalchemy as sa
 import yaml
 
-from irdata import csv2
+from irdata import xls
 from irdata import model
 from irdata.load import utils
 
@@ -44,7 +44,7 @@ def load_polity_states(src):
 
 def load_polity(src):
     session = model.SESSION()
-    reader = csv2.DictReader(src)
+    reader = xls.DictReader(src)
     for row in reader:
         for k in ('scode', 'country'):
             del row[k]
@@ -53,7 +53,7 @@ def load_polity(src):
 
 def load_polityd(src):
     session = model.SESSION()
-    reader = csv2.DictReader(src)
+    reader = xls.DictReader(src)
     columns = [x.name for x in model.PolityCase.__table__.c]
     cnt = collections.Counter()
     for row in reader:
@@ -62,9 +62,9 @@ def load_polityd(src):
         row['pcase'] = cnt[ccode]
         row['present'] = row['present'] == '1'
         for i in ('e', 'b'):
-            row['%sday' % i] = utils.replmiss(row['%sday' % i], lambda x: x == '99')
-            row['%smonth' % i] = utils.replmiss(row['%smonth' % i], lambda x: x == '99')
-            row['%syear' % i] = utils.replmiss(row['%syear' % i], lambda x: x == '9999')
+            row['%sday' % i] = utils.replmiss(row['%sday' % i], lambda x: int(x) == 99)
+            row['%smonth' % i] = utils.replmiss(row['%smonth' % i], lambda x: int(x) == 99)
+            row['%syear' % i] = utils.replmiss(row['%syear' % i], lambda x: int(x) == 9999)
         if row['byear']:
             row['bdate'] = utils.row_ymd(row, 'byear', 'bmonth', 'bday')
         if row['eyear']:
@@ -75,6 +75,6 @@ def load_polityd(src):
 def load_all(data, external):
     """ Load all Polity 4 data """
     load_polity_states(open(path.join(data, 'polity4_states.yaml'), 'r'))
-    load_polity(open(path.join(data, 'p4v2010.csv'), 'r'))
-    load_polityd(open(path.join(data, 'p4v2010d.csv'), 'r'))    
+    load_polity(path.join(external, 'www.systemicpeace.org/inscr/p4v2010.xls'))
+    load_polityd(path.join(external, 'www.systemicpeace.org/inscr/p4v2010d.xls'))
 
