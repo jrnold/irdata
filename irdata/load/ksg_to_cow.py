@@ -141,7 +141,6 @@ def load_ksg2cow():
             filter(ksg.start_date <= model.KsgToCow.end_date).\
             filter(ksg.end_date >= model.KsgToCow.start_date)
         if q.count() == 0:
-            print ksg.__dict__
             session.add(model.KsgToCow(ksg_ccode = ksg.ccode,
                                        cow_ccode = None,
                                        start_date = ksg.start_date,
@@ -153,7 +152,6 @@ def load_ksg2cow():
             filter(cow.st_date <= model.KsgToCow.end_date).\
             filter(cow.end_date >= model.KsgToCow.start_date)
         if q.count() == 0:
-            print cow.__dict__
             session.add(model.KsgToCow(cow_ccode = cow.ccode,
                                        ksg_ccode = None,
                                        start_date = cow.st_date,
