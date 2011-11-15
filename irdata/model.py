@@ -547,6 +547,7 @@ class War4Belligerent(Base, Mixin):
     """
     __tablename__ = 'war4_belligerents'
     belligerent = sa.Column(sa.Unicode, primary_key=True)
+    belligerent_name = sa.Column(sa.Unicode)
     ccode = sa.Column(sa.Integer,
                       sa.ForeignKey(CowState.__table__.c.ccode))
 

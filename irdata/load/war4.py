@@ -15,6 +15,18 @@ def load_cow_war_types(src):
     """ Load data into cow_war_types table """
     utils.load_from_yaml(src, model.CowWarType.__table__)
 
+
+def belligerent_key(ccode, name):
+    """ Create primary key for belligerents
+
+    Create a unique key for ccode, name combinations
+
+    :param ccode: int. country code
+    :param name: str. belligerent name
+    :rtype: str. belligerent key
+    """
+    return u"%s %s" % (ccode, name)
+
 def load_war4(src):
     """ Add Inter-state war data to war4_* tables
     
@@ -24,7 +36,7 @@ def load_war4(src):
     def partic(row):
         y = model.War4Partic()
         y.war_num = int(row['war_num'])
-        y.belligerent = unicode(row['state_name'])
+        y.belligerent = belligerent_key(row['ccode'], row['state_name'])
         y.side = int(row['side']) == 2
         y.where_fought = row['where_fought']
         y.outcome = row['outcome']
@@ -35,7 +47,9 @@ def load_war4(src):
     def partic_dates(row, n):
         y = model.War4ParticDate()
         y.war_num = row['war_num']
-        y.belligerent = row['state_name']
+        ccode = int(row['ccode'])
+        row['ccode'] = ccode if ccode > 0 else None
+        y.belligerent = belligerent_key(row['ccode'], row['state_name'])
         y.side = int(row['side']) == 2
         y.partic_num = n
         y.start_year = row['start_year%d' % n]
@@ -64,16 +78,17 @@ def load_war4(src):
     reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
     for row in reader:
         war_num = row['war_num']
-        state_name = row['state_name']
+        belligerent = belligerent_key(row['ccode'], row['state_name'])
         cnt[war_num] += 1
-        cnt_bellig[state_name] +=1 
+        cnt_bellig[belligerent] +=1 
         if cnt[war_num] == 1:
             session.add(model.War4(intnl=True, **utils.subset(row, cols)))
             for side in (False, True):
                 session.add(model.War4Side(side=side, war_num=row['war_num']))
             session.flush()
-        if cnt_bellig[row['state_name']] == 1:
-            session.add(model.War4Belligerent(belligerent = row['state_name'],
+        if cnt_bellig[belligerent] == 1:
+            session.add(model.War4Belligerent(belligerent = belligerent,
+                                              belligerent_name = row['state_name'],
                                               ccode = row['ccode']))
             session.flush()
         session.add(partic(row))
@@ -97,19 +112,24 @@ def load_war4_intra(src):
     def _side(x):
         return x if x != "-8" else  None
 
-    def add_belligerent(session, belligerent, ccode):
-        if belligerent != "-8":
+    def add_belligerent(session, name, ccode):
+        if name != "-8":
+            belligerent = belligerent_key(ccode, name)
             q = session.query(model.War4Belligerent).\
                 filter(model.War4Belligerent.belligerent == belligerent)
             if q.count() == 0:
-                obj = model.War4Belligerent(ccode = ccode,
-                                                belligerent = belligerent)
+                obj = model.War4Belligerent(
+                    belligerent = belligerent,
+                    belligerent_name = name,
+                    ccode = ccode)
                 session.add(obj)
             session.flush()
+            
     def partic(row, side):
         y = model.War4Partic()
         y.war_num = _int(row['war_num'])
-        y.belligerent = unicode(row['side_%s' % side])
+        y.belligerent = belligerent_key(_int(row['ccode_%s' % side]),
+                                        unicode(row['side_%s' % side]))
         y.side = side == "b"
         y.where_fought = row['where_fought']
         y.outcome = row['outcome']
