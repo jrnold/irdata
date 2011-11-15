@@ -1,7 +1,19 @@
+""" Utility functions for dealing with xls spreadsheets """
 import xlrd
 
 class Reader(object):
+    """Reader object to iterate over rows of an Excel Spreadsheet
+
+    :param f: path to .xls file
+    :param sheet: index of sheet to read
+    :param na: parameter
+
+    Returns each row as a list.
+
+    """
+
     def __init__(self, f, sheet=0, na=['']):
+
         self._book = xlrd.open_workbook(f)
         self.sheet = self._book.sheet_by_index(sheet)
         self.na = na
@@ -23,6 +35,19 @@ class Reader(object):
 
 
 class DictReader(Reader):
+    """Reader object to iterate over rows of an Excel Spreadsheet
+
+    Like the :class:`Reader` class but maps each row to a dict
+    in which the keys are the optional :param:`fieldnames`.
+    If :param:`fieldnames` is omitted, then the first line is
+    used to generate it.
+
+    :param f: path to .xls file
+    :param sheet: index of sheet to read
+    :param fieldnames: names of columns
+    :param **kwds: passed to :function:`Reader.__init__`
+
+    """
     def __init__(self, f, sheet=0, fieldnames=None, **kwds):
         super(DictReader, self).__init__(f, sheet=sheet, **kwds)
         if fieldnames:
