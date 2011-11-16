@@ -32,7 +32,7 @@ To install irdata as a sqlite database at `path/to/database/irdata.db`.
 
 :: 
 
-  $ python builddb.py sqlite:///path/to/database/irdata.db
+  $ python build_irdata.py sqlite:///path/to/database/irdata.db
 
 
 Postgresql
@@ -48,7 +48,7 @@ First create the database if it doesn't exist.
 
 :: 
 
-  $ python builddb.py postgresql://user@hostname/irdata
+  $ python build_irdata.py postgresql://user@hostname/irdata
 
 
 Dependencies
