@@ -3,7 +3,7 @@ International Relations Data
 =================================
 
 I got tired of the merging and cleaning of international relations data, so
-put it all together in a relational database.
+I put it all together in a relational database.
 
 It is similar to `EUGene <http://eugenesoftware.org/>`, but uses an
 relational database backend, and is much less complete.
