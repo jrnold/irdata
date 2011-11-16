@@ -621,6 +621,8 @@ class War4ParticDate(Base, Mixin):
                           doc="The month in which sustained combat ended")
     end_day = sa.Column(Day,
                         doc="The day in which sustained combat ended")
+    ongoing = sa.Column(sa.Boolean, nullable = False,
+                        doc="War is ongoing")
     sa.ForeignKeyConstraint(['war_num', 'ccode', 'side'],
                             [War4Partic.__table__.c.war_num,
                              War4Partic.__table__.c.belligerent,
