@@ -301,11 +301,37 @@ def load_war4_nonstate(src):
         session.flush()
     session.commit()
 
+def load_war4_links(inter, intra, nonstate):
+    def _int(x):
+        y = int(x)
+        return y if y > 0 else None
+
+    def load_link(session, war_from, war_to):
+        q = session.query(War4Link).\
+            filter(war_from = war_from).\
+            filter(war_to = war_to)
+        if q.count() == 0:
+            session.add(War4Link(war_from=war_from,
+                                 war_to=war_to))
+    
+    def load_file(session, src):
+        reader = csv2.DictReader(src)
+        reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
+        for row in reader:
+            pass
+
+    pass
 
 def load_all(data, external):
     """ Load all COW War v. 4 data """
+    inter = path.join(data, "InterStateWarData_v4.0.csv")
+    intra = path.join(data, "IntraStateWarData_v4.1.csv")
+    nonstate = path.join(data, "NonStateWarData_v4.0.csv")
     load_cow_war_types(open(path.join(data, "cow_war_types.yaml"), "r"))
     utils.load_enum_from_yaml(open(path.join(data, "war4_enum.yaml"), "r"))
-    load_war4(open(path.join(data, "InterStateWarData_v4.0.csv"), 'rU'))
-    load_war4_intra(open(path.join(data, "IntraStateWarData_v4.1.csv"), 'rU'))
-    load_war4_nonstate(open(path.join(data, "NonStateWarData_v4.0.csv"), 'rU'))    
+    load_war4(open(inter, 'rU'))
+    load_war4_intra(open(intra, 'rU'))
+    load_war4_nonstate(open(nonstate, 'rU'))
+    load_war4_links(open(inter, 'rU'), open(intra, 'rU'), open(nonstate, 'rU'))
+            
+                    
