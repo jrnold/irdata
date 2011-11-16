@@ -5,19 +5,19 @@ International Relations Data
 I got tired of the merging and cleaning of international relations data, so
 I put it all together in a relational database.
 
-It is similar to `EUGene <http://eugenesoftware.org/>`, but uses an
+It is similar to `EUGene <http://eugenesoftware.org/>`_, but uses an
 relational database backend, and is much less complete.
 
 The database currency 
 
 - COW State System Membership 2008.1 http://www.correlatesofwar.org/
-- COW Wars v 4.0 http://www.correlatesofwar.org/ (Inter-, and Intra-)
+- COW Wars v 4.0 http://www.correlatesofwar.org/ (Inter-, Intra-, and Non-State Wars)
 - COW Wars v 3.0 http://www.correlatesofwar.org/
 - COW National Material Capabilities v 4.0 http://www.correlatesofwar.org/
 - COW Direct Contiguity v 3.1 http://www.correlatesofwar.org/
-- Polity IV Annual Time-Series http://www.systemicpeace.org/inscr/inscr.htm
-- Kristian Skrede Gleditsh (KSG) `List of independent states <http://privatewww.essex.ac.uk/~ksg/statelist.html>`
-- Kristian Skrede Gleditsh (KSG) `Modified Polity data <http://privatewww.essex.ac.uk/~ksg/polity.html>`
+- Polity IV (2010) http://www.systemicpeace.org/inscr/inscr.htm
+- Kristian Skrede Gleditsh (KSG) `List of independent states <http://privatewww.essex.ac.uk/~ksg/statelist.html>`_
+- Kristian Skrede Gleditsh (KSG) `Modified Polity data <http://privatewww.essex.ac.uk/~ksg/polity.html>`_
 
 Install
 ===============
@@ -66,7 +66,7 @@ Roadmap
 =================
 
 - documentation for all tables
-- add all datasets currently in COW and EuGENE
+- add all datasets currently in COW and EUGene
 - add a HTSQL frontend
 
 
