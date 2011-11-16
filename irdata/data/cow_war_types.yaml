@@ -19,8 +19,11 @@
   label: Inter-commnual conflict
   category: Intra-State War
 - value: 7
+  label: Regional internal
+  category: Intra-State War
+- value: 8
   label: wars between or among non-state entities that take place in non-state territory
   category: "Non-State War"
-- value: 8
+- value: 9
   label: wars between NSAs that take place across state borders
   category: "Non-State War"
