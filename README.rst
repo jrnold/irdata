@@ -2,15 +2,16 @@
 International Relations Data
 =================================
 
-I got tired of merging and alternating the IR data that I use, so I
-put together this database.  It is similar to `EUGene
-<http://eugenesoftware.org/>`, but uses an relational database
-backend.  
+I got tired of the merging and cleaning of the international relations
+put it all together in a relational database.
 
-It includes 
+It is similar to `EUGene <http://eugenesoftware.org/>`, but uses an
+relational database backend, and is much less complete.
+
+The database currency 
 
 - COW State System Membership 2008.1 http://www.correlatesofwar.org/
-- COW Wars v 4.0 http://www.correlatesofwar.org/
+- COW Wars v 4.0 http://www.correlatesofwar.org/ (Inter-, and Intra-)
 - COW Wars v 3.0 http://www.correlatesofwar.org/
 - COW National Material Capabilities v 4.0 http://www.correlatesofwar.org/
 - COW Direct Contiguity v 3.1 http://www.correlatesofwar.org/
@@ -21,13 +22,34 @@ It includes
 Install
 ===============
 
-Download data::
+The code is generally database agnostic since it is written with
+in sqlalchemy. I have tested it with sqlite and postgresql.
 
-  $ ./download.sh
+Sqlite
+-----------------
 
-Create database (currently using PostgreSQL)::
+To install irdata as a sqlite database at `path/to/database/irdata.db`.
 
-  $ python builddb.py
+:: 
+
+  $ python builddb.py sqlite:///path/to/database/irdata.db
+
+
+Postgresql
+-----------------
+
+To install irdata to the postgresql database **irdata** 
+
+First create the database if it doesn't exist.
+
+:: 
+
+  $ createdb irdata
+
+:: 
+
+  $ python builddb.py postgresql://user@hostname/irdata
+
 
 Dependencies
 ===================
@@ -35,6 +57,16 @@ Dependencies
 Beyond the default python packages, the following packages are
 required.
 
-- sqlalchemy
-- yaml
+- `sqlalchemy <http://pypi.python.org/pypi/SQLAlchemy>`_
+- `PyYAML <http://pypi.python.org/pypi/PyYAML/>`_
+- `xlrd <http://pypi.python.org/pypi/xlrd>`_
+
+
+Roadmap
+=================
+
+- documentation for all tables
+- add all datasets currently in COW and EuGENE
+- add a HTSQL frontend
+
 
