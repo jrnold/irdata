@@ -38,9 +38,8 @@ def download_all(dirname):
  
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Download external data for irdata ')
-    parser.add_argument('directory', metavar='dir', type=str,
-                        help='directory in which to download data sources.')
-    parser.print_help()
+    parser.add_argument('directory', metavar='dir',
+                        type=str, help='directory in which to download data sources.')
     opts = parser.parse_args()
     print(opts)
     download_all(opts.directory)

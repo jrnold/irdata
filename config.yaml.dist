@@ -1,3 +1,0 @@
-dir : "."
-engine : "postgresql://user@localhost/irdata"
-engine_kwargs : {}
