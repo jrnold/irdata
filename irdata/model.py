@@ -535,6 +535,11 @@ class War4(Base, Mixin):
     intnl = sa.Column(sa.Boolean, nullable=True)
     bat_deaths = sa.Column(sa.Integer, nullable=True)
 
+class War4Link(Base, Mixin):
+    """ Links between COW War v. 4 wars """
+    __tablename__ = 'war4_links'
+    war_from = sa.Column(sa.Integer, primary_key=True)
+    war_to = sa.Column(sa.Integer, primary_key=True)
 
 class War4Belligerent(Base, Mixin):
     """ COW War Data v. 4 Belligerents 
