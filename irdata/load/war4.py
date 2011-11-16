@@ -1,3 +1,8 @@
+""" Load data from COW Inter-, Intra-, Non-State wars into the database """
+## This code is pretty ugly because the data are not very clean, and organized in
+## a non-relational way
+# TODO: add participant dates for Intra-, and Non-State wars
+# TODO: add the relationships between wars
 import collections
 import datetime
 import zipfile
@@ -67,7 +72,6 @@ def load_war4(src):
             y.end_day = model.War4.ONGOING_DATE.day
         else:
             y.end_day = row['end_day%d' % n]
-
         return y
         
     cols = ("war_num", "war_name", "war_type")
@@ -132,7 +136,13 @@ def load_war4_intra(src):
                                         unicode(row['side_%s' % side]))
         y.side = side == "b"
         y.where_fought = row['where_fought']
-        y.outcome = row['outcome']
+        ## outcomes given in Side A / Side B rather than winner/loser
+        ## per participant
+        outcome = _int(row['outcome'])
+        if side:
+            if outcome == 2: outcome = 1
+            elif outcome == 1: outcome = 2
+        y.outcome = outcome
         y.bat_death = _int(row['side_%sdeaths' % side])
         y.initiator = (row['initiator'] == y.belligerent)
         return y
@@ -163,10 +173,78 @@ def load_war4_intra(src):
         
     session.commit()
 
+def load_war4_nonstate(src):
+    def _int(x):
+        try:
+            y = int(re.sub(',', '', x))
+            return y if y > 0 else None
+        except TypeError:
+            return None
+
+    def _side(x):
+        return x if x != "-8" else  None
+
+    def add_belligerent(session, name):
+        ccode = None
+        if name != "-8":
+            belligerent = belligerent_key(ccode, name)
+            q = session.query(model.War4Belligerent).\
+                filter(model.War4Belligerent.belligerent == belligerent)
+            if q.count() == 0:
+                obj = model.War4Belligerent(
+                    belligerent = belligerent,
+                    belligerent_name = name)
+                session.add(obj)
+            session.flush()
+            
+    def partic(row, side, name):
+        y = model.War4Partic()
+        y.war_num = _int(row['war_num'])
+        y.belligerent = belligerent_key(None, name)
+        y.side = side == "b"
+        y.where_fought = row['where_fought']
+        outcome = _int(row['outcome'])
+        if side:
+            if outcome == 2: outcome = 1
+            elif outcome == 1: outcome = 2
+        y.outcome = outcome
+        y.initiator = (row['initiator'] == side.upper())
+        return y
+
+    session = model.SESSION()
+    reader = csv2.DictReader(src, encoding='latin1')
+    reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
+    for row in reader:
+        print row
+        war_num = row['war_num']
+        ## Add war
+        session.add(model.War4(war_num = war_num,
+                               war_name = row['war_name'],
+                               war_type = int(row['war_type']),
+                               bat_deaths = _int(row['total_combat_deaths'])))
+        for side in ('a', 'b'):
+            session.add(model.War4Side(side=(side == 'b'),
+                                       war_num=row['war_num'],
+                                       bat_death = row['side_%sdeaths' % side]))
+        session.flush()
+        for i in (1, 2):
+            name = row['side_a%d' % i]
+            if name != '-8':
+                add_belligerent(session, name)
+                session.add(partic(row, 'a', name))
+        for i in range(1, 6):
+            name = row['side_b%d' % i]
+            if name != '-8':
+                add_belligerent(session, name)
+                session.add(partic(row, 'b', name))
+        session.flush()
+    session.commit()
+
+
 def load_all(data, external):
     """ Load all COW War v. 4 data """
     load_cow_war_types(open(path.join(data, "cow_war_types.yaml"), "r"))
     utils.load_enum_from_yaml(open(path.join(data, "war4_enum.yaml"), "r"))
     load_war4(open(path.join(data, "InterStateWarData_v4.0.csv"), 'rU'))
     load_war4_intra(open(path.join(data, "IntraStateWarData_v4.1.csv"), 'rU'))
-    
+    load_war4_nonstate(open(path.join(data, "NonStateWarData_v4.0.csv"), 'rU'))    

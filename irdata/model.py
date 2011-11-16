@@ -532,7 +532,8 @@ class War4(Base, Mixin):
                          sa.ForeignKey(CowWarType.__table__.c.value),
                          nullable = False,
                          doc='War type')
-    intnl = sa.Column(sa.Boolean)
+    intnl = sa.Column(sa.Boolean, nullable=True)
+    bat_deaths = sa.Column(sa.Integer, nullable=True)
 
 
 class War4Belligerent(Base, Mixin):
@@ -542,7 +543,8 @@ class War4Belligerent(Base, Mixin):
     actors.  
 
     Right now the entities are not entirely well defined because COW
-    is sloppy about defining the different entities.
+    is sloppy about defining the different entities.  I use the tuple
+    of ccode and name to define a belligerent.  
 
     """
     __tablename__ = 'war4_belligerents'
@@ -555,8 +557,8 @@ class War4Side(Base, Mixin):
     """ Cow War v. 4 Sides
 
     Each war has two sides.  This table is needed because
-    some values of Non-State Wars are defined as properties
-    of a side rather than of a participant.
+    some values Non-State Wars defines battle deaths by
+    side rather than participant.
     
     """ 
     __tablename__ = 'war4_sides'
@@ -572,7 +574,8 @@ class War4Partic(Base, Mixin):
     """ Cow War v.4 Participation
 
     Country-war-side observations. For each war a country can
-    participate on multiple sides.
+    participate on multiple sides, although this can only occur
+    in Inter-State wars.
     """
     __tablename__ = 'war4_partic'
     war_num = sa.Column(sa.Integer, primary_key=True)
@@ -598,6 +601,7 @@ class War4Partic(Base, Mixin):
 
 
 class War4ParticDate(Base, Mixin):
+    """ Date interval in which a belligerent participated in a war """
     __tablename__ = 'war4_partic_dates'
     
     war_num = sa.Column(sa.Integer,
