@@ -324,7 +324,6 @@ def load_war4_links(inter, intra, nonstate):
         reader = csv2.DictReader(src, encoding='latin-1')
         reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
         for row in reader:
-            print row
             war_num = int(row['war_num'])
             for x in clean(row['trans_from']):
                 load_link(x, war_num)
