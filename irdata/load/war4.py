@@ -302,25 +302,39 @@ def load_war4_nonstate(src):
     session.commit()
 
 def load_war4_links(inter, intra, nonstate):
+    session = model.SESSION()
+    
     def _int(x):
         y = int(x)
         return y if y > 0 else None
 
-    def load_link(session, war_from, war_to):
-        q = session.query(War4Link).\
-            filter(war_from = war_from).\
-            filter(war_to = war_to)
-        if q.count() == 0:
-            session.add(War4Link(war_from=war_from,
-                                 war_to=war_to))
+    def clean(x):
+        return [_int(y.strip()) for y in x.split(',')]
+
+    def load_link(war_from, war_to):
+        if war_from and war_to:
+            q = session.query(model.War4Link).\
+                filter(model.War4Link.war_from == war_from).\
+                filter(model.War4Link.war_to == war_to)
+            if q.count() == 0:
+                session.add(model.War4Link(war_from=war_from,
+                                           war_to=war_to))
     
-    def load_file(session, src):
-        reader = csv2.DictReader(src)
+    def load_file(src):
+        reader = csv2.DictReader(src, encoding='latin-1')
         reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
         for row in reader:
-            pass
+            print row
+            war_num = int(row['war_num'])
+            for x in clean(row['trans_from']):
+                load_link(x, war_num)
+            for x in clean(row['trans_to']):
+                load_link(war_num, x)
 
-    pass
+    load_file(inter)
+    load_file(intra)
+    load_file(nonstate)
+    session.commit()
 
 def load_all(data, external):
     """ Load all COW War v. 4 data """
