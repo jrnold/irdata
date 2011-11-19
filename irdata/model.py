@@ -614,18 +614,10 @@ class War4ParticDate(Base, Mixin):
     belligerent = sa.Column(sa.Unicode, primary_key=True)
     side = sa.Column(sa.Boolean, primary_key=True)
     partic_num = sa.Column(sa.Integer, primary_key=True)
-    start_year = sa.Column(sa.Integer,
-                         doc="The year in which sustained combat started")
-    start_month = sa.Column(Month,
-                          doc="The month in which sustained combat started")  
-    start_day = sa.Column(Day,
-                          doc="The day in which sustained combat started")  
-    end_year = sa.Column(sa.Integer,
-                         doc="The month in which sustained combat ended")
-    end_month = sa.Column(Month,
-                          doc="The month in which sustained combat ended")
-    end_day = sa.Column(Day,
-                        doc="The day in which sustained combat ended")
+    start_date_min = sa.Column(sa.Date)
+    start_date_max = sa.Column(sa.Date)
+    end_date_min = sa.Column(sa.Date)
+    end_date_max = sa.Column(sa.Date)
     ongoing = sa.Column(sa.Boolean, nullable = False,
                         doc="War is ongoing")
     sa.ForeignKeyConstraint(['war_num', 'ccode', 'side'],
@@ -636,8 +628,7 @@ class War4ParticDate(Base, Mixin):
 
     @property
     def start_date(self):
-        if self.start_year and self.start_month and self.start_day:
-            return datetime.date(self.start_year, self.start_month, self.start_day)
+        return (self.start_date_min + self.start_date_max) / 2
 
     @property
     def end_date(self):
@@ -785,19 +776,12 @@ class War3Date(Base, Mixin):
                       doc="War number")
     spell_no = sa.Column(sa.Integer, primary_key=True,
                         doc="war spell number")
-    yr_beg = sa.Column(sa.Integer,
-                       nullable = False,
-                       doc="beginning year of war")
-    mon_beg = sa.Column(Month,
-                       doc="beginning month of war")
-    day_beg = sa.Column(Day,
-                       doc="beginning day of war")
-    yr_end = sa.Column(sa.Integer,
-                      doc="ending year of war")
-    mon_end = sa.Column(Month,
-                       doc="ending month of war")
-    day_end = sa.Column(Day,
-                       doc="ending day of war")
+    date_beg_min = sa.Column(sa.Date)
+    date_beg_max = sa.Column(sa.Date)
+    sa.CheckConstraint('date_end_max >= date_end_min')
+    date_end_min = sa.Column(sa.Date)
+    date_end_max = sa.Column(sa.Date)
+    sa.CheckConstraint('date_end_max >= date_end_min')
 
     @property
     def date_beg(self):
@@ -885,20 +869,12 @@ class War3ParticDate(Base, Mixin):
     spell_no = sa.Column(sa.Integer,
                          primary_key=True,
                          doc="war spell number")
-    yr_beg = sa.Column(sa.Integer,
-                       nullable = False,
-                       doc="beginning year of war")
-    mon_beg = sa.Column(Month,
-                        doc="beginning month of war")
-    day_beg = sa.Column(Day,
-                        doc="beginning day of war")
-    yr_end = sa.Column(sa.Integer,
-                       doc="ending year of war")
-    mon_end = sa.Column(Month,
-                        doc="ending month of war")
-    day_end = sa.Column(Day,
-                        doc="ending day of war")
-    
+    date_beg_min = sa.Column(sa.Date)
+    date_beg_max = sa.Column(sa.Date)
+    sa.CheckConstraint('date_end_max >= date_end_min')
+    date_end_min = sa.Column(sa.Date)
+    date_end_max = sa.Column(sa.Date)
+    sa.CheckConstraint('date_end_max >= date_end_min')
     sa.ForeignKey(['war_no', 'state_num'],
                   [War3Partic.__table__.c.war_no,
                    War3Partic.__table__.c.state_num,
