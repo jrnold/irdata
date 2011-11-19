@@ -2,6 +2,7 @@ import collections
 import datetime
 import zipfile
 import re
+import calendar
 
 import sqlalchemy as sa
 from sqlalchemy import types
@@ -54,3 +55,22 @@ def load_enum_from_yaml(src):
         model.Base.metadata.tables[tbl].insert().execute(data)
     session.commit()
 
+def last_day_of_month(year, month):
+    return calendar.monthrange(year, month)[1]
+
+def daterng(y, m, d):
+    if y:
+        if m:
+            if d:
+                dt_min = datetime.date(y, m, d)
+                dt_max = dt_min
+            else:
+                dt_min = datetime.date(y, m, 1)
+                dt_max = datetime.date(y, m, last_day_of_month(y, m))
+        else:
+            dt_min = datetime.date(y, 1, 1)
+            dt_max = datetime.date(y, 12, 31)
+    else:
+        dt_min = dt_max = None
+    return (dt_min, dt_max)
+                

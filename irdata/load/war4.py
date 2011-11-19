@@ -15,6 +15,17 @@ from irdata import csv2
 from irdata import model
 from irdata.load import utils
 
+_KLS = (model.CowWarType,
+        model.War4WhereFought,
+        model.War4Outcome,
+        model.War4,
+        model.War4Side,
+        model.War4Partic,
+        model.War4Belligerent,
+        model.War4ParticDate)
+
+_TABLES = (x.__table__.name for x in _KLS)
+
 def load_cow_war_types(src):
     """ Load data into cow_war_types table """
     utils.load_from_yaml(src, model.CowWarType.__table__)
@@ -40,6 +51,11 @@ def load_war4(src):
     
     updates tables cow_war4, cow_belligerents, cow_war4_participation, cow_war4_partic_dates
     """
+    session = model.SESSION()
+
+    def _int(x):
+        y = int(x)
+        return y if y >= 0 else y
 
     def partic(row):
         y = model.War4Partic()
@@ -52,33 +68,29 @@ def load_war4(src):
         y.initiator = (int(row['initiator']) == 1)
         return y
 
-    def partic_dates(row, n):
-        y = model.War4ParticDate()
-        y.war_num = row['war_num']
-        y.belligerent = belligerent_key(row['ccode'], row['state_name'])
-        y.side = int(row['side']) == 2
-        y.partic_num = n
-        y.start_year = row['start_year%d' % n]
-        y.start_month = row['start_month%d' % n]
-        y.start_day = row['start_day%d' % n]
-        if row['end_day%d' % n] == "-7":
-            y.end_year = model.War4.ONGOING_DATE.year
-            y.ongoing = True
-        else:
-            y.end_year = row['end_year%d' % n]
-            y.ongoing = False
-        if row['end_month%d' % n] == "-7":
-            y.end_month = model.War4.ONGOING_DATE.month
-        else:
-            y.end_month = row['end_month%d' % n]
-        if row['end_month%d' % n] == "-7":        
-            y.end_day = model.War4.ONGOING_DATE.day
-        else:
-            y.end_day = row['end_day%d' % n]
-        return y
+    def add_partic_dates(row, n):
+        if row['start_year%d' % n] != '-8':
+            y = model.War4ParticDate()
+            y.war_num = row['war_num']
+            y.belligerent = belligerent_key(row['ccode'], row['state_name'])
+            y.side = int(row['side']) == 2
+            y.partic_num = n
+            start_date = utils.daterng(_int(row['start_year%d' % n]),
+                                       _int(row['start_month%d' % n]),
+                                       _int(row['start_day%d' % n]))
+            y.start_date_min, y.start_date_max = start_date
+            if row['end_year%d' % n] == "-7":
+                y.end_date_min = y.end_date_max = model.War4.ONGOING_DATE
+                y.ongoing = True
+            else:
+                end_date = utils.daterng(_int(row['end_year%d' % n]),
+                                         _int(row['end_month%d' % n]),
+                                         _int(row['end_day%d' % n]))
+                y.end_date_min, y.end_date_max = end_date
+                y.ongoing = False
+            session.add(y)
         
     cols = ("war_num", "war_name", "war_type")
-    session = model.SESSION()
     cnt = collections.Counter()
     cnt_bellig = collections.Counter()
     reader = csv2.DictReader(src)
@@ -99,9 +111,8 @@ def load_war4(src):
                                               ccode = row['ccode']))
             session.flush()
         session.add(partic(row))
-        session.add(partic_dates(row, 1))
-        if row['end_year2'] != '-8':
-            session.add(partic_dates(row, 2))
+        for i in (1, 2):
+            add_partic_dates(row, i)
     session.commit()
 
 def load_war4_intra(src):
@@ -109,6 +120,8 @@ def load_war4_intra(src):
 
     updates tables cow_war4, cow_belligerents, cow_war4_participation, cow_war4_partic_dates
     """
+    session = model.SESSION()
+
     def _int(x):
         try:
             y = int(re.sub(',', '', x))
@@ -149,32 +162,28 @@ def load_war4_intra(src):
         y.initiator = (row['initiator'] == y.belligerent)
         return y
 
-    def partic_dates(row, belligerent, side, n):
-        y = model.War4ParticDate()
-        y.war_num = row['war_num']
-        y.belligerent = belligerent
-        y.side = (side == 'b')
-        y.partic_num = n
-        y.start_year = _int(row['start_year%d' % n])
-        y.start_month = _int(row['start_month%d' % n])
-        y.start_day = _int(row['start_day%d' % n])
-        if row['end_day%d' % n] == "-7":
-            y.end_year = model.War4.ONGOING_DATE.year
-            y.ongoing = True
-        else:
-            y.end_year = _int(row['end_year%d' % n])
-            y.ongoing = False
-        if row['end_month%d' % n] == "-7":
-            y.end_month = model.War4.ONGOING_DATE.month
-        else:
-            y.end_month = _int(row['end_month%d' % n])
-        if row['end_month%d' % n] == "-7":        
-            y.end_day = model.War4.ONGOING_DATE.day
-        else:
-            y.end_day = _int(row['end_day%d' % n])
-        return y
+    def add_partic_dates(row, belligerent, side, n):
+        if row['start_year%d' % n] != '-8':
+            y = model.War4ParticDate()
+            y.war_num = row['war_num']
+            y.belligerent = belligerent
+            y.side = (side == 'b')
+            y.partic_num = n
+            start_date = utils.daterng(_int(row['start_year%d' % n]),
+                                       _int(row['start_month%d' % n]),
+                                       _int(row['start_day%d' % n]))
+            y.start_date_min, y.start_date_max = start_date
+            if row['end_year%d' % n] == "-7":
+                y.end_date_min = y.end_date_max = model.War4.ONGOING_DATE
+                y.ongoing = True
+            else:
+                end_date = utils.daterng(_int(row['end_year%d' % n]),
+                                         _int(row['end_month%d' % n]),
+                                         _int(row['end_day%d' % n]))
+                y.end_date_min, y.end_date_max = end_date
+                y.ongoing = False
+            session.add(y)
     
-    session = model.SESSION()
     cnt = collections.Counter()
     reader = csv2.DictReader(src, encoding='latin1')
     reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
@@ -194,16 +203,14 @@ def load_war4_intra(src):
             add_belligerent(session, row['side_a'], row['ccode_a'])
             belligerent = belligerent_key(row['ccode_a'], row['side_a'])
             session.add(partic(row, belligerent, 'a'))
-            session.add(partic_dates(row, belligerent, 'a', 1))
-            if row['start_year2'] != '-8':
-                session.add(partic_dates(row, belligerent, 'a', 2))
+            for i in (1, 2):
+                add_partic_dates(row, belligerent, 'a', i)
         if _side(row['side_b']):
             add_belligerent(session, row['side_b'], row['ccode_b'])
             belligerent = belligerent_key(row['ccode_b'], row['side_b'])
             session.add(partic(row, belligerent, 'b'))
-            session.add(partic_dates(row, belligerent, 'b', 1))
-            if row['start_year2'] != '-8':
-                session.add(partic_dates(row, belligerent, 'b', 2))
+            for i in (1, 2):
+                add_partic_dates(row, belligerent, 'b', i)
         session.flush()
     session.commit()
 
@@ -246,30 +253,26 @@ def load_war4_nonstate(src):
         y.initiator = (row['initiator'] == side.upper())
         return y
 
-    def partic_dates(row, name, side):
+    def add_partic_dates(row, name, side):
         y = model.War4ParticDate()
         y.war_num = row['war_num']
         y.belligerent = belligerent_key(None, name)
         y.side = side
         y.partic_num = 1
-        y.start_year = _int(row['start_year'])
-        y.start_month = _int(row['start_month'])
-        y.start_day = _int(row['start_day'])
+        start_date = utils.daterng(_int(row['start_year']),
+                                   _int(row['start_month']),
+                                   _int(row['start_day']))
+        y.start_date_min, y.start_date_max = start_date
         if row['end_year'] == "-7":
-            y.end_year = model.War4.ONGOING_DATE.year
+            y.end_date_min = y.end_date_max = model.War4.ONGOING_DATE
             y.ongoing = True
         else:
-            y.end_year = _int(row['end_year'])
+            end_date = utils.daterng(_int(row['end_year']),
+                                     _int(row['end_month']),
+                                     _int(row['end_day']))
+            y.end_date_min, y.end_date_max = end_date
             y.ongoing = False
-        if row['end_month'] == "-7":
-            y.end_month = model.War4.ONGOING_DATE.month
-        else:
-            y.end_month = _int(row['end_month'])
-        if row['end_month'] == "-7":        
-            y.end_day = model.War4.ONGOING_DATE.day
-        else:
-            y.end_day = _int(row['end_day'])
-        return y
+        session.add(y)
 
     session = model.SESSION()
     reader = csv2.DictReader(src, encoding='latin1')
@@ -291,13 +294,13 @@ def load_war4_nonstate(src):
             if name != '-8':
                 add_belligerent(session, name)
                 session.add(partic(row, 'a', name))
-                session.add(partic_dates(row, name, False))
+                add_partic_dates(row, name, False)
         for i in range(1, 6):
             name = row['side_b%d' % i]
             if name != '-8':
                 add_belligerent(session, name)
                 session.add(partic(row, 'b', name))
-                session.add(partic_dates(row, name, True))
+                add_partic_dates(row, name, True)
         session.flush()
     session.commit()
 
@@ -335,6 +338,12 @@ def load_war4_links(inter, intra, nonstate):
     load_file(nonstate)
     session.commit()
 
+def drop_all():
+    session = model.SESSION()
+    for x in _KLS:
+        session.query(x).delete()
+    session.commit()
+
 def load_all(data, external):
     """ Load all COW War v. 4 data """
     inter = path.join(data, "InterStateWarData_v4.0.csv")
@@ -347,4 +356,4 @@ def load_all(data, external):
     load_war4_nonstate(open(nonstate, 'rU'))
     load_war4_links(open(inter, 'rU'), open(intra, 'rU'), open(nonstate, 'rU'))
             
-                    
+    

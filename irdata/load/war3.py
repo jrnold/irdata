@@ -14,19 +14,29 @@ from irdata.load import utils
 def load_war3(src):
     """ Load COW War Data v. 3 """
 
-    def _dates(row, n):
-        y = model.War3Date()
-        y.war_no = row['war_no']
-        y.spell_no = n
-        y.yr_beg = row['yr_beg%d' % n]
-        y.mon_beg = row['mon_beg%d' % n]
-        y.day_beg = row['day_beg%d' % n]
-        y.yr_end = row['yr_end%d' % n]
-        y.mon_end = row['mon_end%d' % n]
-        y.day_end = row['day_end%d' % n]
-        return y
-
     session = model.SESSION()
+
+    def _int(x):
+        try:
+            return int(x)
+        except TypeError:
+            return None
+
+    def _dates(row, n):
+        if row['yr_beg%d' % n]:
+            y = model.War3Date()
+            y.war_no = row['war_no']
+            y.spell_no = n
+            date_beg = utils.daterng(_int(row['yr_beg%d' % n]),
+                                     _int(row['mon_beg%d' % n]),
+                                     _int(row['day_beg%d' % n]))
+            y.date_beg_min, y.date_beg_max = date_beg
+            date_end = utils.daterng(_int(row['yr_end%d' % n]),
+                                     _int(row['mon_end%d' % n]),
+                                     _int(row['day_end%d' % n]))
+            y.date_end_min, y.date_end_max = date_end
+            session.add(y)
+
     reader = csv2.DictReader(src, encoding='latin1')
     reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
 
@@ -41,33 +51,36 @@ def load_war3(src):
         row['oceania'] = row['oceania'] if row['oceania'] else False
         session.add(model.War3(**utils.subset(row, war_cols)))
         ## Dates
-        date1 = model.War3Date(war_no = row['war_no'],
-                               spell_no = 1)
-        for k in ('yr_beg', 'mon_beg', 'day_beg'):
-            setattr(date1, k, row["%s1" % k])
-        session.add(_dates(row, 1))
-        if row['yr_beg2']:
-            session.add(_dates(row, 2))
+        for i in (1, 2):
+            _dates(row, i)
     session.commit()
 
 def load_war3_partic(src):
     """ Load COW War Data v. 3, Participants """
+    session = model.SESSION()
+    def _int(x):
+        try:
+            return int(x)
+        except TypeError:
+            return None
 
     def _dates(row, n):
-        y = model.War3ParticDate()
-        y.war_no = row['war_no']
-        y.state_num = row['state_num']
-        y.partic_no = row['partic_no']
-        y.spell_no = n
-        y.yr_beg = row['yr_beg%d' % n]
-        y.mon_beg = row['mon_beg%d' % n]
-        y.day_beg = row['day_beg%d' % n]
-        y.yr_end = row['yr_end%d' % n]
-        y.mon_end = row['mon_end%d' % n]
-        y.day_end = row['day_end%d' % n]
-        return y
+        if row['yr_beg%d' % n]:
+            y = model.War3ParticDate()
+            y.war_no = row['war_no']
+            y.state_num = row['state_num']
+            y.partic_no = row['partic_no']
+            y.spell_no = n
+            date_beg = utils.daterng(_int(row['yr_beg%d' % n]),
+                                     _int(row['mon_beg%d' % n]),
+                                     _int(row['day_beg%d' % n]))
+            y.date_beg_min, y.date_beg_max = date_beg
+            date_end = utils.daterng(_int(row['yr_end%d' % n]),
+                                     _int(row['mon_end%d' % n]),
+                                     _int(row['day_end%d' % n]))
+            y.date_end_min, y.date_end_max = date_end
+            session.add(y)
 
-    session = model.SESSION()
     reader = csv2.DictReader(src, encoding='latin1')
     reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
     war_cols = [x.name for x in model.War3Partic.__table__.c]
@@ -83,13 +96,8 @@ def load_war3_partic(src):
             row[k] = utils.replmiss(v, lambda x: x in ("-999", "-888"))
         session.add(model.War3Partic(**utils.subset(row, war_cols)))
         ## Dates
-        date1 = model.War3ParticDate(war_no = row['war_no'],
-                                     spell_no = 1)
-        for k in ('yr_beg', 'mon_beg', 'day_beg'):
-            setattr(date1, k, row["%s1" % k])
-        session.add(_dates(row, 1))
-        if row['yr_beg2']:
-            session.add(_dates(row, 2))
+        for i in (1, 2):
+             _dates(row, i)
     session.commit()
 
 def load_all(data, external):
