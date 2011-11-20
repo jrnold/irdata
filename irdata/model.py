@@ -588,9 +588,19 @@ class War4Partic(Base, Mixin):
                             sa.ForeignKey(War4Belligerent.__table__.c.belligerent),
                             primary_key=True)
     side = sa.Column(sa.Boolean, primary_key=True)
-    where_fought = sa.Column(sa.Integer,
-                             sa.ForeignKey(War4WhereFought.__table__.c.value),
-                             nullable = False)
+    west_hem = sa.Column(sa.Boolean,
+                         doc="Was any part of the war fought in the Western Hemisphere?")
+    europe = sa.Column(sa.Boolean,
+                       nullable = False,
+                       doc="Was any part of the war fought in Europe?")
+    africa = sa.Column(sa.Boolean,
+                       doc="Was any part of the war fought in Africa?")
+    mid_east = sa.Column(sa.Boolean,
+                         doc="Was any part of the war fought in Middle East?")
+    asia = sa.Column(sa.Boolean,
+                     doc="Was any part of the war fought in Asia?")
+    oceania = sa.Column(sa.Boolean,
+                        doc="Was any part of the war fought in Oceania?")
     ## Countries on the same side can have different outcomes
     ## see Germany in war 108.
     outcome = sa.Column(sa.Integer,

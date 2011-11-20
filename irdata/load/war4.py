@@ -26,6 +26,102 @@ _KLS = (model.CowWarType,
 
 _TABLES = (x.__table__.name for x in _KLS)
 
+
+WHERE_FOUGHT = {1: {"west_hem": True,
+                    "europe": False,
+                    "africa": False,
+                    "mid_east": False,
+                    "asia": False,
+                    "oceania": False},
+                2: {"west_hem": False,
+                    "europe": True,
+                    "africa": False,
+                    "mid_east": False,
+                    "asia": False,
+                    "oceania": False},
+                4: {"west_hem": False,
+                    "europe": False,
+                    "africa": True,
+                    "mid_east": False,
+                    "asia": False,
+                    "oceania": False},
+                6: {"west_hem": False,
+                    "europe": False,
+                    "africa": False,
+                    "mid_east": True,
+                    "asia": False,
+                    "oceania": False},
+                7: {"west_hem": False,
+                    "europe": False,
+                    "africa": False,
+                    "mid_east": False,
+                    "asia": True,
+                    "oceania": False},
+                9: {"west_hem": False,
+                    "europe": False,
+                    "africa": False,
+                    "mid_east": False,
+                    "asia": False,
+                    "oceania": True},
+                11: {"west_hem": False,
+                    "europe": True,
+                    "africa": False,
+                    "mid_east": True,
+                    "asia": False,
+                    "oceania": False},
+                12: {"west_hem": False,
+                    "europe": True,
+                    "africa": False,
+                    "mid_east": False,
+                    "asia": True,
+                    "oceania": False},
+                13: {"west_hem": True,
+                    "europe": False,
+                    "africa": False,
+                    "mid_east": False,
+                    "asia": True,
+                    "oceania": False},
+                14: {"west_hem": False,
+                    "europe": True,
+                    "africa": True,
+                    "mid_east": True,
+                    "asia": False,
+                    "oceania": False},
+                15: {"west_hem": False,
+                    "europe": True,
+                    "africa": True,
+                    "mid_east": True,
+                    "asia": True,
+                    "oceania": False},
+                16: {"west_hem": False,
+                    "europe": False,
+                    "africa": True,
+                    "mid_east": True,
+                    "asia": True,
+                    "oceania": True},
+                17: {"west_hem": False,
+                    "europe": False,
+                    "africa": False,
+                    "mid_east": False,
+                    "asia": True,
+                    "oceania": True},
+                18: {"west_hem": False,
+                    "europe": False,
+                    "africa": True,
+                    "mid_east": True,
+                    "asia": False,
+                    "oceania": False},
+                19: {"west_hem": False,
+                    "europe": True,
+                    "africa": True,
+                    "mid_east": True,
+                    "asia": True,
+                    "oceania": True}}
+""" Dictionary mapping numbers in WhereFought to region boolean variables
+
+See Documentation: http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/InterStateWars_Codebook.pdf
+"""
+
 def load_cow_war_types(src):
     """ Load data into cow_war_types table """
     utils.load_from_yaml(src, model.CowWarType.__table__)
@@ -55,16 +151,17 @@ def load_war4(src):
 
     def _int(x):
         y = int(x)
-        return y if y >= 0 else y
+        return y if y >= 0 else None
 
     def partic(row):
         y = model.War4Partic()
         y.war_num = int(row['war_num'])
         y.belligerent = belligerent_key(row['ccode'], row['state_name'])
         y.side = int(row['side']) == 2
-        y.where_fought = row['where_fought']
+        for k, v in WHERE_FOUGHT[_int(row['where_fought'])].iteritems():
+            setattr(y, k, v)
         y.outcome = row['outcome']
-        y.bat_death = row['bat_death']
+        y.bat_death = _int(row['bat_death'])
         y.initiator = (int(row['initiator']) == 1)
         return y
 
@@ -150,7 +247,8 @@ def load_war4_intra(src):
         y.war_num = _int(row['war_num'])
         y.belligerent = belligerent
         y.side = (side == 'b')
-        y.where_fought = row['where_fought']
+        for k, v in WHERE_FOUGHT[_int(row['where_fought'])].iteritems():
+            setattr(y, k, v)
         ## outcomes given in Side A / Side B rather than winner/loser
         ## per participant
         outcome = _int(row['outcome'])
@@ -244,7 +342,8 @@ def load_war4_nonstate(src):
         y.war_num = _int(row['war_num'])
         y.belligerent = belligerent_key(None, name)
         y.side = side == "b"
-        y.where_fought = row['where_fought']
+        for k, v in WHERE_FOUGHT[_int(row['where_fought'])].iteritems():
+            setattr(y, k, v)
         outcome = _int(row['outcome'])
         if side:
             if outcome == 2: outcome = 1
