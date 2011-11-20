@@ -515,11 +515,6 @@ class War4Outcome(Base, IntFactorMixin, Mixin):
     __tablename__ = 'war4_outcomes'
 
 
-class War4WhereFought(Base, IntFactorMixin, Mixin):
-    """ COW War Data v. 4 outcome values """
-    __tablename__ = 'war4_where_fought'
-
-
 class War4(Base, Mixin):
     ONGOING_DATE = datetime.date(2007, 12, 31)
     
