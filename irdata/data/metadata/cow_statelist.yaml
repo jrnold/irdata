@@ -1,0 +1,18 @@
+columns:
+  ccode: COW state number
+  state_abb: COW state abbrevation
+  state_nme: COW state name
+creator: ''
+date: ''
+see_also:
+  - "http://www.correlatesofwar.org/COW2%20Data/SystemMembership/2008/State%20Codebook%202008.1.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/SystemMembership/2008/State%20FAQ.pdf"
+source:
+  - "http://www.correlatesofwar.org/COW2%20Data/SystemMembership/2008/states2008.1.csv"
+  - "Correlates of War Project. 2008. “State System Membership List, v2008.1.” Online, http://correlatesofwar.org"
+description: |
+
+  Correlates of War State Country Codes, Abbreviations and Names.
+
+  This table is the list of country codes, abbreviations, and names
+  of states used in the Correlates of War Interstate System, 1816-2008 data.

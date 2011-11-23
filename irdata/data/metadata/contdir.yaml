@@ -1,0 +1,30 @@
+columns:
+  conttype: "Contiguity category"
+  end_date: "Start date of the contiguity relationship"
+  notes: "Notes"
+  start_date: "Start date of the contiguity relationship"
+  statehno: "COW country code of the higher numbered member of this dyad"
+  statelno: "COW country code of the lower numbered member of this dyad"
+creator: ''
+date: ''
+temporal: "1816-2006"
+see_also:
+  - "http://www.correlatesofwar.org/COW2%20Data/DirectContiguity/DCV3desc.htm"
+  - "Correlates of War Project. Direct Contiguity Data, 1816-2006. Version 3.1. Online: http://correlatesofwar.org"
+  - "Stinnett, Douglas M., Jaroslav Tir, Philip Schafer, Paul F. Diehl, and Charles Gochman. 2002. \"The Correlates of War Project Direct Contiguity Data, Version 3.\" Conflict Mangagement and Peace Science 19(2):58-66."
+  - "Charles S. Gochman, 1991, \"Interstate Metrics: Conceptualizing, Operationalizing, and Measuring the Geographic Proximity of States since the Congress of Vienna,\" International Interactions 17(1): 93-112."
+source:
+  - "Correlates of War Project. Direct Contiguity Data, 1816-2006. Version 3.1. Online: http://correlatesofwar.org"
+  - "http://www.correlatesofwar.org/COW2%20Data/DirectContiguity/DirectContiguity310.zip"
+  
+description: |
+
+  `COW Direct Contiguity v. 3.1
+  <www.correlatesofwar.org/COW2%20Data/DirectContiguity/DCV3desc.htm>`_
+  data.
+  
+  Identifies all direct contiguity relationships between states in the
+  COW international system.  It classifies contiguous dyads into five
+  categories for land contiguity and four for water contiguity.
+
+  

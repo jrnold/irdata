@@ -1,0 +1,18 @@
+columns:
+  ccode: "Country code"
+  year: "Year"
+  start_year: "State is in the interstate system on Jan 1 of that year"
+  end_year: "State is in the interstate system on Dec 31 of that year"
+  mid_year: "State is in the interstate system on July 2 of that year"
+  frac_year: "Fraction of that year the state is a member of the interstate system"
+creator: ''
+date: ''
+see_also: ''
+source: ''
+description: |
+  Correlates of War Interstate System, 1816-2008.
+
+  This table has country-year observations derived from the system membership
+  table **cow_sys_membership**.
+  
+  

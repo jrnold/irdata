@@ -1,0 +1,15 @@
+columns:
+  belligerent: null
+  end_date_max: null
+  end_date_min: null
+  ongoing: War is ongoing
+  partic_num: null
+  side: null
+  start_date_max: null
+  start_date_min: null
+  war_num: null
+creator: ''
+date: ''
+description: ''
+see_also: ''
+source: ''

@@ -1,0 +1,20 @@
+columns:
+  ccode: COW column number
+  end_date: International system membership end date
+  interval: State interval number
+  st_date: International system membership start date
+creator: ''
+date: ''
+temporal: "1816-2008"
+see_also:
+  - "Correlates of War Project. 2008. “State System Membership List, v2008.1.” Online, http://correlatesofwar.org"
+  - "http://www.correlatesofwar.org/COW2%20Data/SystemMembership/2008/State%20Codebook%202008.1.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/SystemMembership/2008/State%20FAQ.pdf"
+  - "www.correlatesofwar.org/COW2%20Data/SystemMembership/2008/System2008.html"
+source:
+  - "http://www.correlatesofwar.org/COW2%20Data/SystemMembership/2008/states2008.1.csv"
+description: |
+  COW Interstate System, 1816-2008 data.
+
+  List of states and dates of their membership in the COW interstate system.
+  

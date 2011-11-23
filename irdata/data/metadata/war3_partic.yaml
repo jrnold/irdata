@@ -1,0 +1,22 @@
+columns:
+  africa: Did state participant engage in fighting in war in Africa?
+  asia: Did state participant engage in fighting in war in Asia?
+  deaths: Number of battle related deaths sustained by participant's armed forces
+  europe: Did state participant engage in fighting in war in Europe?
+  initiate: Did state initiate war?
+  int_side: On which side did participant intervene?
+  mid_east: Did state participant engage in fighting in war in Middle East?
+  oceania: Did state participant engage in fighting in war in Oceania?
+  outcome: War outcome for participant
+  partic_no: null
+  pr_war_arm: Pre-war armed-forces thousands (number from year war begun)
+  pr_war_pop: Pre-war population in thousands (number from year war begun)
+  state_num: null
+  sys_stat: System membership status of state
+  war_no: null
+  west_hem: Did state participant engage in fighting in war in the Western Hemisphere?
+creator: ''
+date: ''
+description: ''
+see_also: ''
+source: ''

@@ -1,0 +1,40 @@
+columns:
+  autoc: null
+  bday: null
+  bmonth: null
+  bprec: null
+  byear: null
+  ccode: null
+  change: null
+  cyear: null
+  d4: null
+  democ: null
+  durable: null
+  eday: null
+  emonth: null
+  eprec: null
+  exconst: null
+  exrec: null
+  eyear: null
+  flag: null
+  fragment: null
+  interim: null
+  parcomp: null
+  parreg: null
+  polcomp: null
+  polity: null
+  polity2: null
+  post: null
+  prior: null
+  regtrans: null
+  sf: null
+  xconst: null
+  xrcomp: null
+  xropen: null
+  xrreg: null
+  year: null
+creator: ''
+date: ''
+description: ''
+see_also: ''
+source: ''

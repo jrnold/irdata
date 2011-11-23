@@ -1,0 +1,12 @@
+columns:
+  date_beg_max: null
+  date_beg_min: null
+  date_end_max: null
+  date_end_min: null
+  spell_no: war spell number
+  war_no: War number
+creator: ''
+date: ''
+description: ''
+see_also: ''
+source: ''

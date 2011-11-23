@@ -1,0 +1,17 @@
+columns:
+  label: "label"
+  value: "value"
+creator: ''
+date: ''
+see_also:
+  - "http://www.correlatesofwar.org/COW2%20Data/DirectContiguity/DCV3desc.htm"
+  - "Correlates of War Project. Direct Contiguity Data, 1816-2006. Version 3.1. Online: http://correlatesofwar.org"
+  - "Stinnett, Douglas M., Jaroslav Tir, Philip Schafer, Paul F. Diehl, and Charles Gochman. 2002. \"The Correlates of War Project Direct Contiguity Data, Version 3.\" Conflict Mangagement and Peace Science 19(2):58-66."
+  - "Charles S. Gochman, 1991, \"Interstate Metrics: Conceptualizing, Operationalizing, and Measuring the Geographic Proximity of States since the Congress of Vienna,\" International Interactions 17(1): 93-112."
+source:
+  - "Correlates of War Project. Direct Contiguity Data, 1816-2006. Version 3.1. Online: http://correlatesofwar.org"
+  - "http://www.correlatesofwar.org/COW2%20Data/DirectContiguity/DirectContiguity310.zip"
+description: |
+
+  Labels for the values of contiguity codes used in **contdir.conttype".
+ 

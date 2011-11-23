@@ -1,0 +1,36 @@
+columns:
+  ccode: null
+  cinc: null
+  irst: null
+  irstanomalycode: null
+  irstnote: null
+  irstqualitycode: null
+  irstsource: null
+  milex: null
+  milexnote: null
+  milexsource: null
+  milper: null
+  milpernote: null
+  milpersource: null
+  pec: null
+  pecanomalycode: null
+  pecnote: null
+  pecqualitycode: null
+  pecsource: null
+  tpop: null
+  tpopanomalycode: null
+  tpopnote: null
+  tpopqualitycode: null
+  tpopsource: null
+  upop: null
+  upopgrowth: null
+  upopgrowthsource: null
+  upopnote: null
+  upopqualitycode: null
+  upopsource: null
+  year: null
+creator: ''
+date: ''
+description: ''
+see_also: ''
+source: ''

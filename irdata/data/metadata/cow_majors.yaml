@@ -1,0 +1,20 @@
+columns:
+  ccode: COW country code
+  end_date: Major power status end date
+  interval: nth time that this state was a great power.
+  st_date: Major power status start date
+creator: ''
+date: ''
+temporal: "1816-2008"
+see_also:
+  - "Correlates of War Project. 2008. “State System Membership List, v2008.1.” Online, http://correlatesofwar.org"
+  - "http://www.correlatesofwar.org/COW2%20Data/SystemMembership/2008/State%20Codebook%202008.1.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/SystemMembership/2008/State%20FAQ.pdf"
+  - "www.correlatesofwar.org/COW2%20Data/SystemMembership/2008/System2008.html"
+source:
+  - "http://www.correlatesofwar.org/COW2%20Data/SystemMembership/2008/majors2008.1.csv"
+description: |
+
+  COW Interstate System 1816-2008, majors data.
+
+  Entry and exit data of states to and from the COW major power status list.

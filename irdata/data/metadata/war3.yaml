@@ -1,0 +1,27 @@
+columns:
+  africa: Was any part of the war fought in Africa?
+  asia: Was any part of the war fought in Asia?
+  cen_sub_sy: At least one central sub-system member in war
+  deaths: total battle deaths
+  edition: Update code
+  europe: Was any part of the war fought in Europe?
+  interven: Outside intervention in war?
+  maj_pow_ea: At least one major power on each side
+  maj_pow_in: At least one major power in the war
+  mid_east: Was any part of the war fought in Middle East?
+  non_state: Name of non-state or insurgent participant. NULL for all interstate wars.
+  oceania: Was any part of the war fought in Oceania?
+  st_deaths: Total battle deaths of state participants
+  state_num: COW country code of the major state. only non-NULL for intra-state wars.
+  sub_sys_ea: At least one central sub-system member on each side
+  to_deaths: Total battle deaths of all participants
+  war_name: War Name
+  war_no: War number
+  war_type: War type
+  west_hem: Was any part of the war fought in the Western Hemisphere?
+  winner: Victorious side in war
+creator: ''
+date: ''
+description: ''
+see_also: ''
+source: ''

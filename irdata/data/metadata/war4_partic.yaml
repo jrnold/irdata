@@ -1,0 +1,18 @@
+columns:
+  africa: Was any part of the war fought in Africa?
+  asia: Was any part of the war fought in Asia?
+  bat_death: null
+  belligerent: null
+  europe: Was any part of the war fought in Europe?
+  initiator: null
+  mid_east: Was any part of the war fought in Middle East?
+  oceania: Was any part of the war fought in Oceania?
+  outcome: null
+  side: null
+  war_num: null
+  west_hem: Was any part of the war fought in the Western Hemisphere?
+creator: ''
+date: ''
+description: ''
+see_also: ''
+source: ''
