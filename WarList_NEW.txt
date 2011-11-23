@@ -1,0 +1,659 @@
+1816   Allied Bombardment of Algiers of 1816             Extra-State War #300
+1816   Ottoman-Wahhabi Revolt of 1816-1818               Extra-State War #301
+1817   Liberation of Chile of 1817-1818                  Extra-State War #302
+1817   First Bolivar Expedition of 1817-1819             Extra-State War #303
+1817   War of Mexican Independence of 1817-1818          Extra-State War #304
+1817   British-Kandyan War of 1817-1818                  Extra-State War #305
+1817   British-Maratha of 1817-1818                      Extra-State War #306
+1818   First Maori Tribal War of 1818-1824               Non-State War #1500
+1818   First Caucasus War of 1818-1822                   Intra-State War #500
+1819   Shaka Zulu-Bantu War of 1819-1828                 Non-State War #1501
+1819   Burma-Assam War of 1819-1822                      Non-State War #1502
+1820   Buenos Aires War of 1820                          Non-State War #1503
+1820   Sidon-Damascus War of 1820-1821                   Intra-State War #501
+1820   First Two Sicilies War of 1820-1821               Intra-State War #502
+1820   Ottoman Conquest of Sudan of 1820-1821            Extra-State War #307
+1821   Sardinian Revolt of 1821                          Intra-State War #505
+1821   Greek Independence War of 1821-1828               Intra-State War #506
+1821   Second Bolívar Expedition of 1821-1822            Extra-State War #308
+1821   Turco-Persian War of 1821-1823                    Extra-State War #309
+1821   Second Maori Tribal War of 1821-1823              Non-State War #1505
+1821   Siam-Kedah War of 1821                            Non-State War #1506
+1821   Spanish Royalists War of 1821-1823                Intra-State War #503
+1823   Franco-Spanish War of 1823                        Inter-State War #1
+1823   First British-Burmese War of 1823-1826            Extra-State War #310
+1824   First British-Ashanti War of 1824-1826            Extra-State War #311
+1824   Liberation of Peru of 1824-1825                   Extra-State War #312
+1824   Egypt-Mehdi War of 1824                           Intra-State War #507
+1825   China-Kashgaria War of 1825-1828                  Non-State War #1508
+1825   Dutch-Javanese War of 1825-1830                   Extra-State War #313
+1825   Mexico-Yaqui Indian War of 1825-1827              Non-State War #1509
+1825   British-Bharatpuran War of 1825-1826              Extra-State War #314
+1826   Brazil-Argentine War of 1826-1828                 Extra-State War #315
+1826   Central American Confederation War of 1826-1829   Non-State War #1510
+1826   Viang Chan-Siamese War of 1826-1827               Non-State War #1511
+1826   Janissari Revolt of 1826                          Intra-State War #508
+1826   Russo-Persian War of 1826-1828                    Extra-State War #316
+1828   First Russo-Turkish War of 1828-1829              Inter-State War #4
+1828   Peru-Gran Colombia War of 1828-1829               Non-State War #1512
+1828   Miguelite War of 1828-1834                        Intra-State War #510
+1829    Argentine War for Unity of 1829-1831                 Non-State War #1513
+1829    Spanish Reconquest of Mexico of 1829                 Extra-State War #317
+1829    Sayyid Said War of 1829-1830                         Non-State War #1514
+1830    First Murid War of 1830-1832                         Intra-State War #511
+1830    First Albanian Revolt of 1830-1831                   Intra-State War #512
+1830    French Occupation of Algiers of 1830                 Extra-State War #319
+1830    First French Insurrection of 1830                    Intra-State War #513
+1830    Belgian Independence War of 1830                     Intra-State War #515
+1830    China-Kokand War of 1830-1831                        Non-State War #1515
+1831    Egyptian Taka Expedition of 1831-1832                Intra-State War #516
+1831    First Polish War of 1831                             Intra-State War #517
+1831    Siam-Cambodia-Vietnam War of 1831-1834               Non-State War #1516
+1831    First Syrian War of 1831-1832                        Intra-State War #518
+1832    First Mexican War of 1832                            Intra-State War #520
+1832    Ottoman-Bilmez-Asiri War of 1832-1837                Extra-State War #320
+1833    Argentine-Ranqueles Indian War of 1833-1834          Non-State War #1518
+1834    Egypt-Palestinian Anti-Conscription Revolt of 1834   Intra-State War #521
+1834    First Carlist War of 1834-1840                       Intra-State War #522
+1834    Second Murid War of 1834                             Intra-State War #523
+1835    Cabanos Revolt of 1835-1837                          Intra-State War #525
+1835    Bolivia Conquest of Peru in 1835-1836                Non-State War #1520
+1835    Farroupilha War of 1835-1845                         Intra-State War #526
+1835    Texan War of 1835-1836                               Intra-State War #527
+1836    First Bosnian War of 1836-1837                       Intra-State War #528
+1836    Third Murid War of 1836-1852                         Intra-State War #530
+1836    Boer-Matabele War of 1836-1837                       Non-State War #1521
+1837    Druze Rebellion of 1837-1838                         Intra-State War #532
+1837    Sabinada Rebellion of 1837-1838                      Intra-State War #531
+        Dissolution of the Bolivia-Peru Confederation of
+1837   1837-1839                                             Non-State War #1523
+1837    Persian Siege of Herat of 1837-1838                  Non-State War #1524
+1838    Boer-Zulu War of 1838                                Non-State War #1525
+1838    First British-Zulu War of 1838                       Extra-State War #321
+1839    First British-Afghan War of 1839-1842                Extra-State War #322
+1839    Anti-Rosas War of 1839-1840                          Non-State War #1527
+        Dissolution of the Central American Confederation
+1839   of 1839-1840                                          Non-State War #1528
+1839    Second Syrian War Phase 1 of 1839                    Intra-State War #533
+1839    First Opium War of 1839-1842                         Extra-State War #323
+1839    First Franco-Algerian War 1839-1847                  Extra-State War #324
+1840    Lebanon Insurgency of 1840                           Intra-State War #535
+1840    First Colombian War of 1840-1842                     Intra-State War #536
+1840    Second Syrian War Phase 2 of 1840                    Intra-State War #537
+1841    First Argentina War Phase 2 of 1841-1842             Intra-State War #538
+1841   Second Bosnian War of 1841                   Intra-State War #540
+1841   Dogra-Tibet War of 1841-1842                 Non-State War #1530
+1841   Triangular Revolt of 1841                    Intra-State War #541
+1841   Peru-Bolivian War of 1841                    Extra-State War #325
+1842   Karbala Revolt of 1842-1843                  Intra-State War #542
+1843   British-Sind War of 1843                     Extra-State War #326
+1843   Uruguay War of 1843-1851                     Extra-State War #327
+1843   Gwalior War of 1843                          Extra-State War #329
+1844   First Haiti-Santo Domingo War of 1844-1845   Non-State War #1531
+1844   Franco-Moroccan War of 1844                  Extra-State War #330
+1845   First Maronite-Druze War of 1845             Intra-State War #543
+1845   First British-Sikh War of 1845-1846          Extra-State War #331
+1846   Cracow Revolt of 1846                        Extra-State War #332
+1846   First British-Xhosa War of 1846-1847         Extra-State War #333
+1846   Mexican-American War of 1846-1847            Inter-State War #7
+1847   Mayan Caste War Phase 1 of 1847-1848         Intra-State War #545
+1847   Second Carlist War of 1847-1849              Intra-State War #546
+1847   War of Seven Khojas 1847                     Non-State War #1533
+1848   Second Two Sicilies War of 1848-1849         Intra-State War #547
+1848   First Venezuelan War of 1848-1849            Intra-State War #548
+1848   Viennese Revolt of 1848                      Intra-State War #550
+1848   Milan Five Day Revolt of 1848                Intra-State War #551
+1848   Austro-Sardinian War of 1848-1849            Inter-State War #10
+       First Schleswig-Holstein
+1848   War of 1848-1849                             Inter-State War #13
+1848   First Dutch-Bali War of 1848-1849            Extra-State War #334
+1848   Second British-Sikh War of 1848-1849         Extra-State War #335
+1848   Second French Insurrection of 1848           Intra-State War #552
+1848   Mayan Caste War Phase 2 of 1848-1855         Intra-State War #553
+1848   Hungarian War of 1848-1849                   Intra-State War #554
+1849   War of the Roman Republic of 1849            Inter-State War #16
+1849   Chinese Pirates War of 1849                  Extra-State War #336
+1850   Taiping Rebellion Phase 1 of 1850-1860       Non-State War #1534
+1850   Second British-Xhosa War of 1850-1852        Extra-State War #337
+1851   Ottoman-Yam Rebellion of 1851                Extra-State War #338
+1851   La Plata War of 1851-1852                    Inter-State War #19
+1851   First Chilean War of 1851                    Intra-State War #555
+1852   Second British-Burmese War of 1852           Extra-State War #339
+1852   First Tukulor War of 1852-1854               Non-State War #1535
+1852   Kashmir-Dards of Chilas War of 1852          Non-State War #1536
+1852   First Turco-Montenegrin War of 1852-1853     Intra-State War #556
+1853   Crimean War of 1853-1856                     Inter-State War #22
+1853   First Peru War of 1853-1855                  Intra-State War #557
+1854   Han-Miao War of 1854-1860                    Non-State War #1537
+1854   French-Tukulor War of 1854-1857                 Extra-State War #340
+1855   Second Haiti-Santo Domingo War of 1855-1856     Non-State War #1538
+1855   Han-Nien War of 1855-1858                       Non-State War #1539
+1855   British-Santal War of 1855-1856                 Extra-State War #341
+1855   Puebla War of 1855-1856                         Intra-State War #558
+1856   Hodeida Seige of 1856                           Extra-State War #342
+1856   Filibuster War of 1856-1857                     Non-State War #1540
+1856   French Conquest of Kabylia of 1856-1857         Extra-State War #345
+1856   Han-Panthay War Phase 1 of 1856-1860            Non-State War #1541
+1856   Second Opium War of 1856-1860                   Extra-State War #343
+1856   Anglo-Persian War of 1856-1857                  Inter-State War #25
+1856   Second Peru War of 1856-1858                    Intra-State War #560
+1856   First Zulu Internecine War of 1856              Non-State War #1542
+1857   Indian Mutiny of 1857-1859                      Extra-State War #347
+1857   Kucha and Khoja Uprising of 1857                Non-State War #1543
+1858   Mexican Reform War of 1858-1861                 Intra-State War #561
+1858   Second Turco-Montenegrin War of 1858-1859       Intra-State War #562
+1858   First Boer-Basuto War of 1858                   Non-State War #1544
+1858   First Ethiopian War of 1858-1861                Non-State War #1545
+1858   First Franco-Vietnamese War of 1858-1862        Extra-State War #349
+1859   Second Venezuelan/Federalist War of 1859-1863   Intra-State War #563
+1859   Netherlands-Bone War of 1859-1860               Extra-State War #350
+1859   War of Italian Unification of 1859              Inter-State War #28
+1859   Argentine-Buenos Aires War of 1859              Extra-State War #351
+1859   First Spanish-Moroccan War of 1859-1860         Inter-State War #31
+1860   Garibaldi Expedition of 1860                    Extra-State War #352
+1860   Second Colombian War of 1860-1861               Intra-State War #565
+1860   Second Maronite-Druze War of 1860               Intra-State War #566
+1860   Second Tukulor War of 1860-1862                 Non-State War #1546
+1860   Italian-Roman War of 1860                       Inter-State War #34
+1860   Neapolitan War of 1860-1861                     Inter-State War #37
+1860   Taiping Rebellion Phase 2 of 1860-1866          Intra-State War #567
+1860   Second Nien Revolt of 1860-1868                 Intra-State War #568
+1860   Miao Revolt Phase 2 of 1860-1872                Intra-State War #570
+1860   Panthay Rebellion Phase 2 of 1860-1872          Intra-State War #571
+1861   U.S. Civil War of 1861-1865                     Intra-State War #572
+1861   Third Buenos Aires War of 1861                  Intra-State War #573
+1861   Third Turco-Montenegrin War of 1861-1862        Intra-State War #575
+1862   Transvaal War of 1862-1864                      Non-State War #1548
+1862   Franco-Mexican War of 1862-1867                 Inter-State War #40
+1862   Tungan Rebellion of 1862-1873                   Intra-State War #576
+1862   Sioux-Minnesota War of 1862                     Intra-State War #577
+1862   Bolivan Pérez Rebellion of 1862                 Intra-State War #578
+1863   Second Polish War of 1863-1864                  Intra-State War #580
+1863   Central American War of 1863                   Non-State War #1550
+1863   Second Argentina War of 1863                   Intra-State War #581
+1863   Spanish-Santo Dominican War of 1863-1865       Extra-State War #353
+1863   British-Maori War of 1863-1866                 Extra-State War #355
+1863   Shimonoseki War of 1863-1864                   Extra-State War #356
+1863   British Umbeyla Campaign of 1863               Extra-State War #357
+1863   Ecuadorian-Columbian War of 1863               Inter-State War #43
+1864   Second Schleswig-Holstein War of 1864          Inter-State War #46
+1864   Russian-Kokand War of 1864-1865                Extra-State War #359
+1864   Xinjiang Muslim Revolt of 1864-1871            Intra-State War #582
+1864   Lopez War of 1864-1870                         Inter-State War #49
+1864   First Australian Aboriginal War of 1864-1865   Non-State War #1551
+1865   British-Bhutanese War of 1865                  Extra-State War #360
+1865   Second Boer-Basuto War of 1865-1866            Non-State War #1552
+1865   Naval War of 1865-1866                         Inter-State War #52
+1866   Russian-Bukharan War of 1866                   Extra-State War #361
+1866   First Cretan War of 1866-1867                  Intra-State War #583
+1866   Seven Weeks War of 1866                        Inter-State War #55
+1866   Yellow Cliff Revolt of 1866                    Intra-State War #585
+1866   Third Argentina War of 1866-1867               Intra-State War #586
+1867   Queretaro War of 1867                          Intra-State War #587
+1867   British-Ethiopian War of 1867-1868             Extra-State War #362
+1868   Meiji Restoration of 1868                      Intra-State War #588
+1868   Third Venezuelan War of 1868-1871              Intra-State War #590
+1868   Second Ethiopian War of 1868-1872              Non-State War #1553
+1868   Spanish Liberals War of 1868                   Intra-State War #591
+1868   First Spanish-Cuban War of 1868-1878           Extra-State War #363
+1869   Guerre des Cacos of 1869                       Intra-State War #592
+1869   Attack on Bahr el-Ghazal of 1869-1870          Extra-State War #364
+1870   Uruguay Colorados-Blancos War of 1870-1872     Non-State War #1554
+1870   Fourth Argentina War of 1870-1871              Intra-State War #593
+1870   Franco-Prussian War of 1870-1871               Inter-State War #58
+1870   Bolivia-Criollos War of 1870-1871              Intra-State War #595
+1870   Ottoman Conquest of Arabia of 1870-1872        Extra-State War #365
+1871   Second Franco-Algerian War of 1871-1872        Extra-State War #366
+1871   Paris Commune War of 1871                      Intra-State War #596
+1872   Third Carlist War of 1872-1876                 Intra-State War #597
+1873   Second British-Ashanti War of 1873-1874        Extra-State War #367
+1873   First Dutch-Achinese War of 1873-1878          Extra-State War #370
+1873   Second Franco-Vietnamese War of 1873-1874      Extra-State War #369
+1874   Catonalist Uprising of 1874-1875               Intra-State War #598
+1874   Fifth Argentina War of 1874                    Intra-State War #600
+1875   Bosnia and Bulgaria Revolt of 1875-1876        Intra-State War #601
+1875   Kokand Rebellion of 1875-1876                  Extra-State War #371
+1875   Egypt-Ethiopian War of 1875-1876                Extra-State War #372
+1876   Diaz Revolt of 1876                             Intra-State War #602
+1876   First Central American War of 1876              Inter-State War #60
+1876   Defeat of Xinjiang Muslims of 1876-1877         Intra-State War #603
+1876   Serbian-Turkish War of 1876-1877                Extra-State War #373
+1876   Third Colombian War of 1876-1877                Intra-State War #605
+1877   Satsuma Rebellion of 1877                       Intra-State War #607
+1877   Second Russo-Turkish War of 1877-1878           Inter-State War #61
+1877   Third British-Xhosa War of 1877-1878            Extra-State War #374
+1878   Egypt-Sudanese Slavers War of 1878-1879         Extra-State War #375
+1878   Russo-Turkoman War of 1878-1881                 Extra-State War #376
+1878   Austrian-Bosnian War of 1878                    Extra-State War #377
+1878   Second British-Afghan War of 1878-1880          Extra-State War #379
+1879   Second British-Zulu War of 1879                 Extra-State War #380
+1879   War of the Pacific of 1879-1883                 Inter-State War #64
+1879   Argentine Indians War of 1879-1880              Intra-State War #608
+1880   Fourth Buenos Aires War of 1880                 Intra-State War #610
+1880   Gun War of 1880-1881                            Extra-State War #381
+1880   First Boer War of 1880-1881                     Extra-State War #382
+1881   Franco-Tunisian War of 1881-1882                Extra-State War #383
+1881   First British-Mahdi War of 1881-1885            Extra-State War #384
+1882   Third Franco-Vietnamese War of 1882-1884        Extra-State War #385
+1882   Conquest of Egypt of 1882                       Inter-State War #65
+1883   Haitian Civil War of 1883-1884                  Intra-State War #611
+1883   Second Zulu Internecine War of 1883-1884        Non-State War #1556
+1883   First Franco-Madagascan War of 1883-1885        Extra-State War #386
+1883   Oman-Ibadi War of 1883-1884                     Non-State War #1557
+1884   Sino-French War of 1884-1885                    Inter-State War #67
+1884   Second Australian Aboriginal War of 1884-1894   Non-State War #1558
+1884   Fourth Colombian War of 1884-1885               Intra-State War #612
+1885   Peru's National Problem of 1885                 Intra-State War #613
+1885   Second Central American War of 1885             Inter-State War #70
+1885   Russo-Afgan War of 1885                         Extra-State War #390
+1885   Ethiopia-Mahdi War of 1885-1889                 Non-State War #1559
+1885   French Mandinka War of 1885-1886                Extra-State War #389
+1885   Serbian-Bulgarian War of 1885                   Extra-State War #391
+1885   Third British-Burmese War of 1885-1889          Extra-State War #387
+1887   First Italian-Ethiopian War of 1887             Extra-State War #392
+1888   Zambezi Conquest of 1888                        Extra-State War #393
+1888   German East Africa Company War of 1888-1889     Non-State War #1560
+1890   First Franco-Dahomeyan War of 1890              Extra-State War #394
+1890   First Yemeni Rebellion of 1890-1892             Intra-State War #616
+1890   Franco-Jolof War of 1890-1891                   Extra-State War #395
+1891   Second Chilean War of 1891                      Intra-State War #617
+1891    Zaili-Jinden Revolt of 1891                        Intra-State War #618
+1892    Second Franco-Dahomeyan War of 1892-1893           Extra-State War #396
+1892    Belgian-TibWar of 1892-1894                        Extra-State War #397
+1893    Brazil Federalists War of 1893-1894                Intra-State War #620
+1893    Rabih Zubayr-Bornu War of 1893                     Non-State War #1561
+1893    Brazil Naval War of 1893-1894                      Intra-State War #621
+1893    Third British-Ashanti War of 1893-1894             Extra-State War #398
+1893    Melilla War of 1893-1894                           Extra-State War #399
+1893    Mahdist-Italian War of 1893-1894                   Extra-State War #400
+1894    Tonghak Rebellion of 1894                          Intra-State War #623
+1894    Second Franco-Madagascan War of 1894-1895          Extra-State War #401
+1894    Second Dutch-Bali War of 1894                      Extra-State War #402
+1894    First Sino-Japanese War of 1894-1895               Inter-State War #73
+1894    Third Peru War of 1894-1895                        Intra-State War #625
+1895    Fifth Colombian War of 1895                        Intra-State War #626
+1895    Portuguese-Gaza Empire War of 1895                 Extra-State War #403
+1895    Ecuador Liberals War of 1895                       Intra-State War #627
+1895    Second Spanish-Cuban War of 1895-1898              Extra-State War #404
+1895    First Gansu Muslim War of 1895-1896                Intra-State War #628
+1895    Japan-Taiwanese War of 1895                        Extra-State War #405
+1895    Mazrui Rebellion of 1895-1896                      Extra-State War #406
+1895    Druze-Turkish War of 1895-1896                     Intra-State War #630
+1895    Second Italian-Ethiopian War of 1895-1896          Extra-State War #407
+1896    Second Cretan War of 1896-1897                     Intra-State War #631
+1896    Second Second British-Mahdi War of 1896-1899       Extra-State War #409
+1896    Spanish-Philippine War of 1896-1898                Extra-State War #410
+1896    Third Brazil-Canudos War of 1896-1897              Intra-State War #632
+1897    British-South Nigerian War of 1897                 Extra-State War #411
+1897    Greco-Turkish War of 1897                          Inter-State War #76
+1897    British-Pathan War of 1897-1898                    Extra-State War #412
+1898    Hut Tax War of 1898                                Extra-State War #413
+1898    Spanish-American War of 1898                       Inter-State War #79
+1899    American-Philippine War of 1899-1902               Extra-State War #414
+1899    Fourth Venezuelan War of 1899                      Intra-State War #633
+1899    French Conquest of Chad of 1899-1900               Extra-State War #415
+1899    Second Yaqui War of 1899-1900                      Intra-State War #635
+1899    Second Boer War of 1899-1902                       Extra-State War #416
+        Sixth Colombian (War of the 1,000 Days) of 1899-
+1899   1902                                                Intra-State War #636
+1900    Last Ashanti War of 1900                           Extra-State War #417
+1900    Boxer Rebellion of 1900                            Inter-State War #82
+1900    Sino-Russian War of 1900                           Inter-State War #83
+1901    Somali Rebellion of 1901-1904                      Extra-State War #419
+1901    Fifth Venezuelan War of 1901-1903                  Intra-State War #638
+1902   Bailundu Revolt of 1902-1903                  Extra-State War #420
+1902   Kuanhama Rebellion of 1902-1904               Extra-State War #421
+1903   British Conquest of Kano and Sokoto of 1903   Extra-State War #422
+1903   Ilinden War of 1903                           Intra-State War #640
+1904   First Uruguay War of 1904                     Intra-State War #641
+1904   South West African Revolt of 1904-1906        Extra-State War #423
+1904   Russo-Japanese War of 1904-1905               Inter-State War #85
+1904   Second Dutch-Achinese War of 1904-1907        Extra-State War #424
+1904   Younghusband Expedition of 1904               Extra-State War #425
+1904   Second Yemeni Rebellion of 1904-1906          Intra-State War #642
+1905   Bloody Sunday War of 1905-1906                Intra-State War #643
+1905   Maji-Maji Revolt of 1905-1906                 Extra-State War #426
+1906   Sokoto Uprising of 1906                       Extra-State War #427
+1906   Third British-Zulu War of 1906                Extra-State War #429
+1906   Third Central American War of 1906            Inter-State War #88
+1907   Fourth Central American War of 1907           Inter-State War #91
+1907   Romanian Peasant Revolt of 1907               Intra-State War #645
+1907   Dembos War of 1907-1910                       Extra-State War #430
+1907   Anti-Foreign Revolt of 1907-1910              Extra-State War #431
+1907   Japan-Korean Guerrillas War of 1907-1910      Extra-State War #432
+1907   Overthrow of Abd el-Aziz of 1907-1908         Intra-State War #646
+1908   Iranian Constitution War of 1908-1909         Intra-State War #647
+1909   Young Turks Counter-coup of 1909              Intra-State War #648
+1909   French Conquest of Wadai of 1909-1911         Extra-State War #433
+1909   Second Spanish-Moroccan War of 1909-1910      Inter-State War #94
+1910   Second Albanian Revolt of 1910-1912           Intra-State War #650
+1910   Asir-Yemen Revolt of 1910-1911                Intra-State War #651
+1910   Third Mexican War of 1910-1914                Intra-State War #652
+1911   Paraguay War of 1911-1912                     Intra-State War #656
+1911   Italian-Turkish War of 1911-1912              Inter-State War #97
+1911   First Nationalists War of 1911                Intra-State War #657
+1912   French-Berber War of 1912                     Extra-State War #434
+1912   First Sino-Tibetan War of 1912-1913           Extra-State War #435
+1912   Cuban Black Uprising of 1912                  Intra-State War #658
+1912   Ecuadorian Civil War of 1912-1914             Intra-State War #670
+1912   First Balkan War of 1912-1913                 Inter-State War #100
+1913   Moroccan-Berber War of 1913-1915              Extra-State War #436
+1913   Moro Rebellion of 1913                        Extra-State War #437
+1913   Second Balkan War of 1913                     Inter-State War #103
+1913   Second Nationalists War of 1913               Intra-State War #671
+1914   China Pai Ling (White Wolf) War of 1914       Intra-State War #672
+1914   World War I of 1914-1918                      Inter-State War #106
+1914   Fourth Mexican War of 1914-1920               Intra-State War #673
+1916   Southern China Revolt of 1916-1918            Intra-State War #675
+1916   Russia-Turkestan War of 1916-1917              Intra-State War #676
+1917   Russian Civil War of 1917-1921                 Intra-State War #677
+1918   Second Sino-Tibetan War of 1918                Extra-State War #440
+1918   Finnish Civil War of 1918                      Intra-State War #680
+1918   Caco Revolt of 1918-1920                       Extra-State War #441
+1918   Western Ukrainian War of 1918-1919             Intra-State War #681
+1918   Estonian War of Liberation of 1918-1920        Inter-State War #107
+1918   Latvian War of Liberation of 1918-1920         Inter-State War #108
+1919   Sparticist Rising of 1919                      Intra-State War #682
+1919   Russo-Polish War of 1919-1920                  Inter-State War #109
+1919   Hungary's Red Terror War of 1919-1920          Intra-State War #683
+1919   Hungarian Adversaries War of 1919              Inter-State War #112
+1919   Third British-Afghan War of 1919               Extra-State War #442
+1919   Second Greco-Turkish War of 1919-1922          Inter-State War #115
+1919   First Nejd-Hejaz War of 1919                   Non-State War #1567
+1919   First British-Waziristan War of 1919-1920      Extra-State War #443
+1919   Franco-Turkish War of 1919-1921                Inter-State War #116
+1920   Franco-Syrian War of 1920                      Extra-State War #444
+1920   Iraqi-British War of 1920                      Extra-State War #445
+1920   First Chinese Warlord War of 1920              Intra-State War #685
+1920   Lithuanian-Polish War of 1920                  Inter-State War #117
+1920   Green Rebellion of 1920-1921                   Intra-State War #686
+1920   Gilan Marxists War of 1920-1921                Intra-State War #687
+1920   Conquest of Mongolia of 1920-1921              Extra-State War #446
+1920   Italian Fascist War of 1920-1922               Intra-State War #688
+1921   Kronstadt Rebellion of 1921                    Intra-State War #690
+1921   Rif Rebellion of 1921-1926                     Extra-State War #449
+1921   Moplah Rebellion of 1921-1922                  Extra-State War #450
+1921   Bashmachi in Turkestan War of 1921-1923        Intra-State War #691
+1922   Second Chinese Warlord War of 1922             Intra-State War #692
+1923   Italian-Sanusi War of 1923-1931                Extra-State War #447
+1923   Agrarian Rising of 1923                        Intra-State War #693
+1923   De La Huerta Rebellion of 1923-1924            Intra-State War #695
+1924   Honduran Conservative War of 1924              Intra-State War #696
+1924   First Afghan Anti-Reform War of 1924-1925      Intra-State War #697
+1924   Second Nejd-Hejaz War of 1924-1925             Non-State War #1568
+1925   Franco-Druze War of 1925-1927                  Extra-State War #451
+1925   Third Chinese Warlord War of 1925-1926         Intra-State War #698
+1926   Chinese Northern Expedition War of 1926-1928   Intra-State War #700
+1926   Cristeros Revolt of 1926-1929                  Intra-State War #701
+1928   Ethiopian Northern Resistance of 1928-1930     Intra-State War #702
+1928   Second Gansu Muslim War of 1928-1930           Intra-State War #703
+1928   Second Afghan Anti-Reform War of 1928-1929     Intra-State War #705
+1929   Intra-Guomindang War of 1929-1930              Intra-State War #706
+1929    Escoban Rebellion of 1929                         Intra-State War #707
+1929    Ikhwan Revolt of 1929-1930                        Intra-State War #708
+1929    Manchurian War of 1929                            Inter-State War #118
+1930    Yen Bai Uprising of 1930-1931                     Extra-State War #452
+1930    Chinese Civil War Phase 1 of 1930-1936            Intra-State War #710
+1930    Saya San's Rebellion of 1930-1932                 Extra-State War #453
+1931    Xinjiang Muslim Revolt of 1931-1934               Intra-State War #711
+1931    Second Sino-Japanese War of 1931-1933             Inter-State War #121
+1932    Matanza War of 1932                               Intra-State War #712
+1932    Aprista Revolt of 1932                            Intra-State War #713
+1932    Paulista Rebellion of 1932                        Intra-State War #715
+1932    Chaco War of 1932-1935                            Inter-State War #124
+1934    Fukien Revolt of 1934                             Intra-State War #716
+1934    Saudi-Yemeni War of 1934                          Inter-State War #125
+1934    Spanish Miners War of 1934                        Intra-State War #717
+1935    Conquest of Ethiopia of 1935-1936                 Inter-State War #127
+1936    British-Palestinian War of 1936-1939              Extra-State War #454
+1936    Spanish Civil War of 1936-1939                    Intra-State War #718
+1936    Second Britain-Waziristan War of 1936-1938        Extra-State War #455
+1937    Third Sino-Japanese War of 1937-1941              Inter-State War #130
+1938    Changkufeng War of 1938                           Inter-State War #133
+1939    Nomonhan War of 1939                              Inter-State War #136
+1939   World War II of 1939-1945                          Inter-State War #139
+1939    Russo-Finnish War of 1939-1940                    Inter-State War #142
+1940    Franco-Thai War of 1940-1941                      Inter-State War #145
+1944    Greek Civil War of 1944-1949                      Intra-State War #720
+1945    Polish Ukrainians War of 1945-1947                Intra-State War #721
+1945    Ukrainian Partisans War of 1945-1947              Intra-State War #722
+1945    Forest Brethren War of 1945-1951                  Intra-State War #723
+1945    Indonesian War of 1945-1946                       Extra-State War #456
+1946    Chinese Civil War Phase 2 of 1946-1950            Intra-State War #725
+1946    Partition Communal War of 1946-1947               Non-State War #1570
+1946    French-Indochina War of 1946-1954                 Extra-State War #457
+1947    Taiwan Revolt of 1947                             Intra-State War #726
+1947    Paraguay War of 1947                              Intra-State War #727
+1947    Third Franco-Madagascan War of 1947-1948          Extra-State War #459
+1947    Hyderabad War of 1947-1948                        Non-State War #1571
+1947    First Kashmir War of 1947-1949                    Inter-State War #147
+1947    Palestine War of 1947-1948                        Non-State War #1572
+1948    Yemeni Imamate War of 1948                        Intra-State War #728
+1948    Costa Rica War of 1948                            Intra-State War #730
+1948    Cheju Rebellion of 1948-1949                      Non-State War #1573
+        Seventh Colombian (“La Violencia”) War of 1948-
+1948   1958                                               Intra-State War #731
+1948   Arab-Israeli War of 1948-1949               Inter-State War #148
+1948   Malayan Rebellion of 1948-1957              Extra-State War #460
+1948   First Burmese War of 1948-1951              Intra-State War #732
+1948   Indo-Hyderabad War of 1948                  Extra-State War #461
+1950   Third Sino-Tibetan War of 1950              Extra-State War #462
+1950   South Moluccas War of 1950                  Intra-State War #733
+1950   Korean War of 1950-1953                     Inter-State War #151
+1950   Hukbalahap Rebellion of 1950-1954           Intra-State War #735
+1952   Franco-Tunisian War of 1952-1954            Extra-State War #463
+1952   Bolivia War of 1952                         Intra-State War #737
+1952   British-Mau Mau War of 1952-1956            Extra-State War #464
+1953   Moroccan Independence War of 1953-1956      Extra-State War #465
+1953   Indonesia-Darul Islam War of 1953           Intra-State War #738
+1954   Off-shore Islands War of 1954-1955          Inter-State War #153
+1954   Third Franco-Algerian War of 1954-1962      Extra-State War #466
+1955   Argentine Military War of 1955              Intra-State War #740
+1956   Tibetan Khamba Rebellion of 1956-1959       Intra-State War #741
+1956   Sinai War of 1956                           Inter-State War #155
+1956   Soviet Invasion of Hungary of 1956          Inter-State War #156
+1956   Indonesian Leftists War of 1956-1962        Intra-State War #742
+1957   French-Cameroon War of 1957-1958            Extra-State War #467
+1957   Ifni War of 1957-1958                       Inter-State War #158
+1958   First Lebanese War of 1958                  Intra-State War #743
+1958   Cuban Revolution of 1958-1959               Intra-State War #745
+1958   Taiwan Straits War of 1958                  Inter-State War #159
+1958   Second Burmese War of 1958-1960             Intra-State War #746
+1959   Iraq-Shammar War of 1959                    Intra-State War #747
+1959   Rwandan Social Revolution of 1959-1962      Non-State War #1574
+1960   Vietnam War Phase 1 of 1960-1965            Intra-State War #748
+1960   First DRC (Zaire) War of 1960-1963          Intra-State War #750
+1960   First Laotian War of 1960-1962              Intra-State War #751
+1961   Angolan-Portuguese War of 1961-1974         Extra-State War #469
+1961   First Iraqi Kurds War of 1961-1963          Intra-State War #752
+1962   Algerian Revolutionaries War of 1962-1963   Intra-State War #753
+1962   War in Assam of 1962                        Inter-State War #160
+1962   North Yemen War of 1962-1969                Intra-State War #755
+1963   Second Laotian War Phase 1 of 1963-1968     Intra-State War #756
+1963   First Ogaden War of 1963-1964               Intra-State War #757
+1963   First South Sudan War of 1963-1972          Intra-State War #758
+1963   Second DRC (Jeunesse) War of 1963-1965      Intra-State War #760
+1963   First Rwanda War of 1963-1964               Intra-State War #761
+1964   Third DRC (Simba) Rebellion of 1964-1965    Intra-State War #762
+1964   Zanzibar Arab-African War of 1964           Intra-State War #763
+1964   Mozambique-Portuguese War of 1964-1975      Extra-State War #471
+1965   Vietnam War Phase 2 of 1965-1975               Inter-State War #163
+1965   Second Iraqi Kurds War of 1965-1966            Intra-State War #765
+1965   Dominican Republic War of 1965                 Intra-State War #766
+1965   First West Papua War of 1965-1969              Intra-State War #767
+1965   Second Kashmir War of 1965                     Inter-State War #166
+1966   First Uganda War of 1966                       Intra-State War #768
+1966   First Guatemala War of 1966-1968               Intra-State War #770
+1966   First Chad (FROLINAT) Rebellion of 1966-1971   Intra-State War #771
+1967   Cultural Revolution Phase 1 of 1967            Intra-State War #772
+1967   Six Day War of 1967                            Inter-State War #169
+1967   Third Burmese War of 1967-1980                 Intra-State War #773
+1967   Biafra War of 1967-1970                        Intra-State War #775
+1967   Cultural Revolution Phase 2 of 1967-1968       Intra-State War #776
+1968   Second Laotian War Phase 2 of 1968-1973        Inter-State War #170
+1968   Dhofar Rebellion Phase 1 of 1968-1971          Non-State War #1577
+1969   Third Iraqi Kurds War of 1969-1970             Intra-State War #777
+1969   War of Attrition of 1969-1970                  Inter-State War #172
+1969   Football War of 1969                           Inter-State War #175
+1970   Naxalite Rebellion of 1970-1971                Intra-State War #778
+1970   War of the Communist Coalition of 1970-1971    Inter-State War #176
+1970   Black September War of 1970                    Intra-State War #780
+1970   Second Guatemala War of 1970-1971              Intra-State War #781
+1971   Pakistan-Bengal War of 1971                    Intra-State War #782
+1971   First Sri Lanka-JVP War of 1971                Intra-State War #783
+1971   Khmer Rouge War of 1971-1975                   Intra-State War #785
+1971   War for Bangladesh of 1971                     Inter-State War #178
+1972   First Philippine-Moro War of 1972-1981         Intra-State War #786
+1972   Communist Insurgency of 1972-1973              Intra-State War #787
+1972   Eritrean Split of 1972-1974                    Intra-State War #788
+1972   First Burundi War of 1972                      Intra-State War #789
+1972   Philippines-NPA War of 1972-1992               Intra-State War #790
+1972   Rhodesia War of 1972-1979                      Intra-State War #791
+1973   Baluchi Separatists War of 1973-1977           Intra-State War #792
+1973   Chilean Coup of 1973                           Intra-State War #793
+1973   Yom Kippur War of 1973                         Inter-State War #181
+1973   Dhofar Rebellion Phase 2 of 1973-1975          Intra-State War #795
+1974   Fourth Iraqi Kurds War of 1974-1975            Intra-State War #797
+1974   Turco-Cypriot War of 1974                      Inter-State War #184
+1974   Angola Guerilla War of 1974-1975               Non-State War #1581
+1975   Eritrean War of 1975-1978                      Intra-State War #798
+1975   Argentine Leftists War of 1975-1977            Intra-State War #800
+1975   Second Lebanese War of 1975-1976               Intra-State War #801
+1975   East Timorese War Phase 1 of 1975              Non-State War #1582
+1975   East Timorese War Phase 2 of 1975-1976         Extra-State War #472
+1975   Namibian War of 1975-1988                       Extra-State War #473
+1975   War over Angola of 1975-1976                    Inter-State War #186
+1975   Western Sahara War of 1975-1983                 Extra-State War #474
+1976   Second West Papua War of 1976-1978              Intra-State War #802
+1976   Third Laotian War of 1976-1979                  Intra-State War #803
+1976   Angolan Control War of 1976-1991                Intra-State War #804
+1976   Second Ogaden War Phase 1 of 1976-1977          Intra-State War #805
+1976   East Timorese War Phase 3 of 1976-1979          Intra-State War #806
+1977   Second Ogaden War Phase 2 of 1977-1978          Inter-State War #187
+1977   Vietnamese-Cambodian Border War of 1977-1979    Inter-State War #189
+1978   Third Lebanese War of 1978                      Intra-State War #807
+1978   Second Ogaden War Phase 3 of 1978-1980          Intra-State War #808
+1978   Third Guatemala War of 1978-1984                Intra-State War #809
+1978   Saur Revolution of 1978                         Intra-State War #810
+1978   Fourth DRC (Shaba) War of 1978                  Intra-State War #811
+1978   First Afghan Mujahideen Uprising of 1978-1980   Intra-State War #812
+1978   Overthrow of the Shah of 1978-1979              Intra-State War #813
+1978   Sandinista Rebellion of 1978-1979               Intra-State War #815
+1978   Ugandan-Tanzanian War of 1978-1979              Inter-State War #190
+1979   Khmer Insurgency of 1979-1989                   Extra-State War #475
+1979   Anti-Khomeini Coalition War of 1979-1984        Intra-State War #816
+1979   Sino-Vietnamese Punitive War of 1979            Inter-State War #193
+1979   El Salvador War of 1979-1992                    Intra-State War #817
+1979   Mozambique War of 1979-1992                     Intra-State War #818
+1980   Soviet Quagmire of 1980-1989                    Extra-State War #476
+1980   Second Chad (Habre Revolt) War of 1980-1984     Intra-State War #820
+1980   Iran-Iraq War of 1980-1988                      Inter-State War #199
+1980   Second Uganda War of 1980-1986                  Intra-State War #822
+1980   Nigeria-Muslim War of 1980-1981                 Intra-State War #823
+1981   Hama War of 1981-1982                           Intra-State War #825
+1982   Tigrean and Eritrean War of 1982-1991           Intra-State War #826
+1982   Shining Path War of 1982-1992                   Intra-State War #827
+1982   Contra War of 1982-1990                         Intra-State War #828
+1982   Falklands War of 1982                           Inter-State War #202
+1982   War over Lebanon of 1982                        Inter-State War #205
+1983   Matabeleland War of 1983-1987                   Intra-State War #831
+1983   Fourth Burmese War of 1983-1988                 Intra-State War #832
+1983   Fourth Lebanese Civil War of 1983-1984          Intra-State War #833
+1983   First Sri Lanka Tamil War of 1983-2002          Intra-State War #835
+1983   Second South Sudan War of 1983-2005             Intra-State War #836
+1984   Indian Golden Temple War of 1984                Intra-State War #837
+1984   First Turkish Kurds War of 1984-1986            Intra-State War #838
+1985   Fifth Iraqi Kurds War of 1985-1988              Intra-State War #840
+1986   South Yemen War of 1986                         Intra-State War #842
+1986   Holy Spirit Movement War of 1986-1987            Intra-State War #843
+1986   War over the Aouzou Strip of 1986-1987           Inter-State War #207
+1987   Sino-Vietnamese Border War of 1987               Inter-State War #208
+1987   Second Sri Lanka-JVP War of 1987-1989            Intra-State War #845
+1987   Inkatha-ANC War of 1987-1994                     Intra-State War #846
+1988   Fifth Burmese War of 1988                        Intra-State War #847
+1988   First Somalia War of 1988-1991                   Intra-State War #848
+1989   Fifth Lebanese War of 1989-1990                  Intra-State War #850
+1989   Second Afghan Mujahideen Uprising of 1989-2001   Intra-State War #851
+1989   Third Chad (Deby Coup) War of 1989-1990          Intra-State War #852
+1989   First Aceh War of 1989-1991                      Intra-State War #853
+1989   Bougainville Secession War of 1989-1992          Intra-State War #854
+1989   Eighth Colombian War of 1989-present             Intra-State War #856
+1989   First Cambodian Civil War of 1989-1991           Intra-State War #857
+1989   Romania War of 1989                              Intra-State War #858
+1989   The First Liberia War of 1989-1990               Intra-State War #860
+1990   Gulf War of 1990-1991                            Inter-State War #211
+1990   Kashmir Insurgents War of 1990-2005              Intra-State War #861
+1991   Shiite and Kurdish War of 1991                   Intra-State War #862
+1991   First Sierra Leone War of 1991-1996              Intra-State War #863
+1991   Croatian Independence War of 1991-1992           Intra-State War #864
+1991   Second Turkish Kurds War of 1991-1999            Intra-State War #865
+1991   First PKK in Iraq of 1991-1992                   Extra-State War #477
+1991    SPLA Division (Dinka-Nuer) War of 1991-1992     Intra-State War #866
+1991   Jukun-Tiv War of 1991-1992                       Intra-State War #868
+1991   Second Somalia War of 1991-1997                  Intra-State War #870
+1991   Georgia War of 1991-1992                         Intra-State War #871
+1991   Nagorno-Karabakh War of 1991-1993                Intra-State War #872
+1991   Dniestrian Independence War of 1991-1992         Intra-State War #873
+1992   Algerian Islamic Front War of 1992-1999          Intra-State War #875
+1992   War of Bosnian Independence of 1992              Inter-State War #215
+1992   Tajikistan War of 1992-1997                      Intra-State War #876
+1992   Bosnian-Serb Rebellion of 1992-1995              Intra-State War #877
+1992   Second Liberia War of 1992-1995                  Intra-State War #878
+1992   Angolan War of Cities of 1992-1994               Intra-State War #880
+1993   Second Cambodia Civil War of 1993-1997           Intra-State War #881
+1993   Azeri-Armenian War of 1993-1994                  Inter-State War #216
+1993   Abkhazia Revolt of 1993-1994                     Intra-State War #882
+1993   Second Burundi War of 1993-1998                  Intra-State War #883
+1994   South Yemeni Secessionist War of 1994            Intra-State War #885
+1994   Second Rwanda War of 1994                        Intra-State War #886
+1994   First Chechnya War of 1994-1996                  Intra-State War #888
+1994   Iraqi Kurd Internecine War of 1994-1995          Intra-State War #890
+1995   Cenepa Valley War of 1995                        Inter-State War #217
+1995   Croatia-Krajina War of 1995                       Intra-State War #891
+1996   Third Liberia War of 1996                         Intra-State War #892
+1996   Sixth Iraqi Kurds War of 1996                     Intra-State War #893
+1996   Fifth DRC War of 1996-1997                        Intra-State War #895
+1997   Third Rwanda War of 1997-1998                     Intra-State War #896
+1997   Second PKK in Iraq of 1997                        Extra-State War #479
+1997   First Congo Brazzaville War of 1997               Intra-State War #897
+1998   Second Sierra Leone War of 1998-2000              Intra-State War #898
+1998   Kosovo Independence War of 1998-1999              Intra-State War #900
+1998   Badme Border War of 1998-2000                     Inter-State War #219
+1998   Guinea-Bissau Military War of 1998-1999           Intra-State War #902
+1998   Africa's World War of 1998-2002                   Intra-State War #905
+1998   Fourth Chad (Togoimi Revolt) War of 1998-2000     Intra-State War #906
+1998   Third Angolan War of 1998-2002                    Intra-State War #907
+1998   Second Congo (Brazzaville) War of 1998-1999       Intra-State War #908
+1999   Moluccas Sectarian War of 1999-2000               Intra-State War #910
+1999   War for Kosovo of 1999                            Inter-State War #221
+1999   First Nigeria Christian-Muslim War of 1999-2000   Intra-State War #911
+1999   Second Aceh War of 1999-2002                      Intra-State War #912
+1999   Kargil War of 1999                                Inter-State War #223
+1999   Oromo Liberation War of 1999                      Intra-State War #913
+1999   Hema-Lendu War of 1999-2005                       Non-State War #1594
+1999   Second Chechnya War of 1999-2003                  Intra-State War #915
+2000   Second Philippine-Moro War of 2000-2001           Intra-State War #916
+2000   Guinean War of 2000-2001                          Intra-State War #917
+2000   Al Aqsa Intifada of 2000-2003                     Extra-State War #480
+2001   Third Burundi War of 2001-2003                    Intra-State War #918
+2001   Fourth Rwanda War of 2001                         Intra-State War #920
+2001   Invasion of Afghanistan of 2001                   Inter-State War #225
+2001   First Nepal Maoist Insurgency of 2001-2003        Intra-State War #921
+2001   Afghan Resistance of 2001-present                 Extra-State War #481
+2002   Fourth Liberia War of 2002-2003                   Intra-State War #922
+2002   Ethiopian Anyuaa-Nuer War of 2002-2003            Intra-State War #923
+2002   Cote d'Ivoire Military War of 2002-2004           Intra-State War #925
+2003   Third Philippine-Moro War of 2003                 Intra-State War #926
+2003   Darfur War of 2003-2006                           Intra-State War #927
+2003   Invasion of Iraq of 2003                          Inter-State War #227
+2003   Iraqi Resistance of 2003-present                  Extra-State War #482
+2003   Third Aceh War of 2003-2004                       Intra-State War #930
+2003   Second Nepal Maoists War of 2003-2006             Intra-State War #931
+2004   Waziristan War of 2004-2006                       Intra-State War #932
+2004   Second Nigeria Christian-Muslim War of 2004       Intra-State War #933
+2004   First Yemeni Cleric War of 2004-2005              Intra-State War #935
+2005   Philippine Joint Offensive of 2005-2006           Intra-State War #936
+2005   Fifth Chad War of 2005-2006                  Intra-State War #937
+2006   Third Somalia War of 2006-2008               Intra-State War #938
+2006   Second Sri Lanka Tamil War of 2006-present   Intra-State War #940
+2007   Second Yemeni Cleric War of 2007             Intra-State War #941
