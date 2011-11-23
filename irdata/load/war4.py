@@ -16,7 +16,6 @@ from irdata import model
 from irdata.load import utils
 
 _KLS = (model.CowWarType,
-        model.War4WhereFought,
         model.War4Outcome,
         model.War4,
         model.War4Side,
