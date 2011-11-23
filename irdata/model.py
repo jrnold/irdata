@@ -336,17 +336,21 @@ class Nmc(Base, Mixin):
     irst = sa.Column(sa.Float)
     irstsource = sa.Column(sa.Unicode)
     irstnote = sa.Column(sa.Unicode)
-    irstqualitycode = sa.Column(sa.ForeignKey(NmcIrstqualitycode.__table__.c.value,
+    irstqualitycode = sa.Column(sa.Unicode(1),
+                                sa.ForeignKey(NmcIrstqualitycode.__table__.c.value,
                                               deferrable=True))
-    irstanomalycode = sa.Column(sa.ForeignKey(NmcIrstanomalycode.__table__.c.value,
+    irstanomalycode = sa.Column(sa.Unicode(1),
+                                sa.ForeignKey(NmcIrstanomalycode.__table__.c.value,
                                               deferrable=True))
     ## Energy consumption
     pec = sa.Column(sa.Float)
     pecsource = sa.Column(sa.Unicode)
     pecnote = sa.Column(sa.Unicode)
-    pecqualitycode = sa.Column(sa.ForeignKey(NmcPecqualitycode.__table__.c.value,
+    pecqualitycode = sa.Column(sa.Unicode(1),
+                               sa.ForeignKey(NmcPecqualitycode.__table__.c.value,
                                              deferrable=True))
-    pecanomalycode = sa.Column(sa.ForeignKey(NmcPecanomalycode.__table__.c.value,
+    pecanomalycode = sa.Column(sa.Unicode(1),
+                               sa.ForeignKey(NmcPecanomalycode.__table__.c.value,
                                              deferrable=True))
     ## Military expenditure
     milex = sa.Column(sa.Float)
@@ -360,8 +364,9 @@ class Nmc(Base, Mixin):
     upop = sa.Column(sa.Float)
     upopsource = sa.Column(sa.Unicode)
     upopnote = sa.Column(sa.Unicode)
-    upopqualitycode = sa.Column(sa.ForeignKey(NmcUpopqualitycode.__table__.c.value,
-                                             deferrable=True))
+    upopqualitycode = sa.Column(sa.Unicode(1),
+                                sa.ForeignKey(NmcUpopqualitycode.__table__.c.value,
+                                              deferrable=True))
     # upopanomalycode = sa.Column(sa.ForeignKey(NmcUpopqualitycode.__table__.c.value,
     #                                          deferrable=True))
     upopgrowth = sa.Column(sa.Float)
@@ -370,9 +375,11 @@ class Nmc(Base, Mixin):
     tpop = sa.Column(sa.Float)
     tpopsource = sa.Column(sa.Unicode)
     tpopnote = sa.Column(sa.Unicode)
-    tpopqualitycode = sa.Column(sa.ForeignKey(NmcTpopqualitycode.__table__.c.value,
+    tpopqualitycode = sa.Column(sa.Unicode(1),
+                                sa.ForeignKey(NmcTpopqualitycode.__table__.c.value,
                                               deferrable=True))
-    tpopanomalycode = sa.Column(sa.ForeignKey(NmcTpopanomalycode.__table__.c.value,
+    tpopanomalycode = sa.Column(sa.Unicode(1),
+                                sa.ForeignKey(NmcTpopanomalycode.__table__.c.value,
                                               deferrable=True))
     cinc = sa.Column(sa.Float)
 
