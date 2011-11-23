@@ -3,3 +3,5 @@ external
 /sadisplay/*
 *.dump
 /config.yaml
+/doc/build
+/doc/source/tables
