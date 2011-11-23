@@ -6,10 +6,15 @@
 Welcome to irdata's documentation!
 ==================================
 
-Contents:
+Database Tables
+==================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
+   :glob:
+ 
+   tables/*
+
 
 Indices and tables
 ==================
