@@ -7,7 +7,9 @@ from irdata import model
 METADIR = path.join(irdata.__path__[0], 'data', 'metadata')
 
 def fkey_string(x):
-    return "%s.%s" % (x.column.table.name, x.column.name)
+    return ":doc:`%s.%s <%s>`" % (x.column.table.name,
+                                  x.column.name,
+                                  x.column.table.name)
 
 def db_metadata(x):
     y = []
