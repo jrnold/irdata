@@ -4,6 +4,7 @@ import collections
 import datetime
 import zipfile
 import re
+import calendar
 
 import sqlalchemy as sa
 import yaml
@@ -13,7 +14,7 @@ from irdata import model
 from irdata.load import utils
 
 def load_cow_states(src):
-    """ Load data for tables cow_statelist and cow_system_membership """
+    """ Load data into cow_statelist and cow_system_membership """
     session = model.SESSION()
     reader = csv2.DictReader(src)
     reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
@@ -34,7 +35,7 @@ def load_cow_states(src):
     session.commit()
 
 def load_cow_majors(src):
-    """ Load data for table cow_majors """
+    """ Load data into cow_majors """
     session = model.SESSION()
     reader = csv2.DictReader(src)
     reader.fieldnames = [utils.camel2under(x) for x in reader.fieldnames]
@@ -51,10 +52,19 @@ def load_cow_majors(src):
     session.commit()
 
 def load_cow_system():
-    """ load data from table cow_system """ 
+    """ load data into cow_system """ 
     session = model.SESSION()
     for st in session.query(model.CowSysMembership):
         for yr in range(st.st_date.year, st.end_date.year + 1):
+            eoy = datetime.date(yr, 12, 31)
+            boy = datetime.date(yr, 1, 1)
+            moy = datetime.date(yr, 7, 2)
+            start_year = (st.st_date <= boy and st.end_date >= boy)
+            mid_year = (st.st_date <= moy and st.end_date >= moy)
+            end_year = (st.st_date <= eoy and st.end_date >= eoy)
+            ndays = 366 if calendar.isleap(yr) else 365
+            frac_year = (max(boy, st.start_date) -
+                         min(eoy, st.end_date)).days / ndays
             session.add(model.CowSystem(ccode = st.ccode,
                                         year = yr))
         session.flush()

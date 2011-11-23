@@ -205,10 +205,13 @@ class CowSystem(Base, Mixin):
                       sa.ForeignKey(CowState.__table__.c.ccode),
                       primary_key=True)
     year = sa.Column(sa.Integer, primary_key=True)
+    start_year = sa.Column(sa.Boolean)
+    end_year = sa.Column(sa.Boolean)
+    mid_year = sa.Column(sa.Boolean)
+    frac_year = sa.Column(sa.Boolean)
 
 
 class KsgState(Base, Mixin):
-    """ State in K.S. Gleditsch's statelist v. 4 """ 
     __tablename__ = 'ksg_statelist'
 
     idnum = sa.Column(sa.Integer, primary_key=True)
@@ -218,7 +221,6 @@ class KsgState(Base, Mixin):
 
 
 class KsgSysMembership(Base, Mixin):
-    """ System membership in K.S. Gleditsch's statelist v. 4 """
     __tablename__ = 'ksg_sys_membership'
     ONGOING_DATE = datetime.date(2008, 11, 1)
     ccode = sa.Column(sa.Integer,
@@ -232,8 +234,6 @@ class KsgSysMembership(Base, Mixin):
 
 
 class KsgSystem(Base, Mixin):
-    """ State system in K.S. Gleditsch's statelist v. 4
-    """
     __tablename__ = 'ksg_system'
     ccode = sa.Column(sa.Integer,
                       sa.ForeignKey(KsgState.__table__.c.idnum),
