@@ -48,6 +48,9 @@ Description
 
 {description}
 
+Metadata
+----------
+
 {metadata}
 """
 
