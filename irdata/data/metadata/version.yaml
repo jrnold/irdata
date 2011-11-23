@@ -1,7 +1,6 @@
 columns:
-  version: null
-creator: ''
-date: ''
-description: ''
-see_also: ''
-source: ''
+  version: "irdata database version number"
+description: "irdata database version number"
+  
+
+

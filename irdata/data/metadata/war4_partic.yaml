@@ -1,18 +1,35 @@
 columns:
-  africa: Was any part of the war fought in Africa?
-  asia: Was any part of the war fought in Asia?
-  bat_death: null
-  belligerent: null
-  europe: Was any part of the war fought in Europe?
-  initiator: null
-  mid_east: Was any part of the war fought in Middle East?
-  oceania: Was any part of the war fought in Oceania?
-  outcome: null
-  side: null
-  war_num: null
-  west_hem: Was any part of the war fought in the Western Hemisphere?
+  africa: "Was any part of the war fought in Africa?"
+  asia: "Was any part of the war fought in Asia?"
+  bat_death: "Number of battle deaths"
+  belligerent: "Belligerent"
+  europe: "Was any part of the war fought in Europe?"
+  initiator: "Whether the belligerent initiated the war"
+  mid_east: "Was any part of the war fought in Middle East?"
+  oceania: "Was any part of the war fought in Oceania?"
+  outcome: "war outcome"
+  side: "Side participated on. Since there are only two sides to each war, this is stored as boolean value."
+  war_num: "War Number"
+  west_hem: "Was any part of the war fought in the Western Hemisphere?"
 creator: ''
 date: ''
-description: ''
-see_also: ''
-source: ''
+see_also:
+  - "Sarkees, Meredith Reid and Frank Wayman (2010). Resort to War: 1816 - 2007. CQ Press"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/WarList_NEW.html"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/IntraStateWars_Codebook.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/NonStateWars_Codebook.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/InterStateWars_Codebook.pdf"
+source:
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/NonStateWarData_v4.0.csv"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/InterStateWarData_v4.0.csv"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/IntraStateWarData_v4.1.csv"
+description: |
+  Participants in COW Wars (v. 4).
+
+  This table contains entries for each participant in each war.  A
+  participant is a unique (`war_num`, `belligerent`, `side`) tuple.
+  Thus a belligerent can paticipate twice in a war, once on each side.
+  France in World War II is an example of this.
+  
+  
+  

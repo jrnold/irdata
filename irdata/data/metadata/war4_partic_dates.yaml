@@ -1,15 +1,32 @@
 columns:
-  belligerent: null
-  end_date_max: null
-  end_date_min: null
-  ongoing: War is ongoing
-  partic_num: null
-  side: null
-  start_date_max: null
-  start_date_min: null
-  war_num: null
+  belligerent: "Belligerent"
+  end_date_max: "End date (maximum)"
+  end_date_min: "End date (minimum)"
+  ongoing: "War is ongoing"
+  partic_num: "nth interval for this participant in this war"
+  side: "Side participant is fighting on"
+  start_date_max: "Start date (maximum)"
+  start_date_min: "Start date (minimum)"
+  war_num: "War number"
 creator: ''
 date: ''
-description: ''
-see_also: ''
-source: ''
+see_also:
+  - "Sarkees, Meredith Reid and Frank Wayman (2010). Resort to War: 1816 - 2007. CQ Press"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/WarList_NEW.html"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/IntraStateWars_Codebook.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/NonStateWars_Codebook.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/InterStateWars_Codebook.pdf"
+source:
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/NonStateWarData_v4.0.csv"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/InterStateWarData_v4.0.csv"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/IntraStateWarData_v4.1.csv"
+description: |
+  Intervals of sustained fighting for each participant in the War 4 data.
+
+  Participants in the COW Wars can enter and exit a war multiple times.
+  This table contains a row for each interval of sustained fighting for
+  each participant in each war.
+
+  Since start and end dates of participation may not be known with
+  certainty, a minimum and maximum value for these is given.
+  

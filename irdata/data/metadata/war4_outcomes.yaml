@@ -1,8 +1,18 @@
 columns:
-  label: null
-  value: null
+  label: "Label"
+  value: "Value"
 creator: ''
 date: ''
-description: ''
-see_also: ''
-source: ''
+see_also:
+  - "Sarkees, Meredith Reid and Frank Wayman (2010). Resort to War: 1816 - 2007. CQ Press"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/WarList_NEW.html"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/IntraStateWars_Codebook.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/NonStateWars_Codebook.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/InterStateWars_Codebook.pdf"
+source:
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/IntraStateWars_Codebook.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/NonStateWars_Codebook.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/InterStateWars_Codebook.pdf"
+description: |
+  Categories of :doc:`war4_partic.outcomes`.
+  

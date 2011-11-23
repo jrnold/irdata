@@ -1,8 +1,59 @@
 columns:
-  war_from: null
-  war_to: null
+  war_from: "War number of the war which is being transformed."
+  war_to: "War number of the war which `war_from` transforms to."
 creator: ''
 date: ''
-description: ''
-see_also: ''
-source: ''
+see_also:
+  - "Sarkees, Meredith Reid and Frank Wayman (2010). Resort to War: 1816 - 2007. CQ Press"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/WarList_NEW.html"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/IntraStateWars_Codebook.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/NonStateWars_Codebook.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/InterStateWars_Codebook.pdf"
+source:
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/NonStateWarData_v4.0.csv"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/InterStateWarData_v4.0.csv"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/IntraStateWarData_v4.1.csv"
+
+creator: ''
+date: ''
+see_also:
+  - "Sarkees, Meredith Reid and Frank Wayman (2010). Resort to War: 1816 - 2007. CQ Press"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/WarList_NEW.html"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/IntraStateWars_Codebook.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/NonStateWars_Codebook.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/InterStateWars_Codebook.pdf"
+source:
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/NonStateWarData_v4.0.csv"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/InterStateWarData_v4.0.csv"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/IntraStateWarData_v4.1.csv"
+description: |
+  Relationships between COW Wars (v. 4)
+
+  COW Wars can transform into different wars when the nature of the
+  war fundamentally changes its category. This table contains all of
+  these relationships, which appear in the `TransFrom` and `TransTo`
+  columns of the data sources.
+
+  As the `Inter State Wars Codebook
+  <http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/InterStateWars_Codebook.pdf>`_
+  explains:
+
+     One particular addition to this version of the data is information concerning war
+     “transformations.” Though the understanding of wars being transformed or changing
+     categories goes back to the origins of the COW project and Wages of War, it is only in
+     this version of the data that specific variables addressing such transformations have been
+     added. Wars are often not as clearly delineated as our typologies, and can often contain
+     elements of different types of wars. Furthermore, a conflict can, over its life span,
+     metamorphose from one type of war to another. COW has attempted to deal with such
+     complexity by relying on two major determinants: the principle of the mutual exclusivity
+     of wars, and the classification of wars based upon the decision concerning which parties
+     are doing the “bulk of the fighting.” Thus, if a war changes so that one or more of the
+     parties doing the bulk of the fighting changes, the initial war ends and the conflict is
+     transformed into a war of a second type. Such transformations can be seen in all types of
+     war: for example, if another state intervenes in an intra-state war on the side of the non-
+     state forces, and then takes over the bulk of the fighting, the war is transformed into an
+     inter-state war between the two states. Conversely, inter-state wars can also be
+
+  
+
+  

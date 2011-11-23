@@ -1,9 +1,20 @@
 columns:
-  category: null
-  label: null
-  value: null
+  category: "COW War Category"
+  label: "COW war type description"
+  value: "COW war type number"
 creator: ''
 date: ''
-description: ''
-see_also: ''
-source: ''
+see_also:
+  - "Sarkees, Meredith Reid and Frank Wayman (2010). Resort to War: 1816 - 2007. CQ Press"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/COW%20Website%20-%20Typology%20of%20war.pdf"
+source:
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/COW%20Website%20-%20Typology%20of%20war.pdf"
+description: |
+  COW War Typology (v. 4)
+
+  As of version 4, the COW War Typology has 9 types of wars, and 4
+  categories of War: Inter-, Intra-, Extra-, and Non-State War. 
+
+  See
+  http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/COW%20Website%20-%20Typology%20of%20war.pdf
+  for a full account of the typology.

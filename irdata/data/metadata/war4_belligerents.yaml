@@ -1,9 +1,32 @@
 columns:
-  belligerent: null
-  belligerent_name: null
-  ccode: null
+  belligerent: "Unique belligerent identifier"
+  belligerent_name: "Belligerent name or description"
+  ccode: "COW country code"
 creator: ''
 date: ''
-description: ''
-see_also: ''
-source: ''
+see_also:
+  - "Sarkees, Meredith Reid and Frank Wayman (2010). Resort to War: 1816 - 2007. CQ Press"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/WarList_NEW.html"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/IntraStateWars_Codebook.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/NonStateWars_Codebook.pdf"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/InterStateWars_Codebook.pdf"
+source:
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/NonStateWarData_v4.0.csv"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/InterStateWarData_v4.0.csv"
+  - "http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/IntraStateWarData_v4.1.csv"
+description: |
+
+  List of belligerents in Inter-, Intra-, and Non-State COW Wars (v. 4).
+  
+  The belligerent includes both state and non-state actors. The COW
+  War datasets do not explicitly and uniquely define belligerents, so
+  multi rows in this table can correspond to the same belligerent,
+  e.g. multiple rows have the same **ccode** but differ in the name,
+  and thus are treated as separate belligerents although they may be
+  reasonable be considered the same entity. The non-state entities (rows
+  where `ccode is NULL`) are not particularly messy and may include multiple
+  entities, use different names for the same entity across wars, or the same
+  name for different entities across wars, e.g. something generic like "Liberals".
+  These are not reconciled, so user beware.
+  
+  
