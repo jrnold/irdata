@@ -208,7 +208,7 @@ class CowSystem(Base, Mixin):
     start_year = sa.Column(sa.Boolean)
     end_year = sa.Column(sa.Boolean)
     mid_year = sa.Column(sa.Boolean)
-    frac_year = sa.Column(sa.Boolean)
+    frac_year = sa.Column(sa.Float)
 
 
 class KsgState(Base, Mixin):

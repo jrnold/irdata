@@ -63,10 +63,13 @@ def load_cow_system():
             mid_year = (st.st_date <= moy and st.end_date >= moy)
             end_year = (st.st_date <= eoy and st.end_date >= eoy)
             ndays = 366 if calendar.isleap(yr) else 365
-            frac_year = (max(boy, st.start_date) -
-                         min(eoy, st.end_date)).days / ndays
+            frac_year = (min(eoy, st.end_date) - max(boy, st.st_date)).days / float(ndays)
             session.add(model.CowSystem(ccode = st.ccode,
-                                        year = yr))
+                                        year = yr,
+                                        start_year = start_year,
+                                        mid_year = mid_year,
+                                        end_year = end_year,
+                                        frac_year = frac_year))
         session.flush()
     session.commit()
     
