@@ -1,10 +1,13 @@
 columns:
-  ccode: null
-  end_year: null
-  interval: null
-  start_year: null
+  ccode: Polity IV country code
+  end_year: End year
+  interval: nth interval
+  start_year: Start year
 creator: ''
 date: ''
-description: ''
-see_also: ''
-source: ''
+description: |
+  Date intervals for which Polity IV has data on states
+see_also: 
+  - http://www.systemicpeace.org/inscr/p4manualv2010.pdf
+source: 
+  - http://www.systemicpeace.org/inscr/p4manualv2010.pdf

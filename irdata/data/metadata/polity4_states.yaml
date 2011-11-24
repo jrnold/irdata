@@ -1,9 +1,13 @@
 columns:
-  ccode: null
-  country: null
-  scode: null
+  ccode: "Polity IV country code"
+  country: "Polity IV country name"
+  scode: "Polity IV country abbreviation"
 creator: ''
 date: ''
-description: ''
-see_also: ''
-source: ''
+description: |
+  State country codes, names, and abbreviations used in Polity IV v. 2010.
+  
+see_also: 
+  - http://www.systemicpeace.org/inscr/p4manualv2010.pdf
+source: 
+  - http://www.systemicpeace.org/inscr/p4manualv2010.pdf

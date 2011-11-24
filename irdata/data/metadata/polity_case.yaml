@@ -1,23 +1,30 @@
 columns:
-  autoc: null
-  bdate: null
-  ccode: null
-  democ: null
-  edate: null
-  exconst: null
-  exrec: null
-  parcomp: null
-  parreg: null
-  persist: null
-  polcomp: null
-  polity: null
-  present: null
-  xconst: null
-  xrcomp: null
-  xropen: null
-  xrreg: null
+  autoc: Institutionalized autocracy indicator.
+  bdate: Start date
+  ccode: Country code
+  democ: Institutionalized democracy indicator.
+  edate: End date
+  exconst: Executive constraints Concept.
+  exrec: Executive recruitment Concept.
+  parcomp: Competitiveness of Participation
+  parreg: Regulation of Participation.
+  persist: Polity persistence. 
+  polcomp: Political Competition Concept.
+  polity: Combined Polity Score.
+  present: "Case is ongoing"
+  xconst: "Executive constraints (decision rules)"
+  xrcomp: Competitiveness of executive recruitment.
+  xropen: Openness of executive recruitment.
+  xrreg: Regulation of executive recruitment.
 creator: ''
 date: ''
-description: ''
-see_also: ''
-source: ''
+description: |
+  Polity IV (2010) polity-case data on democracy and autocracy "patterns of authority".
+
+  See http://www.systemicpeace.org/inscr/inscr.htm for documentation.
+see_also: 
+  - http://www.systemicpeace.org/inscr/p4manualv2010.pdf
+  - http://www.systemicpeace.org/inscr/inscr.htm
+source: 
+  - http://www.systemicpeace.org/inscr/p4v2010d.xls
+

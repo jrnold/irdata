@@ -1,40 +1,47 @@
 columns:
-  autoc: null
-  bday: null
-  bmonth: null
-  bprec: null
-  byear: null
-  ccode: null
+  autoc: Institutionalized autocracy indicator.
+  bday: Start day
+  bmonth: Start month
+  bprec: Start date precision
+  byear: Start year
+  ccode: Country code
   change: null
-  cyear: null
-  d4: null
-  democ: null
-  durable: null
-  eday: null
-  emonth: null
-  eprec: null
-  exconst: null
-  exrec: null
-  eyear: null
-  flag: null
-  fragment: null
-  interim: null
-  parcomp: null
-  parreg: null
-  polcomp: null
-  polity: null
-  polity2: null
-  post: null
-  prior: null
-  regtrans: null
-  sf: null
-  xconst: null
-  xrcomp: null
-  xropen: null
-  xrreg: null
-  year: null
+  cyear: Country-year
+  d4: Regime transition completed.
+  democ: Institutionalized democracy indicator.
+  durable: Regime durability. 
+  eday: End day.
+  emonth: End month.
+  eprec: End date precision.
+  exconst: Executive constraints Concept.
+  exrec: Executive recruitment Concept.
+  eyear: End year
+  flag: Tenatative coding.
+  fragment: Polity fragmentation.
+  interim: Interim Polity Code.
+  parcomp: Competitiveness of Participation
+  parreg: Regulation of Participation.
+  polcomp: Political Competition Concept.
+  polity: Combined Polity Score.
+  polity2: Revised combined polity score.
+  post: Post polity code
+  prior: Prior polity code
+  regtrans: Regime transition
+  sf: State failure.
+  xconst: "Executive constraints (decision rules)"
+  xrcomp: Competitiveness of executive recruitment.
+  xropen: Openness of executive recruitment.
+  xrreg: Regulation of executive recruitment.
+  year: Year
 creator: ''
 date: ''
-description: ''
-see_also: ''
-source: ''
+description: |
+  Polity IV (2010) state-year data on democracy and autocracy "patterns of authority"
+
+  See http://www.systemicpeace.org/inscr/inscr.htm for documentation.
+see_also: 
+  - http://www.systemicpeace.org/inscr/p4manualv2010.pdf
+  - http://www.systemicpeace.org/inscr/inscr.htm
+source:
+  - http://www.systemicpeace.org/inscr/p4v2010.xls
+
