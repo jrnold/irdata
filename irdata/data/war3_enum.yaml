@@ -23,13 +23,6 @@ war3_int_side:
   1 : on side of state/government
   2 : on side of colony/non-state/opposition
   3 : on neither side
-war3_war_type:
-  1 : Inter state war
-  2 : State conflict with colony
-  3 : State conflict with non-state actor
-  4 : Civil war for control of central government
-  5 : Conflict over local issues
-  6 : Inter-commnual conflict
 war3_edition:
   0: "1972 original"
   1: "1982 update"
