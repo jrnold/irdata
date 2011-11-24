@@ -98,37 +98,17 @@ class Version(Base, Mixin):
 
 class CowState(Base, Mixin):
     """COW state numbers, abbrevations, and names
-
-    Contains the COW identifying numbers, abbreviations and names of
-    states.  The years in which these states are within the COW system
-    is contained in :class:`CowSysMembership`.
-
-    See
-
-    - http://www.correlatesofwar.org/COW%20State%20list.xls
-    - www.correlatesofwar.org/COW2%20Data/SystemMembership/2008/System2008.html
-    
     """ 
 
     __tablename__ = 'cow_statelist'
     
     ccode = sa.Column(sa.Integer,
-                      primary_key=True,
-                      doc="COW state number")
-    state_abb = sa.Column(sa.Unicode(3),
-                         doc="COW state abbrevation")
-    state_nme = sa.Column(sa.Unicode,
-                         doc="COW state name")
-
+                      primary_key=True)
+    state_abb = sa.Column(sa.Unicode(3))
+    state_nme = sa.Column(sa.Unicode)
 
 class CowWarType(Base, Mixin):
     """ COW War Typology
-
-    COW categorizes war into 4 categories (Inter-, Intra-, Extra-, and
-    Non-State), and 8 types.
-
-    See the `COW New War data documentation
-    `http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/COW%20Website%20-%20Typology%20of%20war.pdf>`_.
     """
     __tablename__ = "cow_war_types"
     value = sa.Column(sa.Integer, primary_key=True)
@@ -157,15 +137,11 @@ class CowSysMembership(Base, Mixin):
                       sa.ForeignKey(CowState.__table__.c.ccode,
                                     initially = "DEFERRED",
                                     deferrable=True),
-                      primary_key=True,
-                      doc = "COW column number")
+                      primary_key=True)
     interval = sa.Column(sa.Integer,
-                         primary_key=True,
-                         doc = "State interval number")
-    st_date = sa.Column(sa.Date, nullable = False,
-                       doc="International system membership start date")
-    end_date = sa.Column(sa.Date, nullable = False,
-                        doc="International system membership end date")
+                         primary_key=True)
+    st_date = sa.Column(sa.Date, nullable = False)
+    end_date = sa.Column(sa.Date, nullable = False)
 
 
 class CowMajor(Base, Mixin):
@@ -188,13 +164,10 @@ class CowMajor(Base, Mixin):
                       sa.ForeignKey(CowState.__table__.c.ccode),
                       primary_key=True)
     interval = sa.Column(sa.Integer,
-                         primary_key=True,
-                         doc = "nth time that this state was a great power.")
-    st_date = sa.Column(sa.Date, nullable = False,
-                       doc="Major power status start date")
+                         primary_key=True)
+    st_date = sa.Column(sa.Date, nullable = False)
     end_date = sa.Column(sa.Date,
-                        nullable = False,
-                        doc="Major power status end date")
+                        nullable = False)
 
 
 class CowSystem(Base, Mixin):
@@ -430,11 +403,6 @@ class PolitySysMembership(Base, Mixin):
 
 class PolityStateYear(Base, Mixin):
     """ Polity state-years
-
-    Source: http://www.systemicpeace.org/inscr/p4v2010.xls
-
-    Documentation: http://www.systemicpeace.org/inscr/p4manualv2009.pdf
-
     """ 
     __tablename__ = 'polity_state_year'
 
@@ -488,11 +456,6 @@ class PolityStateYear(Base, Mixin):
 
 class PolityCase(Base, Mixin):
     """ Polity IV Polity-Case Format
-
-    Source: http://www.systemicpeace.org/inscr/p4v2010d.xls
-
-    Documentation: http://www.systemicpeace.org/inscr/p4manualv2009.pdf
-
     """ 
     __tablename__ = 'polity_case'
 
@@ -528,14 +491,13 @@ class War4(Base, Mixin):
     __tablename__ = 'war4'
     war_num = sa.Column(sa.Integer, primary_key=True)
     war_name = sa.Column(sa.Unicode,
-                         nullable = False,
-                         doc="War Name")
+                         nullable = False)
     war_type = sa.Column(sa.Integer,
                          sa.ForeignKey(CowWarType.__table__.c.value),
-                         nullable = False,
-                         doc='War type')
+                         nullable = False)
     intnl = sa.Column(sa.Boolean, nullable=True)
     bat_deaths = sa.Column(sa.Integer, nullable=True)
+
 
 class War4Link(Base, Mixin):
     """ Links between COW War v. 4 wars """
@@ -543,16 +505,9 @@ class War4Link(Base, Mixin):
     war_from = sa.Column(sa.Integer, primary_key=True)
     war_to = sa.Column(sa.Integer, primary_key=True)
 
+
 class War4Belligerent(Base, Mixin):
     """ COW War Data v. 4 Belligerents 
-
-    The list of *all* participants in wars, both states and non-state
-    actors.  
-
-    Right now the entities are not entirely well defined because COW
-    is sloppy about defining the different entities.  I use the tuple
-    of ccode and name to define a belligerent.  
-
     """
     __tablename__ = 'war4_belligerents'
     belligerent = sa.Column(sa.Unicode, primary_key=True)
@@ -562,11 +517,6 @@ class War4Belligerent(Base, Mixin):
 
 class War4Side(Base, Mixin):
     """ Cow War v. 4 Sides
-
-    Each war has two sides.  This table is needed because
-    some values Non-State Wars defines battle deaths by
-    side rather than participant.
-    
     """ 
     __tablename__ = 'war4_sides'
     war_num = sa.Column(sa.ForeignKey(War4.__table__.c.war_num,
@@ -579,10 +529,6 @@ class War4Side(Base, Mixin):
 
 class War4Partic(Base, Mixin):
     """ Cow War v.4 Participation
-
-    Country-war-side observations. For each war a country can
-    participate on multiple sides, although this can only occur
-    in Inter-State wars.
     """
     __tablename__ = 'war4_partic'
     war_num = sa.Column(sa.Integer, primary_key=True)
@@ -590,19 +536,13 @@ class War4Partic(Base, Mixin):
                             sa.ForeignKey(War4Belligerent.__table__.c.belligerent),
                             primary_key=True)
     side = sa.Column(sa.Boolean, primary_key=True)
-    west_hem = sa.Column(sa.Boolean,
-                         doc="Was any part of the war fought in the Western Hemisphere?")
+    west_hem = sa.Column(sa.Boolean)
     europe = sa.Column(sa.Boolean,
-                       nullable = False,
-                       doc="Was any part of the war fought in Europe?")
-    africa = sa.Column(sa.Boolean,
-                       doc="Was any part of the war fought in Africa?")
-    mid_east = sa.Column(sa.Boolean,
-                         doc="Was any part of the war fought in Middle East?")
-    asia = sa.Column(sa.Boolean,
-                     doc="Was any part of the war fought in Asia?")
-    oceania = sa.Column(sa.Boolean,
-                        doc="Was any part of the war fought in Oceania?")
+                       nullable = False)
+    africa = sa.Column(sa.Boolean)
+    mid_east = sa.Column(sa.Boolean)
+    asia = sa.Column(sa.Boolean)
+    oceania = sa.Column(sa.Boolean)
     ## Countries on the same side can have different outcomes
     ## see Germany in war 108.
     outcome = sa.Column(sa.Integer,
@@ -630,8 +570,7 @@ class War4ParticDate(Base, Mixin):
     start_date_max = sa.Column(sa.Date)
     end_date_min = sa.Column(sa.Date)
     end_date_max = sa.Column(sa.Date)
-    ongoing = sa.Column(sa.Boolean, nullable = False,
-                        doc="War is ongoing")
+    ongoing = sa.Column(sa.Boolean, nullable = False)
     sa.ForeignKeyConstraint(['war_num', 'ccode', 'side'],
                             [War4Partic.__table__.c.war_num,
                              War4Partic.__table__.c.belligerent,
@@ -644,9 +583,7 @@ class War4ParticDate(Base, Mixin):
 
     @property
     def end_date(self):
-        if self.end_year and self.end_month and self.end_day:
-            return datetime.date(self.end_year, self.end_month, self.end_day)
-
+        return (self.end_date_min + self.end_date_max) / 2
 
 
 class War3Outcome(Base, IntFactorMixin, Mixin):
@@ -657,6 +594,7 @@ class War3Outcome(Base, IntFactorMixin, Mixin):
     """
     __tablename__ = 'war3_outcomes'
 
+
 class War3SysStat(Base, IntFactorMixin, Mixin):
     """ COW War Data v. 3 SysStat codes
 
@@ -666,117 +604,66 @@ class War3SysStat(Base, IntFactorMixin, Mixin):
     """
     __tablename__ = 'war3_sys_stat'
 
+
 class War3Winner(Base, IntFactorMixin, Mixin):
     """ COW War Data v. 3 Intra- and Extra-State war winner values
-
-    Victorious side in war 
-
-    See http://www.correlatesofwar.org/cow2%20data/WarData/IntraState/Intra-State%20War%20Format%20(V%203-0).htm
     """
     __tablename__ = "war3_winner"
 
-class War3WarType(Base, IntFactorMixin, Mixin):
-    """ Correlates of War Data v. 3 WarType values
-
-    See http://www.correlatesofwar.org/cow2%20data/WarData/IntraState/Intra-State%20War%20Format%20(V%203-0).htm
-    """
-    __tablename__ = 'war3_war_type'
 
 class War3IntSide(Base, IntFactorMixin, Mixin):
     """ Correlates of War Data v. 3 intside values
-
-    On which side did participant intervene? 
     """
     __tablename__ = 'war3_int_side'
+
     
 class War3Edition(Base, IntFactorMixin, Mixin):
     """ Correlates of War Data v. 3 edition values
-
-    Update code for Inter-State wars. Which edition of COW War data
-    does it come from?
-
-    See http://www.correlatesofwar.org/cow2%20data/WarData/InterState/Inter-State%20War%20Format%20(V%203-0).htm
     """
     __tablename__ = 'war3_edition'
 
 
 class War3(Base, Mixin):
     """ COW Inter-State Wars v 3.0 (Wars)
-
-    For Inter, Intra, and Extra state wars.
-
-    See http://www.correlatesofwar.org/cow2%20data/WarData/InterState/Inter-State%20War%20Format%20(V%203-0).htm,
-    http://www.correlatesofwar.org/cow2%20data/WarData/IntraState/Intra-State%20War%20Format%20(V%203-0).htm and
-    http://www.correlatesofwar.org/cow2%20data/WarData/ExtraState/Extra-State%20War%20Format%20(V%203-0).htm.
-    
     """
     __tablename__ = 'war3'
     
-    war_no = sa.Column(sa.Integer, primary_key=True,
-                   doc="War number")
+    war_no = sa.Column(sa.Integer, primary_key=True)
     war_type = sa.Column(sa.Integer,
                          sa.ForeignKey(CowWarType.__table__.c.value),
-                         doc='War type',
                          nullable = False)
     war_name = sa.Column(sa.Unicode(50),
-                         nullable = False,
-                         doc="War Name")
+                         nullable = False)
     #duration = sa.Column(sa.Integer)
-    deaths = sa.Column(sa.Integer,
-                       doc="total battle deaths")
-    cen_sub_sy = sa.Column(sa.Boolean,
-                           doc="At least one central sub-system member in war")
-    sub_sys_ea = sa.Column(sa.Boolean,
-                           doc="At least one central sub-system member on each side")
-    maj_pow_in = sa.Column(sa.Boolean,
-                           doc="At least one major power in the war")
-    maj_pow_ea = sa.Column(sa.Boolean,
-                           doc="At least one major power on each side")
-    west_hem = sa.Column(sa.Boolean,
-                         doc="Was any part of the war fought in the Western Hemisphere?")
-    europe = sa.Column(sa.Boolean,
-                       nullable = False,
-                       doc="Was any part of the war fought in Europe?")
-    africa = sa.Column(sa.Boolean,
-                       doc="Was any part of the war fought in Africa?")
-    mid_east = sa.Column(sa.Boolean,
-                         doc="Was any part of the war fought in Middle East?")
-    asia = sa.Column(sa.Boolean,
-                     doc="Was any part of the war fought in Asia?")
-    oceania = sa.Column(sa.Boolean,
-                        doc="Was any part of the war fought in Oceania?")
+    deaths = sa.Column(sa.Integer)
+    cen_sub_sy = sa.Column(sa.Boolean)
+    sub_sys_ea = sa.Column(sa.Boolean)
+    maj_pow_in = sa.Column(sa.Boolean)
+    maj_pow_ea = sa.Column(sa.Boolean)
+    west_hem = sa.Column(sa.Boolean)
+    europe = sa.Column(sa.Boolean, nullable = False)
+    africa = sa.Column(sa.Boolean)
+    mid_east = sa.Column(sa.Boolean)
+    asia = sa.Column(sa.Boolean)
+    oceania = sa.Column(sa.Boolean)
     edition = sa.Column(sa.Integer,
-                        sa.ForeignKey(War3Edition.__table__.c.value),
-                        doc="Update code")
-    # extra
+                        sa.ForeignKey(War3Edition.__table__.c.value))
     winner = sa.Column(sa.Integer,
-                       sa.ForeignKey(War3Winner.__table__.c.value),
-                       doc='Victorious side in war')
-    interven = sa.Column(sa.Boolean,
-                         doc='Outside intervention in war?')
-    st_deaths = sa.Column(sa.Integer,
-                          doc='Total battle deaths of state participants')
-    to_deaths = sa.Column(sa.Integer,
-                          doc='Total battle deaths of all participants')
-    non_state = sa.Column(sa.Unicode(100),
-                          doc='Name of non-state or insurgent participant. NULL for all interstate wars.')
+                       sa.ForeignKey(War3Winner.__table__.c.value))
+    interven = sa.Column(sa.Boolean)
+    st_deaths = sa.Column(sa.Integer)
+    to_deaths = sa.Column(sa.Integer)
+    non_state = sa.Column(sa.Unicode(100))
     # intra
     # majorin -> majpowin
     # censubin -> censubsy
     # insurgnt -> nonstate
     state_num = sa.Column(sa.Integer,
-                         sa.ForeignKey(CowState.__table__.c.ccode),
-                         doc='COW country code of the major state. only non-NULL for intra-state wars.')
+                         sa.ForeignKey(CowState.__table__.c.ccode))
+
 
 class War3Date(Base, Mixin):
     """ COW Inter-State Wars v 3.0 (War dates)
-
-    For Inter, Intra, and Extra state wars.
-
-    See http://www.correlatesofwar.org/cow2%20data/WarData/InterState/Inter-State%20War%20Format%20(V%203-0).htm,
-    http://www.correlatesofwar.org/cow2%20data/WarData/IntraState/Intra-State%20War%20Format%20(V%203-0).htm and
-    http://www.correlatesofwar.org/cow2%20data/WarData/ExtraState/Extra-State%20War%20Format%20(V%203-0).htm.
-    
     """
     __tablename__ = 'war3_dates'
     
@@ -784,10 +671,8 @@ class War3Date(Base, Mixin):
                       sa.ForeignKey(War3.__table__.c.war_no,
                                     deferrable = True,
                                     initially = "DEFERRED"),
-                      primary_key=True,
-                      doc="War number")
-    spell_no = sa.Column(sa.Integer, primary_key=True,
-                        doc="war spell number")
+                      primary_key=True)
+    spell_no = sa.Column(sa.Integer, primary_key=True)
     date_beg_min = sa.Column(sa.Date)
     date_beg_max = sa.Column(sa.Date)
     sa.CheckConstraint('date_end_max >= date_end_min')
@@ -808,15 +693,6 @@ class War3Date(Base, Mixin):
 
 class War3Partic(Base, Mixin):
     """ COW Inter-State Wars v 3.0 (Participants)
-
-    For Inter, Intra, and Extra state wars.
-
-    See http://www.correlatesofwar.org/cow2%20data/WarData/InterState/Inter-State%20War%20Format%20(V%203-0).htm,
-    http://www.correlatesofwar.org/cow2%20data/WarData/IntraState/Intra-State%20War%20Format%20(V%203-0).htm and
-    http://www.correlatesofwar.org/cow2%20data/WarData/ExtraState/Extra-State%20War%20Format%20(V%203-0).htm.
-
-    Version 3 uses 
-    
     """
     __tablename__ = 'war3_partic'
     
@@ -826,61 +702,34 @@ class War3Partic(Base, Mixin):
                       primary_key=True)
     partic_no = sa.Column(sa.Integer, primary_key=True)
     #duration = sa.Column(sa.Integer)
-    deaths = sa.Column(sa.Integer,
-                       doc="Number of battle related deaths sustained by participant's armed forces")
+    deaths = sa.Column(sa.Integer)
     outcome = sa.Column(sa.Integer,
-                        sa.ForeignKey(War3Outcome.__table__.c.value),
-                        doc="War outcome for participant")
-    initiate = sa.Column(sa.Boolean,
-                         doc="Did state initiate war?")
+                        sa.ForeignKey(War3Outcome.__table__.c.value))
+    initiate = sa.Column(sa.Boolean)
     sys_stat = sa.Column(sa.Integer,
-                         sa.ForeignKey(War3SysStat.__table__.c.value),
-                         doc="System membership status of state")
-    pr_war_pop = sa.Column(sa.Integer,
-                           doc="Pre-war population in thousands (number from year war begun)")
-    pr_war_arm = sa.Column(sa.Integer,
-                           doc="Pre-war armed-forces thousands (number from year war begun)")
-    west_hem = sa.Column(sa.Boolean,
-                         doc="Did state participant engage in fighting in war in the Western Hemisphere?")
-    europe = sa.Column(sa.Boolean,
-                       doc="Did state participant engage in fighting in war in Europe?")
-    africa = sa.Column(sa.Boolean,
-                       doc="Did state participant engage in fighting in war in Africa?")
-    mid_east = sa.Column(sa.Boolean,
-                         doc="Did state participant engage in fighting in war in Middle East?")
-    asia = sa.Column(sa.Boolean,
-                     doc="Did state participant engage in fighting in war in Asia?")
-    oceania = sa.Column(sa.Boolean,
-                        doc="Did state participant engage in fighting in war in Oceania?")
+                         sa.ForeignKey(War3SysStat.__table__.c.value))
+    pr_war_pop = sa.Column(sa.Integer)
+    pr_war_arm = sa.Column(sa.Integer)
+    west_hem = sa.Column(sa.Boolean)
+    europe = sa.Column(sa.Boolean)
+    africa = sa.Column(sa.Boolean)
+    mid_east = sa.Column(sa.Boolean)
+    asia = sa.Column(sa.Boolean)
+    oceania = sa.Column(sa.Boolean)
     int_side = sa.Column(sa.Integer,
-                         sa.ForeignKey(War3IntSide.__table__.c.value),
-                         doc="On which side did participant intervene?")
+                         sa.ForeignKey(War3IntSide.__table__.c.value))
 
 
 class War3ParticDate(Base, Mixin):
-    """ COW Inter-State Wars v 3.0 (Participants dates of war involvement)
-
-    For Inter, Intra, and Extra state wars.
-
-    See http://www.correlatesofwar.org/cow2%20data/WarData/InterState/Inter-State%20War%20Format%20(V%203-0).htm,
-    http://www.correlatesofwar.org/cow2%20data/WarData/IntraState/Intra-State%20War%20Format%20(V%203-0).htm and
-    http://www.correlatesofwar.org/cow2%20data/WarData/ExtraState/Extra-State%20War%20Format%20(V%203-0).htm.
-    
+    """ COW Wars v 3.0 (Participants dates of war involvement)
     """
 
     __tablename__ = 'war3_partic_dates'
     
-    war_no = sa.Column(sa.Integer, 
-                       primary_key=True,
-                       doc="War number")
-    state_num = sa.Column(sa.Integer, 
-                          primary_key=True,
-                          doc="COW numeric country code")
-    partic_no = sa.Column(sa.Integer,
-                          primary_key=True)
-    spell_no = sa.Column(sa.Integer,
-                         primary_key=True,
-                         doc="war spell number")
+    war_no = sa.Column(sa.Integer, primary_key=True)
+    state_num = sa.Column(sa.Integer, primary_key=True)
+    partic_no = sa.Column(sa.Integer,primary_key=True)
+    spell_no = sa.Column(sa.Integer, primary_key=True)
     date_beg_min = sa.Column(sa.Date)
     date_beg_max = sa.Column(sa.Date)
     sa.CheckConstraint('date_end_max >= date_end_min')
@@ -892,15 +741,6 @@ class War3ParticDate(Base, Mixin):
                    War3Partic.__table__.c.state_num,
                    War3Partic.__table__.c.partic_no])
 
-    @property
-    def date_beg(self):
-        if self.yr_beg and self.mon_beg and self.day_beg:
-            return datetime.date(self.yr_beg, self.mon_beg, self.day_beg)
-
-    @property
-    def date_end(self):
-        if self.yr_end and self.mon_end and self.day_end:
-            return datetime.date(self.yr_end, self.mon_end, self.day_end)
 
 
 class ContType(Base, IntFactorMixin, Mixin):
@@ -910,26 +750,6 @@ class ContType(Base, IntFactorMixin, Mixin):
 
 class ContDir(Base, Mixin):
     """ COW Direct Contiguity v. 3. 1
-
-    From http://www.correlatesofwar.org/
-    
-    Version 3.1 of the Correlates of War Direct Contiguity data
-    identifies all direct contiguity relationships between states in
-    the international system from 1816 through 2006. The
-    classification system for contiguous dyads is comprised of five
-    categories, one for land contiguity and four for water
-    contiguity. Land contiguity is defined as the intersection of the
-    homeland territory of the two states in the dyad, either through a
-    land boundary or a river (such as the Rio Grande in the case of
-    the US-Mexico border). Water contiguity is divided into four
-    categories, based on a seperation by water of 12, 24, 150, and 400
-    miles.
-
-    Some corrections made to the raw data are
-
-    - Montenegro country-code converted from 349 to 341, the value
-      used in states 
-
     """
     __tablename__ = 'contdir'
     VERSION = '3.1'
