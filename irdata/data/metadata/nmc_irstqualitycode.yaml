@@ -1,8 +1,10 @@
 columns:
-  label: null
-  value: null
+  label: Label
+  value: Value
 creator: ''
 date: ''
-description: ''
-see_also: ''
-source: ''
+description: Iron and Steel Production Quality Codes
+see_also:
+  - "http://www.correlatesofwar.org/COW2%20Data/Capabilities/nmc4.htm"
+source:
+  - http://www.correlatesofwar.org/COW2%20Data/Capabilities/NMC_Codebook_v4_0.pdf

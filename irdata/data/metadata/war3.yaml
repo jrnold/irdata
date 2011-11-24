@@ -22,6 +22,23 @@ columns:
   winner: Victorious side in war
 creator: ''
 date: ''
-description: ''
-see_also: ''
-source: ''
+see_also:
+  - "Sarkees, Meredith Reid (2000). "The Correlates of War Data on War: An Update to 1997," Conflict Management and Peace Science, 18/1: 123-144."
+  - "Singer, J. David, and Melvin Small (1972). The Wages of War, 1816-1965: A Statistical Handbook. New York: John Wiley."
+  - "Small, Melvin, and J. David Singer (1982). Resort to Arms: International and Civil Wars, 1816-1980. Beverly Hills, Calif.: Sage Publications."
+  - www.correlatesofwar.org/cow2%20data/WarData/ExtraState/Extra-State%20War%20Format%20(V%203-0).htm
+  - www.correlatesofwar.org/cow2%20data/WarData/Intra/Intra-State%20War%20Format%20(V%203-0).htm
+  - www.correlatesofwar.org/cow2%20data/WarData/InterState/Inter-State%20War%20Format%20(V%203-0).htm
+source:
+  - http://www.correlatesofwar.org/cow2%20data/WarData/ExtraState/Extra-State%20Wars%20(V%203-0).csv
+  - http://www.correlatesofwar.org/cow2%20data/WarData/IntraState/Intra-State%20Wars%20(V%203-0).csv
+  - http://www.correlatesofwar.org/cow2%20data/WarData/InterState/Inter-State%20Wars%20(V%203-0).csv
+description: |
+  COW War data (v 3.0)
+
+  This table has an row for each war in the Inter-, Intra-, and
+  Extra-State War v. 3 datasets.
+
+  
+  
+

@@ -1,36 +1,61 @@
 columns:
-  ccode: null
-  cinc: null
-  irst: null
-  irstanomalycode: null
-  irstnote: null
-  irstqualitycode: null
-  irstsource: null
-  milex: null
-  milexnote: null
-  milexsource: null
-  milper: null
-  milpernote: null
-  milpersource: null
-  pec: null
-  pecanomalycode: null
-  pecnote: null
-  pecqualitycode: null
-  pecsource: null
-  tpop: null
-  tpopanomalycode: null
-  tpopnote: null
-  tpopqualitycode: null
-  tpopsource: null
-  upop: null
-  upopgrowth: null
-  upopgrowthsource: null
-  upopnote: null
-  upopqualitycode: null
-  upopsource: null
-  year: null
+  ccode: "COW country code"
+  cinc: "Composite Index of National Capability (CINC) score"
+  irst: "Iron and steel production (thousands of tons)"
+  irstanomalycode: "
+  irstnote: Note on Iron and steel production
+  irstqualitycode: Iron and steel production Quality Code
+  irstsource: Information source for Iron and steel production
+  milex: |
+    Military Expenditures (For 1816-1913: thousands of current
+    year British Pounds. For 1914+: thousands of current year US
+    Dollars."""
+  milexnote: Note on Military Expenditures
+  milexsource: Information source for Military Expenditures
+  milper: Military Personnel (thousands)
+  milpernote: Note on Military Personnel
+  milpersource: Information source for Military Personnel
+  pec: Primary Energy Consumption (thousands of coal-ton equivalents)
+  pecanomalycode: Primary Energy Consumption Anomaly Code
+  pecnote: Note on Primary Energy Consumption
+  pecqualitycode: Primary Energy Consumption Quality Code
+  pecsource: Information source for Primary Energy Consumption
+  tpop: Total Population (thousands)
+  tpopanomalycode: Total Population Anomaly Code.
+  tpopnote: Note on Total Population
+  tpopqualitycode: Total Population Quality Code.
+  tpopsource: Information source for Total Population
+  upop: |
+    Urban population (population living in cities with
+    population greater than 100,000; in thousands)
+  upopgrowth: Urban population growth
+  upopgrowthsource: Information source for Urban population growth
+  upopnote: Note on urban population.
+  upopqualitycode: Urban population Quality Code.
+  upopsource: Information source for Urban Population.
+  year: Year.
 creator: ''
 date: ''
-description: ''
-see_also: ''
-source: ''
+see_also: 
+  - "Singer, J. David, Stuart Bremer, and John Stuckey. (1972). "Capability Distribution, Uncertainty, and Major Power War, 1820-1965." in Bruce Russett (ed) Peace, War, and Numbers, Beverly Hills: Sage, 19-48"
+  - "Singer, J. David. (1987). "Reconstructing the Correlates of War Dataset on Material Capabilities of States, 1816-1985" International Interactions, 14: 115-32"
+  - http://www.correlatesofwar.org/COW2%20Data/Capabilities/NMC_Codebook_v4_0.pdf
+  - "http://www.correlatesofwar.org/COW2%20Data/Capabilities/nmc4.htm"
+source: 
+  - "http://www.correlatesofwar.org/COW2%20Data/Capabilities/NMC_Supplement_v4_0_csv.zip"
+description: |
+  National Material Capabilities Data (v 4)
+
+  From http://www.correlatesofwar.org/COW2%20Data/Capabilities/nmc4.htm
+  
+     The National Material Capabilites data set contains annual values
+     for total population, urban population, iron and steel
+     production, energy consumption, military personnel, and military
+     expenditure of all state members, currently from 1816-2007. The
+     widely-used Composite Index of National Capability (CINC) index
+     is based on these six variables and included in the data set.
+
+  See http://www.correlatesofwar.org/COW2%20Data/Capabilities/NMC_Codebook_v4_0.pdf for
+  more documentation.
+
+
