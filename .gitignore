@@ -5,3 +5,5 @@ external
 /config.yaml
 /doc/build
 /doc/source/tables
+*.egg-info
+*.egg
