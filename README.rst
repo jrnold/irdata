@@ -51,17 +51,6 @@ First create the database if it doesn't exist.
   $ python build_irdata.py postgresql://user@hostname/irdata
 
 
-Dependencies
-===================
-
-Beyond the default python packages, the following packages are
-required.
-
-- `sqlalchemy <http://pypi.python.org/pypi/SQLAlchemy>`_
-- `PyYAML <http://pypi.python.org/pypi/PyYAML/>`_
-- `xlrd <http://pypi.python.org/pypi/xlrd>`_
-
-
 Roadmap
 =================
 

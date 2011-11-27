@@ -484,6 +484,10 @@ class War4Outcome(Base, IntFactorMixin, Mixin):
     """ COW War Data v. 4 outcome values """
     __tablename__ = 'war4_outcomes'
 
+class War4List(Base, Mixin):
+    __tablename__ = 'war4_list'
+    war_num = sa.Column(sa.Integer, primary_key=True)
+    war_name = sa.Column(sa.Unicode, nullable = False)
 
 class War4(Base, Mixin):
     ONGOING_DATE = datetime.date(2007, 12, 31)

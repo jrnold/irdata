@@ -65,13 +65,13 @@
 1836    Boer-Matabele War of 1836-1837                       Non-State War #1521
 1837    Druze Rebellion of 1837-1838                         Intra-State War #532
 1837    Sabinada Rebellion of 1837-1838                      Intra-State War #531
-1837   Dissolution of the Bolivia-Peru Confederation of 1837-1839    Non-State War #1523
+1837    Dissolution of the Bolivia-Peru Confederation of 1837-1839  Non-State War #1523
 1837    Persian Siege of Herat of 1837-1838                  Non-State War #1524
 1838    Boer-Zulu War of 1838                                Non-State War #1525
 1838    First British-Zulu War of 1838                       Extra-State War #321
 1839    First British-Afghan War of 1839-1842                Extra-State War #322
 1839    Anti-Rosas War of 1839-1840                          Non-State War #1527
-1839           Dissolution of the Central American Confederation of 1839-1840                                          Non-State War #1528
+1839    Dissolution of the Central American Confederation of 1839-1840  Non-State War #1528
 1839    Second Syrian War Phase 1 of 1839                    Intra-State War #533
 1839    First Opium War of 1839-1842                         Extra-State War #323
 1839    First Franco-Algerian War 1839-1847                  Extra-State War #324
@@ -102,8 +102,7 @@
 1848   Viennese Revolt of 1848                      Intra-State War #550
 1848   Milan Five Day Revolt of 1848                Intra-State War #551
 1848   Austro-Sardinian War of 1848-1849            Inter-State War #10
-       First Schleswig-Holstein
-1848   War of 1848-1849                             Inter-State War #13
+1848   First Schleswig-Holstein War of 1848-1849    Inter-State War #13
 1848   First Dutch-Bali War of 1848-1849            Extra-State War #334
 1848   Second British-Sikh War of 1848-1849         Extra-State War #335
 1848   Second French Insurrection of 1848           Intra-State War #552
@@ -292,8 +291,7 @@
 1899    French Conquest of Chad of 1899-1900               Extra-State War #415
 1899    Second Yaqui War of 1899-1900                      Intra-State War #635
 1899    Second Boer War of 1899-1902                       Extra-State War #416
-        Sixth Colombian (War of the 1,000 Days) of 1899-
-1899   1902                                                Intra-State War #636
+1899    Sixth Colombian (War of the 1,000 Days) of 1899-1902 Intra-State War #636
 1900    Last Ashanti War of 1900                           Extra-State War #417
 1900    Boxer Rebellion of 1900                            Inter-State War #82
 1900    Sino-Russian War of 1900                           Inter-State War #83
@@ -429,8 +427,7 @@
 1948    Yemeni Imamate War of 1948                        Intra-State War #728
 1948    Costa Rica War of 1948                            Intra-State War #730
 1948    Cheju Rebellion of 1948-1949                      Non-State War #1573
-        Seventh Colombian (“La Violencia”) War of 1948-
-1948   1958                                               Intra-State War #731
+1948    Seventh Colombian (“La Violencia”) War of 1948-1958 Intra-State War #731
 1948   Arab-Israeli War of 1948-1949               Inter-State War #148
 1948   Malayan Rebellion of 1948-1957              Extra-State War #460
 1948   First Burmese War of 1948-1951              Intra-State War #732

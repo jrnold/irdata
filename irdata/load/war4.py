@@ -2,6 +2,7 @@
 ## This code is pretty ugly because the data are not very clean, and organized in
 ## a non-relational way
 # TODO: add the links between wars
+import sys
 import collections
 import datetime
 import zipfile
@@ -21,7 +22,8 @@ _KLS = (model.CowWarType,
         model.War4Side,
         model.War4Partic,
         model.War4Belligerent,
-        model.War4ParticDate)
+        model.War4ParticDate,
+        model.War4List)
 
 _TABLES = (x.__table__.name for x in _KLS)
 
@@ -140,6 +142,18 @@ def belligerent_key(ccode, name):
     except TypeError:
         ccode = None
     return u"%s %s" % (ccode, name)
+
+def load_war4_list(src):
+    """ Load war4_list """
+    session = model.SESSION()
+    PAT = re.compile(r"\d{4} +(?P<name>.*) +(?P<type>Intra|Extra|Non|Inter)-State War +#(?P<warnum>\d+)")
+    for line in src:
+        m = PAT.match(line)
+        if m:
+            session.add(model.War4List(war_num = int(m.group('warnum')),
+                                       war_name = unicode(m.group('name').strip(), 'utf-8')))
+    session.commit()
+
 
 def load_war4(src):
     """ Add Inter-state war data to war4_* tables
@@ -444,14 +458,24 @@ def drop_all():
 
 def load_all(data, external):
     """ Load all COW War v. 4 data """
+    model.Base.metadata.create_all(checkfirst=True)
     inter = path.join(data, "InterStateWarData_v4.0.csv")
     intra = path.join(data, "IntraStateWarData_v4.1.csv")
     nonstate = path.join(data, "NonStateWarData_v4.0.csv")
     load_cow_war_types(open(path.join(data, "cow_war_types.yaml"), "r"))
     utils.load_enum_from_yaml(open(path.join(data, "war4_enum.yaml"), "r"))
+    load_war4_list(open(path.join(data, "WarList_NEW.txt"), 'r'))
     load_war4(open(inter, 'rU'))
     load_war4_intra(open(intra, 'rU'))
     load_war4_nonstate(open(nonstate, 'rU'))
     load_war4_links(open(inter, 'rU'), open(intra, 'rU'), open(nonstate, 'rU'))
-            
+
+def main():
+    drop_all()
+    load_all()
+
+if __name__ == '__main__':
+    engine = sys.argv[1]
+    model.Base.metadata.bind = sa.create_engine(engine)
+    main()
     
