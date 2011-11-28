@@ -1,0 +1,13 @@
+htsql:
+  db:
+    engine: pgsql
+    database: irdata
+    username: jeff
+    host: localhost
+    port: 5432
+tweak.meta:
+tweak.shell:
+  limit: 100
+tweak.shell.default:
+    
+  
