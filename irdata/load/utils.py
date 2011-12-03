@@ -2,7 +2,9 @@ import collections
 import datetime
 import zipfile
 import re
+import pkgutil
 import calendar
+from cStringIO import StringIO
 
 import sqlalchemy as sa
 from sqlalchemy import types
@@ -74,3 +76,5 @@ def daterng(y, m, d):
         dt_min = dt_max = None
     return (dt_min, dt_max)
                 
+def get_data(pth):
+    return StringIO(pkgutil.get_data("irdata", "data/%s" % pth))

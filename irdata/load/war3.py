@@ -100,9 +100,9 @@ def load_war3_partic(src):
              _dates(row, i)
     session.commit()
 
-def load_all(data, external):
+def load_all(external):
     """ Load all COW War Data v. 3 (Inter-, Intra-, and Extra-State)"""
-    utils.load_enum_from_yaml(open(path.join(data, "war3_enum.yaml"), 'r'))
+    utils.load_enum_from_yaml(utils.get_data("war3_enum.yaml"))
     load_war3(open(path.join(external, "www.correlatesofwar.org/cow2 data/WarData/InterState/Inter-State Wars (V 3-0).csv"), 'r'))
     load_war3_partic(open(path.join(external, "www.correlatesofwar.org/cow2 data/WarData/InterState/Inter-State War Participants (V 3-0).csv"), 'r'))
     load_war3(open(path.join(external, "www.correlatesofwar.org/cow2 data/WarData/IntraState/Intra-State Wars (V 3-0).csv"), 'r'))

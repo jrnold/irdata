@@ -10,7 +10,7 @@ import yaml
 
 from irdata import csv2
 from irdata import model
-from irdata import utils
+from irdata.load import utils
 
 def _iisystem_dates(x):
     """ Parse iisystem dates

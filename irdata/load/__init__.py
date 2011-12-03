@@ -15,16 +15,16 @@ from irdata.load import (version, cow_states, ksg_states,
 def load_data(DATA, EXTERNAL):
     """ Load data into the database """
     ## Load data from cow system
-    version.load_all()
+    version.load_all(EXTERNAL)
     cow_states.load_all(EXTERNAL)
     ksg_states.load_all(EXTERNAL)
-    ksg_to_cow.load_all()
-    nmc.load_all(DATA, EXTERNAL)
-    polity.load_all(DATA, EXTERNAL)
-    war4.load_all(DATA, EXTERNAL)
-    war3.load_all(DATA, EXTERNAL)
-    contdir.load_all(DATA, EXTERNAL)
-    ksg_polity.load_all(DATA, EXTERNAL)
+    ksg_to_cow.load_all(EXTERNAL)
+    nmc.load_all(EXTERNAL)
+    polity.load_all(EXTERNAL)
+    war4.load_all(EXTERNAL)
+    war3.load_all(EXTERNAL)
+    contdir.load_all(EXTERNAL)
+    ksg_polity.load_all(EXTERNAL)
 
 def main():
     """ Load ALL data into the database

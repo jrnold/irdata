@@ -33,8 +33,10 @@ def load_contdir(src):
         session.add(model.ContDir(**data))
     session.commit()
 
+def unload():
+    pass
 
-def load_all(data, external):
+def load_all(external):
     """ Load all direct contiguity data """
-    utils.load_enum_from_yaml(open(path.join(data, "contiguity_type.yaml"), 'r'))
-    load_contdir(open(path.join(data, "DirectContiguity310/contdir.csv"), "rU"))
+    utils.load_enum_from_yaml(utils.get_data("contiguity_type.yaml"))
+    load_contdir(utils.get_data("DirectContiguity310/contdir.csv"))

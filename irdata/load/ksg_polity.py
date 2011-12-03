@@ -46,8 +46,8 @@ def load_ksgp4use(src):
     session.commit()
 
 
-def load_all(data, external):
-    utils.load_enum_from_yaml(open(path.join(data, "ksgp4_enum.yaml"), "r"))
-    load_ksgp4duse(open(path.join(data, 'ksgp4duse.asc'), 'r'))
-    load_ksgp4use(open(path.join(data, 'ksgp4use.asc'), 'r'))    
+def load_all(external):
+    utils.load_enum_from_yaml(utils.get_data("ksgp4_enum.yaml"))
+    load_ksgp4duse(utils.get_data("ksgp4duse.asc"))
+    load_ksgp4use(utils.get_data("ksgp4use.asc"))    
     

@@ -1,6 +1,7 @@
 import collections
 import datetime
 import zipfile
+import pkgutil
 import re
 from os import path
 
@@ -72,9 +73,9 @@ def load_polityd(src):
         session.add(model.PolityCase(**utils.subset(row, columns)))
     session.commit()
 
-def load_all(data, external):
+def load_all(external):
     """ Load all Polity 4 data """
-    load_polity_states(open(path.join(data, 'polity4_states.yaml'), 'r'))
+    load_polity_states(utils.get_data("polity4_states.yaml"))
     load_polity(path.join(external, 'www.systemicpeace.org/inscr/p4v2010.xls'))
     load_polityd(path.join(external, 'www.systemicpeace.org/inscr/p4v2010d.xls'))
 

@@ -194,7 +194,7 @@ def load_ksg2cowyear():
         session.flush()
     session.commit()
 
-def load_all():
+def load_all(external):
     print("loading ksg_to_cow")
     load_ksg2cow()
     print("loading ksg_to_cow_year")

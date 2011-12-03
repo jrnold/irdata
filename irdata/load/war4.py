@@ -6,6 +6,7 @@ import sys
 import collections
 import datetime
 import zipfile
+import pkgutil
 import re
 from os import path
 
@@ -456,19 +457,18 @@ def drop_all():
         session.query(x).delete()
     session.commit()
 
-def load_all(data, external):
+def load_all(external):
     """ Load all COW War v. 4 data """
     model.Base.metadata.create_all(checkfirst=True)
-    inter = path.join(data, "InterStateWarData_v4.0.csv")
-    intra = path.join(data, "IntraStateWarData_v4.1.csv")
-    nonstate = path.join(data, "NonStateWarData_v4.0.csv")
-    load_cow_war_types(open(path.join(data, "cow_war_types.yaml"), "r"))
-    utils.load_enum_from_yaml(open(path.join(data, "war4_enum.yaml"), "r"))
-    load_war4_list(open(path.join(data, "WarList_NEW.txt"), 'r'))
-    load_war4(open(inter, 'rU'))
-    load_war4_intra(open(intra, 'rU'))
-    load_war4_nonstate(open(nonstate, 'rU'))
-    load_war4_links(open(inter, 'rU'), open(intra, 'rU'), open(nonstate, 'rU'))
+    load_cow_war_types(utils.get_data("cow_war_types.yaml"))
+    utils.load_enum_from_yaml(utils.get_data("war4_enum.yaml"))
+    load_war4_list(utils.get_data("WarList_NEW.txt"))
+    load_war4(utils.get_data("InterStateWarData_v4.0.csv"))
+    load_war4_intra(utils.get_data("IntraStateWarData_v4.1.csv"))
+    load_war4_nonstate(utils.get_data("NonStateWarData_v4.0.csv"))
+    load_war4_links(utils.get_data("InterStateWarData_v4.0.csv"),
+                    utils.get_data("IntraStateWarData_v4.1.csv"),
+                    utils.get_data("NonStateWarData_v4.0.csv"))
 
 def main():
     drop_all()

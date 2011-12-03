@@ -9,7 +9,7 @@ import yaml
 
 from irdata import csv2
 from irdata import model
-from irdata import utils
+from irdata.load import utils
 
 def load_nmc_codes(src):
     session = model.SESSION()
@@ -53,9 +53,9 @@ def load_nmc(src):
         session.add(model.Nmc(**row))
     session.commit()
 
-def load_all(data, external):
+def load_all(external):
     """ Load all COW National Military Capabilities data """
-    load_nmc_codes(open(path.join(data, "nmc_codes.yaml"), 'r'))
+    load_nmc_codes(utils.get_data("nmc_codes.yaml"))
     ## If not opened with rU then throws
     nmc_zip = zipfile.ZipFile(path.join(external,
                                         "www.correlatesofwar.org/COW2 Data/Capabilities/NMC_Supplement_v4_0_csv.zip"))
