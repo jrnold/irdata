@@ -192,7 +192,7 @@ def load_war4_inter(src):
         y = model.War4Partic()
         belligerent = belligerent_key(row['ccode'], row['state_name'])
         war_side = war_side_pkey(int(row['war_num']),
-                                 int(row['side']) == 2)
+                                 int(row['side']))
         y.war_partic = war_partic_pkey(war_side, belligerent)
         y.war_side = war_side
         y.belligerent = belligerent
@@ -207,7 +207,7 @@ def load_war4_inter(src):
         if row['start_year%d' % n] != '-8':
             y = model.War4ParticDate()
             war_side = war_side_pkey(int(row['war_num']),
-                                     int(row['side']) == 2)
+                                     int(row['side']))
             belligerent = belligerent_key(row['ccode'], row['state_name'])
             y.war_partic = war_partic_pkey(war_side, belligerent)
             y.partic_num = n
@@ -238,7 +238,7 @@ def load_war4_inter(src):
         cnt_bellig[belligerent] +=1 
         if cnt[war_num] == 1:
             session.add(model.War4(intnl=True, **utils.subset(row, cols)))
-            for side in (False, True):
+            for side in (1, 2):
                 session.add(model.War4Side(war_side = war_side_pkey(side=side, war_num=war_num),
                                            side=side, war_num=war_num))
             session.flush()
@@ -285,7 +285,7 @@ def load_war4_intra(src):
     def partic(row, belligerent, side):
         y = model.War4Partic()
         war_side = war_side_pkey(_int(row['war_num']),
-                                 (side == 'b'))
+                                 (side == 'b') + 1)
         y.war_partic = war_partic_pkey(war_side, belligerent)
         y.belligerent = belligerent
         y.war_side = war_side
@@ -294,7 +294,7 @@ def load_war4_intra(src):
         ## outcomes given in Side A / Side B rather than winner/loser
         ## per participant
         outcome = _int(row['outcome'])
-        if side:
+        if side == 2:
             if outcome == 2: outcome = 1
             elif outcome == 1: outcome = 2
         y.outcome = outcome
@@ -306,7 +306,7 @@ def load_war4_intra(src):
         if row['start_year%d' % n] != '-8':
             y = model.War4ParticDate()
             war_side = war_side_pkey(_int(row['war_num']),
-                                     (side == 'b'))
+                                     (side == 'b') + 1)
             y.war_partic = war_partic_pkey(war_side,
                                            belligerent)
             y.belligerent = belligerent
@@ -339,7 +339,7 @@ def load_war4_intra(src):
                                       war_name = row['war_name'],
                                       war_type = int(row['war_type']),
                                       intnl = row['intnl'] == '1'))
-            for side in (False, True):
+            for side in (1, 2):
                 session.add(model.War4Side(war_side = war_side_pkey(war_num, side),
                                            side=side, war_num=row['war_num']))
             session.flush()
@@ -385,7 +385,7 @@ def load_war4_nonstate(src):
             
     def partic(row, side, name):
         y = model.War4Partic()
-        war_side = war_side_pkey(_int(row['war_num']), side == "b")
+        war_side = war_side_pkey(_int(row['war_num']), (side == "b") + 1)
         belligerent = belligerent_key(None, name)
         y.war_partic = war_partic_pkey(war_side, belligerent)
         y.war_side = war_side
@@ -403,7 +403,7 @@ def load_war4_nonstate(src):
     def add_partic_dates(row, name, side):
         y = model.War4ParticDate()
         war_side = war_side_pkey(_int(row['war_num']),
-                                 side == "b")
+                                 (side == "b") + 1)
         belligerent = belligerent_key(None, name)
         y.war_partic = war_partic_pkey(war_side, belligerent)
         y.partic_num = 1
@@ -433,7 +433,7 @@ def load_war4_nonstate(src):
                                war_type = int(row['war_type']),
                                bat_deaths = _int(row['total_combat_deaths'])))
         for side in ('a', 'b'):
-            side_bool = (side == 'b')
+            side_bool = (side == 'b') + 1
             session.add(model.War4Side(war_side = war_side_pkey(war_num, side_bool),
                                        side = side_bool,
                                        war_num = war_num,

@@ -55,6 +55,10 @@ def load_war3(src):
             _dates(row, i)
     session.commit()
 
+def war_partic_pkey(war_no, state_num, partic_no):
+    return "%s,%s,%s" % (war_no, state_num, partic_no)
+    
+    
 def load_war3_partic(src):
     """ Load COW War Data v. 3, Participants """
     session = model.SESSION()
@@ -67,9 +71,7 @@ def load_war3_partic(src):
     def _dates(row, n):
         if row['yr_beg%d' % n]:
             y = model.War3ParticDate()
-            y.war_no = row['war_no']
-            y.state_num = row['state_num']
-            y.partic_no = row['partic_no']
+            y.war_partic = row['war_partic']
             y.spell_no = n
             date_beg = utils.daterng(_int(row['yr_beg%d' % n]),
                                      _int(row['mon_beg%d' % n]),
@@ -91,6 +93,9 @@ def load_war3_partic(src):
         key = (row['war_no'], row['state_num'])
         cnt[key] += 1
         row['partic_no'] = cnt[key]
+        row['war_partic'] = war_partic_pkey(row['war_no'],
+                                            row['state_num'],
+                                            row['partic_no'])
         ## replace missing values
         for k,v in row.iteritems():
             row[k] = utils.replmiss(v, lambda x: x in ("-999", "-888"))
@@ -103,11 +108,18 @@ def load_war3_partic(src):
 def load_all(external):
     """ Load all COW War Data v. 3 (Inter-, Intra-, and Extra-State)"""
     utils.load_enum_from_yaml(utils.get_data("war3_enum.yaml"))
-    load_war3(open(path.join(external, "www.correlatesofwar.org/cow2 data/WarData/InterState/Inter-State Wars (V 3-0).csv"), 'r'))
-    load_war3_partic(open(path.join(external, "www.correlatesofwar.org/cow2 data/WarData/InterState/Inter-State War Participants (V 3-0).csv"), 'r'))
-    load_war3(open(path.join(external, "www.correlatesofwar.org/cow2 data/WarData/IntraState/Intra-State Wars (V 3-0).csv"), 'r'))
-    load_war3_partic(open(path.join(external, "www.correlatesofwar.org/cow2 data/WarData/IntraState/Intra-State War Participants (V 3-0).csv"), 'r'))
-    load_war3(open(path.join(external, "www.correlatesofwar.org/cow2 data/WarData/ExtraState/Extra-State Wars (V 3-0).csv"), 'r'))
-    load_war3_partic(open(path.join(external, "www.correlatesofwar.org/cow2 data/WarData/ExtraState/Extra-State War Participants (V 3-0).csv"), 'r'))
+    basepth = "www.correlatesofwar.org/cow2 data/WarData"
+    load_war3(open(path.join(external, basepth, "InterState",
+                             "Inter-State Wars (V 3-0).csv"), 'r'))
+    load_war3_partic(open(path.join(external, basepth, "InterState", 
+                                    "Inter-State War Participants (V 3-0).csv"), 'r'))
+    load_war3(open(path.join(external, basepth, "IntraState", 
+                             "Intra-State Wars (V 3-0).csv"), 'r'))
+    load_war3_partic(open(path.join(external, basepth, "IntraState",
+                                    "Intra-State War Participants (V 3-0).csv"), 'r'))
+    load_war3(open(path.join(external, basepth, "ExtraState",
+                             "Extra-State Wars (V 3-0).csv"), 'r'))
+    load_war3_partic(open(path.join(external, basepth, "ExtraState",
+                                    "Extra-State War Participants (V 3-0).csv"), 'r'))
 
     

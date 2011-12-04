@@ -30,7 +30,7 @@ class IntegerConstrained(sa.Integer, types.SchemaType):
     It is like an integer version of the Enum type.
     
     """
-    def __init__(self, name=None, *values):
+    def __init__(self, values, name=None):
         """Construct a day
 
         :param name: if a CHECK constraint is generated, specify
@@ -526,18 +526,20 @@ class War4Side(Base, Mixin):
     """ Cow War v. 4 Sides
     """ 
     __tablename__ = 'war4_sides'
+    __table_args__ = (sa.CheckConstraint("war_side = war_num || ',' || side"), )
     war_side = sa.Column(sa.Unicode, primary_key=True)
     war_num = sa.Column(sa.Integer,
                         ForeignKey(War4.__table__.c.war_num),
                         nullable=False)
-    side = sa.Column(sa.Boolean, nullable=False)
+    side = sa.Column(IntegerConstrained(values=(1, 2)), nullable=False)
     bat_death = sa.Column(sa.Integer)
-    sa.CheckConstraint("war_side = war_num || ',' || side")    
+
 
 class War4Partic(Base, Mixin):
     """ Cow War v.4 Participation
     """
     __tablename__ = 'war4_partic'
+    __table_args__ = (sa.CheckConstraint("war_partic = war_side || ',' || belligerent"),)
     war_partic = sa.Column(sa.Unicode, primary_key=True)
     war_side = sa.Column(sa.Unicode,
                          ForeignKey(War4Side.__table__.c.war_side),
@@ -560,7 +562,7 @@ class War4Partic(Base, Mixin):
     bat_death = sa.Column(sa.Integer)
     ## Initiation is by participant not side
     initiator = sa.Column(sa.Boolean, nullable = False)
-    sa.CheckConstraint("war_partic = war_side || ',' || belligerent")
+
 
 class War4ParticDate(Base, Mixin):
     """ Date interval in which a belligerent participated in a war """
@@ -665,6 +667,8 @@ class War3Date(Base, Mixin):
     """ COW Inter-State Wars v 3.0 (War dates)
     """
     __tablename__ = 'war3_dates'
+    __table_args__ = (sa.CheckConstraint('date_end_max >= date_end_min'),
+                      sa.CheckConstraint('date_end_max >= date_end_min'))                      
     
     war_no = sa.Column(sa.Integer, 
                       ForeignKey(War3.__table__.c.war_no),
@@ -672,10 +676,9 @@ class War3Date(Base, Mixin):
     spell_no = sa.Column(sa.Integer, primary_key=True)
     date_beg_min = sa.Column(sa.Date)
     date_beg_max = sa.Column(sa.Date)
-    sa.CheckConstraint('date_end_max >= date_end_min')
+
     date_end_min = sa.Column(sa.Date)
     date_end_max = sa.Column(sa.Date)
-    sa.CheckConstraint('date_end_max >= date_end_min')
 
     @property
     def date_beg(self):
@@ -692,12 +695,17 @@ class War3Partic(Base, Mixin):
     """ COW Inter-State Wars v 3.0 (Participants)
     """
     __tablename__ = 'war3_partic'
-    
-    war_no = sa.Column(sa.Integer, ForeignKey(War3.__table__.c.war_no),
-                      primary_key=True)
-    state_num = sa.Column(sa.Integer, ForeignKey(CowState.__table__.c.ccode),
-                      primary_key=True)
-    partic_no = sa.Column(sa.Integer, primary_key=True)
+    __table_args__ = (
+        sa.CheckConstraint("war_partic = war_no || ',' || state_num || ',' || partic_no"),
+        )
+
+    war_partic = sa.Column(sa.Unicode, primary_key=True)
+    war_no = sa.Column(sa.Integer,
+                       ForeignKey(War3.__table__.c.war_no))
+    state_num = sa.Column(sa.Integer,
+                          ForeignKey(CowState.__table__.c.ccode))
+    partic_no = sa.Column(sa.Integer)
+
     #duration = sa.Column(sa.Integer)
     deaths = sa.Column(sa.Integer)
     outcome = sa.Column(sa.Integer,
@@ -722,22 +730,18 @@ class War3ParticDate(Base, Mixin):
     """
 
     __tablename__ = 'war3_partic_dates'
-    
-    war_no = sa.Column(sa.Integer, primary_key=True)
-    state_num = sa.Column(sa.Integer, primary_key=True)
-    partic_no = sa.Column(sa.Integer,primary_key=True)
+    __table_args__ = (
+        sa.CheckConstraint('date_end_max >= date_end_min'),
+        sa.CheckConstraint('date_end_max >= date_end_min')
+        )
+    war_partic = sa.Column(sa.Unicode,
+                           ForeignKey(War3Partic.__table__.c.war_partic),
+                           primary_key=True)
     spell_no = sa.Column(sa.Integer, primary_key=True)
     date_beg_min = sa.Column(sa.Date)
     date_beg_max = sa.Column(sa.Date)
-    sa.CheckConstraint('date_end_max >= date_end_min')
     date_end_min = sa.Column(sa.Date)
     date_end_max = sa.Column(sa.Date)
-    sa.CheckConstraint('date_end_max >= date_end_min')
-    sa.ForeignKeyConstraint(['war_no', 'state_num'],
-                            [War3Partic.__table__.c.war_no,
-                             War3Partic.__table__.c.state_num,
-                             War3Partic.__table__.c.partic_no])
-
 
 
 class ContType(Base, IntFactorMixin, Mixin):
