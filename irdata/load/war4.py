@@ -486,7 +486,7 @@ def load_war4_links(inter, intra, nonstate):
     session.commit()
 
 def drop_all():
-    for x in reversed(KLS)
+    for x in reversed(KLS):
         KLS.__table__.delete().execute()
 
 def load_all(external):

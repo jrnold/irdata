@@ -12,10 +12,10 @@ from irdata import csv2
 from irdata import model
 from irdata.load import utils
 
-KLS = [KsgP4dOrigin,
-       KsgP4Origin,
-       KsgP4duse,
-       KsgP4use]
+KLS = [model.KsgP4dOrigin,
+       model.KsgP4Origin,
+       model.KsgP4duse,
+       model.KsgP4use]
 
 
 def _strpftime(x):
