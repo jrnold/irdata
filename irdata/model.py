@@ -14,7 +14,10 @@ COW_ONGOING_DATE = datetime.date(2008, 6, 30)
 """ COW maximal date """
 
 class ForeignKey(sa.ForeignKey):
+    """ Subclass sqlalchemy.ForeignKey with different defaults """
     def __init__(self, column, **kwargs):
+        ## ondelete = CASCADE makes it easier when unloading tables
+        ## initially deferred and deferrable are useful in loading
         defaults = {'onupdate' : "CASCADE",
                   'ondelete' : "CASCADE",
                   'initially' : "DEFERRED",
