@@ -1,5 +1,6 @@
 """ Dump metadata template for each 
 """
+import sys
 from os import path
 
 import yaml
@@ -13,17 +14,20 @@ TEMPLATE = {'description': "",
             'see_also': "",
             'columns': ""}
 
-def dump_metadata(dirname):
-    for tablename, table in model.Base.metadata.tables.iteritems():
-        data = TEMPLATE.copy()
-        data['columns'] = dict([(c.name, c.doc) for c in table.columns])
-        with open(path.join(dirname, '%s.yaml' % tablename), 'w') as f:
-            yaml.dump(data, f, default_flow_style=False)
+def dump_metadata(tablename):
+    """ Dump yaml metadata file template of table to stdout"""
+    table = model.Base.metadata.tables[tablename]
+    data = TEMPLATE.copy()
+    data['columns'] = dict([(c.name, c.doc) for c in table.columns])
+    for k, v  in data['columns'].iteritems():
+        if v is None:
+            data['columns'][k] = ""
+    print(yaml.dump(data, default_flow_style=False))
 
 def main():
-    """ Dump a metadata template for each table in the database model to a directory""" 
-    dirname = sys.argv[1]
-    dump_metadata(dir)
+    """ Dump a metadata template for a table"""
+    table = sys.argv[1]
+    dump_metadata(table)
 
 if __name__ == '__main__':
     main()
