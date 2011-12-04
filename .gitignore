@@ -7,3 +7,4 @@ external
 /doc/source/tables
 *.egg-info
 *.egg
+*.sql.gz
