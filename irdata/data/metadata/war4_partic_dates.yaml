@@ -1,13 +1,11 @@
 columns:
-  belligerent: "Belligerent"
+  war_partic: War participant. Unique (war_num, side, belligerent) combination
+  partic_num: nth participation in the war on a given side
   end_date_max: "End date (maximum)"
   end_date_min: "End date (minimum)"
   ongoing: "War is ongoing"
-  partic_num: "nth interval for this participant in this war"
-  side: "Side participant is fighting on"
   start_date_max: "Start date (maximum)"
   start_date_min: "Start date (minimum)"
-  war_num: "War number"
 creator: ''
 date: ''
 see_also:

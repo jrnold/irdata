@@ -1,15 +1,15 @@
 columns:
+  war_partic: "War participant. Unique (war_side, Belligerent) combination"
+  war_side: "War side. Unique (war_num, side) combination"
+  belligerent: "Belligerent"
   africa: "Was any part of the war fought in Africa?"
   asia: "Was any part of the war fought in Asia?"
   bat_death: "Number of battle deaths"
-  belligerent: "Belligerent"
   europe: "Was any part of the war fought in Europe?"
   initiator: "Whether the belligerent initiated the war"
   mid_east: "Was any part of the war fought in Middle East?"
   oceania: "Was any part of the war fought in Oceania?"
   outcome: "war outcome"
-  side: "Side participated on. Since there are only two sides to each war, this is stored as boolean value."
-  war_num: "War Number"
   west_hem: "Was any part of the war fought in the Western Hemisphere?"
 creator: ''
 date: ''

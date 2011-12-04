@@ -1,4 +1,8 @@
 columns:
+  war_partic: War participant. Unique (war_no, state_num, partic_no) combination
+  war_no: War number
+  state_num: COW country code
+  partic_no: nth participation
   africa: Did state participant engage in fighting in war in Africa?
   asia: Did state participant engage in fighting in war in Asia?
   deaths: "Number of battle related deaths sustained by participant's armed forces"
@@ -8,17 +12,14 @@ columns:
   mid_east: Did state participant engage in fighting in war in Middle East?
   oceania: Did state participant engage in fighting in war in Oceania?
   outcome: War outcome for participant
-  partic_no: nth participation by the participant
   pr_war_arm: Pre-war armed-forces thousands (number from year war begun)
   pr_war_pop: Pre-war population in thousands (number from year war begun)
-  state_num: 
   sys_stat: System membership status of state
-  war_no: 
   west_hem: Did state participant engage in fighting in war in the Western Hemisphere?
 creator: ''
 date: ''
 see_also:
-  - "Sarkees, Meredith Reid (2000). "The Correlates of War Data on War: An Update to 1997," Conflict Management and Peace Science, 18/1: 123-144."
+  - "Sarkees, Meredith Reid (2000). \"The Correlates of War Data on War: An Update to 1997,\" Conflict Management and Peace Science, 18/1: 123-144."
   - "Singer, J. David, and Melvin Small (1972). The Wages of War, 1816-1965: A Statistical Handbook. New York: John Wiley."
   - "Small, Melvin, and J. David Singer (1982). Resort to Arms: International and Civil Wars, 1816-1980. Beverly Hills, Calif.: Sage Publications."
   - www.correlatesofwar.org/cow2%20data/WarData/ExtraState/Extra-State%20War%20Format%20(V%203-0).htm

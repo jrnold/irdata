@@ -1,15 +1,15 @@
 columns:
-  ccode: "COW country code"
-  cinc: "Composite Index of National Capability (CINC) score"
-  irst: "Iron and steel production (thousands of tons)"
-  irstanomalycode: "
+  ccode: COW country code
+  cinc: Composite Index of National Capability (CINC) score
+  irst: Iron and steel production (thousands of tons)
+  irstanomalycode: Iron and steel production Anomaly Code
   irstnote: Note on Iron and steel production
   irstqualitycode: Iron and steel production Quality Code
   irstsource: Information source for Iron and steel production
   milex: |
     Military Expenditures (For 1816-1913: thousands of current
     year British Pounds. For 1914+: thousands of current year US
-    Dollars."""
+    Dollars.
   milexnote: Note on Military Expenditures
   milexsource: Information source for Military Expenditures
   milper: Military Personnel (thousands)
@@ -37,8 +37,8 @@ columns:
 creator: ''
 date: ''
 see_also: 
-  - "Singer, J. David, Stuart Bremer, and John Stuckey. (1972). "Capability Distribution, Uncertainty, and Major Power War, 1820-1965." in Bruce Russett (ed) Peace, War, and Numbers, Beverly Hills: Sage, 19-48"
-  - "Singer, J. David. (1987). "Reconstructing the Correlates of War Dataset on Material Capabilities of States, 1816-1985" International Interactions, 14: 115-32"
+  - "Singer, J. David, Stuart Bremer, and John Stuckey. (1972). \"Capability Distribution, Uncertainty, and Major Power War, 1820-1965.\" in Bruce Russett (ed) Peace, War, and Numbers, Beverly Hills: Sage, 19-48"
+  - "Singer, J. David. (1987). \"Reconstructing the Correlates of War Dataset on Material Capabilities of States, 1816-1985\" International Interactions, 14: 115-32"
   - http://www.correlatesofwar.org/COW2%20Data/Capabilities/NMC_Codebook_v4_0.pdf
   - "http://www.correlatesofwar.org/COW2%20Data/Capabilities/nmc4.htm"
 source: 

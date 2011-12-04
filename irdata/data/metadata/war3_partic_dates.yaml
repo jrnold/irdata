@@ -1,16 +1,14 @@
 columns:
+  war_partic: War participant
+  spell_no: war spell number
   date_beg_max: Start date (maximum)
   date_beg_min: Start date (minimum)
   date_end_max: End date (maximum)
   date_end_min: End date (minimum)
-  partic_no: nth interval of participation.
-  spell_no: war spell number
-  state_num: COW numeric country code
-  war_no: War number
 creator: ''
 date: ''
 see_also:
-  - "Sarkees, Meredith Reid (2000). "The Correlates of War Data on War: An Update to 1997," Conflict Management and Peace Science, 18/1: 123-144."
+  - "Sarkees, Meredith Reid (2000). \"The Correlates of War Data on War: An Update to 1997,\" Conflict Management and Peace Science, 18/1: 123-144."
   - "Singer, J. David, and Melvin Small (1972). The Wages of War, 1816-1965: A Statistical Handbook. New York: John Wiley."
   - "Small, Melvin, and J. David Singer (1982). Resort to Arms: International and Civil Wars, 1816-1980. Beverly Hills, Calif.: Sage Publications."
   - www.correlatesofwar.org/cow2%20data/WarData/ExtraState/Extra-State%20War%20Format%20(V%203-0).htm

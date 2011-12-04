@@ -1,0 +1,19 @@
+columns:
+  war_name: "War name"
+  war_num: "War number"
+source:
+  - http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/WarList_NEW.pdf
+see_also:
+  - "Sarkees, Meredith Reid and Frank Wayman (2010). Resort to War: 1816 - 2007. CQ Press"
+  - www.correlatesofwar.org/COW2%20Data/WarData_NEW/WarList_NEW.html
+  - http://www.correlatesofwar.org/COW2%20Data/WarData_NEW/COW%20Website%20-%20Typology%20of%20war.pdf
+description: |
+  COW Wars v. 4 list of wars
+
+  This table includes the full list of wars names and war numbers in
+  the COW Wars v. 4 dataset, including Extra-State wars, for which the
+  data have not yet been released.
+
+  This is temporary table until it is consolidated with the :doc:`war4`
+  table.
+  

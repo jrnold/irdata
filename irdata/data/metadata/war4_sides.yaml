@@ -1,7 +1,8 @@
 columns:
-  bat_death: "Battle deaths"
-  side: "Side"
+  war_side: "War side identifier "
   war_num: "War number"
+  side: "Side of war {1, 2}"
+  bat_death: "Battle deaths"
 creator: ''
 date: ''
 see_also:
