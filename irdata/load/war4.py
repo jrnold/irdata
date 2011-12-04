@@ -144,6 +144,27 @@ def belligerent_key(ccode, name):
         ccode = None
     return u"%s %s" % (ccode, name)
 
+def war_side_pkey(war_num, side):
+    """ Create primary key for war_side
+
+    Create a unique key for war_num, side combinations
+
+    :param war_num: int. war number
+    :param side: int. side of war
+    """
+    return ("%s,%s" % (war_num, int(side)))
+
+def war_partic_pkey(war_side, belligerent):
+    """ Create primary key for war_side
+
+    Create a unique key for war_num, side combinations
+
+    :param war_side: str. war_side key
+    :param belligerent: str. belligerent
+    """
+    return ("%s,%s" % (war_side, belligerent))
+
+
 def load_war4_list(src):
     """ Load war4_list """
     session = model.SESSION()
@@ -156,7 +177,7 @@ def load_war4_list(src):
     session.commit()
 
 
-def load_war4(src):
+def load_war4_inter(src):
     """ Add Inter-state war data to war4_* tables
     
     updates tables cow_war4, cow_belligerents, cow_war4_participation, cow_war4_partic_dates
@@ -169,9 +190,12 @@ def load_war4(src):
 
     def partic(row):
         y = model.War4Partic()
-        y.war_num = int(row['war_num'])
-        y.belligerent = belligerent_key(row['ccode'], row['state_name'])
-        y.side = int(row['side']) == 2
+        belligerent = belligerent_key(row['ccode'], row['state_name'])
+        war_side = war_side_pkey(int(row['war_num']),
+                                 int(row['side']) == 2)
+        y.war_partic = war_partic_pkey(war_side, belligerent)
+        y.war_side = war_side
+        y.belligerent = belligerent
         for k, v in WHERE_FOUGHT[_int(row['where_fought'])].iteritems():
             setattr(y, k, v)
         y.outcome = row['outcome']
@@ -182,9 +206,10 @@ def load_war4(src):
     def add_partic_dates(row, n):
         if row['start_year%d' % n] != '-8':
             y = model.War4ParticDate()
-            y.war_num = row['war_num']
-            y.belligerent = belligerent_key(row['ccode'], row['state_name'])
-            y.side = int(row['side']) == 2
+            war_side = war_side_pkey(int(row['war_num']),
+                                     int(row['side']) == 2)
+            belligerent = belligerent_key(row['ccode'], row['state_name'])
+            y.war_partic = war_partic_pkey(war_side, belligerent)
             y.partic_num = n
             start_date = utils.daterng(_int(row['start_year%d' % n]),
                                        _int(row['start_month%d' % n]),
@@ -214,7 +239,8 @@ def load_war4(src):
         if cnt[war_num] == 1:
             session.add(model.War4(intnl=True, **utils.subset(row, cols)))
             for side in (False, True):
-                session.add(model.War4Side(side=side, war_num=row['war_num']))
+                session.add(model.War4Side(war_side = war_side_pkey(side=side, war_num=war_num),
+                                           side=side, war_num=war_num))
             session.flush()
         if cnt_bellig[belligerent] == 1:
             session.add(model.War4Belligerent(belligerent = belligerent,
@@ -258,9 +284,11 @@ def load_war4_intra(src):
             
     def partic(row, belligerent, side):
         y = model.War4Partic()
-        y.war_num = _int(row['war_num'])
+        war_side = war_side_pkey(_int(row['war_num']),
+                                 (side == 'b'))
+        y.war_partic = war_partic_pkey(war_side, belligerent)
         y.belligerent = belligerent
-        y.side = (side == 'b')
+        y.war_side = war_side
         for k, v in WHERE_FOUGHT[_int(row['where_fought'])].iteritems():
             setattr(y, k, v)
         ## outcomes given in Side A / Side B rather than winner/loser
@@ -277,9 +305,12 @@ def load_war4_intra(src):
     def add_partic_dates(row, belligerent, side, n):
         if row['start_year%d' % n] != '-8':
             y = model.War4ParticDate()
-            y.war_num = row['war_num']
+            war_side = war_side_pkey(_int(row['war_num']),
+                                     (side == 'b'))
+            y.war_partic = war_partic_pkey(war_side,
+                                           belligerent)
             y.belligerent = belligerent
-            y.side = (side == 'b')
+            y.war_side = war_side
             y.partic_num = n
             start_date = utils.daterng(_int(row['start_year%d' % n]),
                                        _int(row['start_month%d' % n]),
@@ -309,7 +340,8 @@ def load_war4_intra(src):
                                       war_type = int(row['war_type']),
                                       intnl = row['intnl'] == '1'))
             for side in (False, True):
-                session.add(model.War4Side(side=side, war_num=row['war_num']))
+                session.add(model.War4Side(war_side = war_side_pkey(war_num, side),
+                                           side=side, war_num=row['war_num']))
             session.flush()
         if _side(row['side_a']):
             add_belligerent(session, row['side_a'], row['ccode_a'])
@@ -353,9 +385,11 @@ def load_war4_nonstate(src):
             
     def partic(row, side, name):
         y = model.War4Partic()
-        y.war_num = _int(row['war_num'])
-        y.belligerent = belligerent_key(None, name)
-        y.side = side == "b"
+        war_side = war_side_pkey(_int(row['war_num']), side == "b")
+        belligerent = belligerent_key(None, name)
+        y.war_partic = war_partic_pkey(war_side, belligerent)
+        y.war_side = war_side
+        y.belligerent = belligerent
         for k, v in WHERE_FOUGHT[_int(row['where_fought'])].iteritems():
             setattr(y, k, v)
         outcome = _int(row['outcome'])
@@ -368,9 +402,10 @@ def load_war4_nonstate(src):
 
     def add_partic_dates(row, name, side):
         y = model.War4ParticDate()
-        y.war_num = row['war_num']
-        y.belligerent = belligerent_key(None, name)
-        y.side = side
+        war_side = war_side_pkey(_int(row['war_num']),
+                                 side == "b")
+        belligerent = belligerent_key(None, name)
+        y.war_partic = war_partic_pkey(war_side, belligerent)
         y.partic_num = 1
         start_date = utils.daterng(_int(row['start_year']),
                                    _int(row['start_month']),
@@ -398,8 +433,10 @@ def load_war4_nonstate(src):
                                war_type = int(row['war_type']),
                                bat_deaths = _int(row['total_combat_deaths'])))
         for side in ('a', 'b'):
-            session.add(model.War4Side(side=(side == 'b'),
-                                       war_num=row['war_num'],
+            side_bool = (side == 'b')
+            session.add(model.War4Side(war_side = war_side_pkey(war_num, side_bool),
+                                       side = side_bool,
+                                       war_num = war_num,
                                        bat_death = _int(row['side_%sdeaths' % side])))
         session.flush()
         for i in (1, 2):
@@ -407,13 +444,13 @@ def load_war4_nonstate(src):
             if name != '-8':
                 add_belligerent(session, name)
                 session.add(partic(row, 'a', name))
-                add_partic_dates(row, name, False)
+                add_partic_dates(row, name, 'a')
         for i in range(1, 6):
             name = row['side_b%d' % i]
             if name != '-8':
                 add_belligerent(session, name)
                 session.add(partic(row, 'b', name))
-                add_partic_dates(row, name, True)
+                add_partic_dates(row, name, 'b')
         session.flush()
     session.commit()
 
@@ -463,7 +500,7 @@ def load_all(external):
     load_cow_war_types(utils.get_data("cow_war_types.yaml"))
     utils.load_enum_from_yaml(utils.get_data("war4_enum.yaml"))
     load_war4_list(utils.get_data("WarList_NEW.txt"))
-    load_war4(utils.get_data("InterStateWarData_v4.0.csv"))
+    load_war4_inter(utils.get_data("InterStateWarData_v4.0.csv"))
     load_war4_intra(utils.get_data("IntraStateWarData_v4.1.csv"))
     load_war4_nonstate(utils.get_data("NonStateWarData_v4.0.csv"))
     load_war4_links(utils.get_data("InterStateWarData_v4.0.csv"),

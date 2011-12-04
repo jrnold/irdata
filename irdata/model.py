@@ -13,6 +13,16 @@ SESSION = orm.sessionmaker()
 COW_ONGOING_DATE = datetime.date(2008, 6, 30)
 """ COW maximal date """
 
+class ForeignKey(sa.ForeignKey):
+    def __init__(self, column, **kwargs):
+        defaults = {'onupdate' : "CASCADE",
+                  'ondelete' : "CASCADE",
+                  'initially' : "DEFERRED",
+                  'deferrable' : True}
+
+        defaults.update(kwargs)
+        super(ForeignKey, self).__init__(column, **defaults)
+
 class IntegerConstrained(sa.Integer, types.SchemaType):
     """Integer that can only take on constrained values
 
@@ -134,9 +144,7 @@ class CowSysMembership(Base, Mixin):
     """ Last day in this dataset """
 
     ccode = sa.Column(sa.Integer,
-                      sa.ForeignKey(CowState.__table__.c.ccode,
-                                    initially = "DEFERRED",
-                                    deferrable=True),
+                      ForeignKey(CowState.__table__.c.ccode),
                       primary_key=True)
     interval = sa.Column(sa.Integer,
                          primary_key=True)
@@ -161,7 +169,7 @@ class CowMajor(Base, Mixin):
     """ Last date in the dataset """
 
     ccode = sa.Column(sa.Integer,
-                      sa.ForeignKey(CowState.__table__.c.ccode),
+                      ForeignKey(CowState.__table__.c.ccode),
                       primary_key=True)
     interval = sa.Column(sa.Integer,
                          primary_key=True)
@@ -175,7 +183,7 @@ class CowSystem(Base, Mixin):
     __tablename__ = "cow_system"
 
     ccode = sa.Column(sa.Integer,
-                      sa.ForeignKey(CowState.__table__.c.ccode),
+                      ForeignKey(CowState.__table__.c.ccode),
                       primary_key=True)
     year = sa.Column(sa.Integer, primary_key=True)
     start_year = sa.Column(sa.Boolean)
@@ -197,9 +205,7 @@ class KsgSysMembership(Base, Mixin):
     __tablename__ = 'ksg_sys_membership'
     ONGOING_DATE = datetime.date(2008, 11, 1)
     ccode = sa.Column(sa.Integer,
-                      sa.ForeignKey(KsgState.__table__.c.idnum,
-                                    deferrable = True,
-                                    initially = "DEFERRED"),
+                      ForeignKey(KsgState.__table__.c.idnum),
                       primary_key=True)
     interval = sa.Column(sa.Integer, primary_key=True)
     start_date = sa.Column(sa.Date)
@@ -209,7 +215,7 @@ class KsgSysMembership(Base, Mixin):
 class KsgSystem(Base, Mixin):
     __tablename__ = 'ksg_system'
     ccode = sa.Column(sa.Integer,
-                      sa.ForeignKey(KsgState.__table__.c.idnum),
+                      ForeignKey(KsgState.__table__.c.idnum),
                       primary_key=True)
     year = sa.Column(sa.Integer,
                      primary_key=True)
@@ -232,9 +238,9 @@ class KsgToCow(Base, Mixin):
 
     rowid = sa.Column(sa.Integer, primary_key=True)
     ksg_ccode = sa.Column(sa.Integer,
-                          sa.ForeignKey(KsgState.__table__.c.idnum))
+                          ForeignKey(KsgState.__table__.c.idnum))
     cow_ccode = sa.Column(sa.Integer,
-                          sa.ForeignKey(CowState.__table__.c.ccode))
+                          ForeignKey(CowState.__table__.c.ccode))
     start_date  = sa.Column(sa.Date)
     end_date  = sa.Column(sa.Date)
 
@@ -249,9 +255,9 @@ class KsgToCowYear(Base, Mixin):
 
     rowid = sa.Column(sa.Integer, primary_key=True)
     ksg_ccode = sa.Column(sa.Integer,
-                          sa.ForeignKey(KsgState.__table__.c.idnum))
+                          ForeignKey(KsgState.__table__.c.idnum))
     cow_ccode = sa.Column(sa.Integer,
-                          sa.ForeignKey(CowState.__table__.c.ccode))
+                          ForeignKey(CowState.__table__.c.ccode))
     year = sa.Column(sa.Integer)
     start_year = sa.Column(sa.Boolean)
     end_year = sa.Column(sa.Boolean)
@@ -302,7 +308,7 @@ class Nmc(Base, Mixin):
     """
     __tablename__ = 'nmc'
     VERSION = "4.0"
-    ccode = sa.Column(sa.ForeignKey(CowState.__table__.c.ccode), primary_key=True)
+    ccode = sa.Column(ForeignKey(CowState.__table__.c.ccode), primary_key=True)
     year = sa.Column(sa.Integer,
                      primary_key=True)
     ## IRST
@@ -310,20 +316,20 @@ class Nmc(Base, Mixin):
     irstsource = sa.Column(sa.Unicode)
     irstnote = sa.Column(sa.Unicode)
     irstqualitycode = sa.Column(sa.Unicode(1),
-                                sa.ForeignKey(NmcIrstqualitycode.__table__.c.value,
+                                ForeignKey(NmcIrstqualitycode.__table__.c.value,
                                               deferrable=True))
     irstanomalycode = sa.Column(sa.Unicode(1),
-                                sa.ForeignKey(NmcIrstanomalycode.__table__.c.value,
+                                ForeignKey(NmcIrstanomalycode.__table__.c.value,
                                               deferrable=True))
     ## Energy consumption
     pec = sa.Column(sa.Float)
     pecsource = sa.Column(sa.Unicode)
     pecnote = sa.Column(sa.Unicode)
     pecqualitycode = sa.Column(sa.Unicode(1),
-                               sa.ForeignKey(NmcPecqualitycode.__table__.c.value,
+                               ForeignKey(NmcPecqualitycode.__table__.c.value,
                                              deferrable=True))
     pecanomalycode = sa.Column(sa.Unicode(1),
-                               sa.ForeignKey(NmcPecanomalycode.__table__.c.value,
+                               ForeignKey(NmcPecanomalycode.__table__.c.value,
                                              deferrable=True))
     ## Military expenditure
     milex = sa.Column(sa.Float)
@@ -338,8 +344,7 @@ class Nmc(Base, Mixin):
     upopsource = sa.Column(sa.Unicode)
     upopnote = sa.Column(sa.Unicode)
     upopqualitycode = sa.Column(sa.Unicode(1),
-                                sa.ForeignKey(NmcUpopqualitycode.__table__.c.value,
-                                              deferrable=True))
+                                ForeignKey(NmcUpopqualitycode.__table__.c.value))
     # upopanomalycode = sa.Column(sa.ForeignKey(NmcUpopqualitycode.__table__.c.value,
     #                                          deferrable=True))
     upopgrowth = sa.Column(sa.Float)
@@ -349,11 +354,9 @@ class Nmc(Base, Mixin):
     tpopsource = sa.Column(sa.Unicode)
     tpopnote = sa.Column(sa.Unicode)
     tpopqualitycode = sa.Column(sa.Unicode(1),
-                                sa.ForeignKey(NmcTpopqualitycode.__table__.c.value,
-                                              deferrable=True))
+                                ForeignKey(NmcTpopqualitycode.__table__.c.value))
     tpopanomalycode = sa.Column(sa.Unicode(1),
-                                sa.ForeignKey(NmcTpopanomalycode.__table__.c.value,
-                                              deferrable=True))
+                                ForeignKey(NmcTpopanomalycode.__table__.c.value))
     cinc = sa.Column(sa.Float)
 
 
@@ -394,7 +397,7 @@ class PolitySysMembership(Base, Mixin):
     ONGOING = 2010
     
     ccode = sa.Column(sa.Integer,
-                      sa.ForeignKey(PolityState.__table__.c.ccode, deferrable = True, initially = "DEFERRED"),
+                      ForeignKey(PolityState.__table__.c.ccode),
                       primary_key=True)
     interval = sa.Column(sa.Integer, primary_key=True)
     start_year = sa.Column(sa.Integer)
@@ -408,7 +411,7 @@ class PolityStateYear(Base, Mixin):
 
     cyear = sa.Column(sa.Integer, primary_key=True)
     ccode = sa.Column(sa.Integer, 
-                      sa.ForeignKey(PolityState.__table__.c.ccode),
+                      ForeignKey(PolityState.__table__.c.ccode),
                       nullable=False)
     year = sa.Column(sa.Integer)
     flag = sa.Column(sa.Integer, nullable=False)
@@ -460,7 +463,7 @@ class PolityCase(Base, Mixin):
     __tablename__ = 'polity_case'
 
     ccode = sa.Column(sa.Integer, 
-                      sa.ForeignKey(PolityState.__table__.c.ccode),
+                      ForeignKey(PolityState.__table__.c.ccode),
                       primary_key=True)
     bdate = sa.Column(sa.Date, primary_key=True)
     edate = sa.Column(sa.Date, nullable = True)
@@ -497,7 +500,7 @@ class War4(Base, Mixin):
     war_name = sa.Column(sa.Unicode,
                          nullable = False)
     war_type = sa.Column(sa.Integer,
-                         sa.ForeignKey(CowWarType.__table__.c.value),
+                         ForeignKey(CowWarType.__table__.c.value),
                          nullable = False)
     intnl = sa.Column(sa.Boolean, nullable=True)
     bat_deaths = sa.Column(sa.Integer, nullable=True)
@@ -517,29 +520,31 @@ class War4Belligerent(Base, Mixin):
     belligerent = sa.Column(sa.Unicode, primary_key=True)
     belligerent_name = sa.Column(sa.Unicode)
     ccode = sa.Column(sa.Integer,
-                      sa.ForeignKey(CowState.__table__.c.ccode))
+                      ForeignKey(CowState.__table__.c.ccode))
 
 class War4Side(Base, Mixin):
     """ Cow War v. 4 Sides
     """ 
     __tablename__ = 'war4_sides'
-    war_num = sa.Column(sa.ForeignKey(War4.__table__.c.war_num,
-                                      deferrable=True,
-                                      initially="DEFERRED"),
-                       primary_key=True)
-    side = sa.Column(sa.Boolean, primary_key=True)
+    war_side = sa.Column(sa.Unicode, primary_key=True)
+    war_num = sa.Column(sa.Integer,
+                        ForeignKey(War4.__table__.c.war_num),
+                        nullable=False)
+    side = sa.Column(sa.Boolean, nullable=False)
     bat_death = sa.Column(sa.Integer)
-    
+    sa.CheckConstraint("war_side = war_num || ',' || side")    
 
 class War4Partic(Base, Mixin):
     """ Cow War v.4 Participation
     """
     __tablename__ = 'war4_partic'
-    war_num = sa.Column(sa.Integer, primary_key=True)
+    war_partic = sa.Column(sa.Unicode, primary_key=True)
+    war_side = sa.Column(sa.Unicode,
+                         ForeignKey(War4Side.__table__.c.war_side),
+                         nullable=False)
     belligerent = sa.Column(sa.Unicode,
-                            sa.ForeignKey(War4Belligerent.__table__.c.belligerent),
-                            primary_key=True)
-    side = sa.Column(sa.Boolean, primary_key=True)
+                            ForeignKey(War4Belligerent.__table__.c.belligerent),
+                            nullable=False)
     west_hem = sa.Column(sa.Boolean)
     europe = sa.Column(sa.Boolean,
                        nullable = False)
@@ -550,36 +555,26 @@ class War4Partic(Base, Mixin):
     ## Countries on the same side can have different outcomes
     ## see Germany in war 108.
     outcome = sa.Column(sa.Integer,
-                        sa.ForeignKey(War4Outcome.__table__.c.value),
+                        ForeignKey(War4Outcome.__table__.c.value),
                         nullable = False)
     bat_death = sa.Column(sa.Integer)
     ## Initiation is by participant not side
     initiator = sa.Column(sa.Boolean, nullable = False)
-    sa.ForeignKey(['war_num', 'side'],
-                  [War4Side.__table__.c.war_num,
-                   War4Side.__table__.c.side],
-                  initially="DEFERRED", deferrable=True)
-
+    sa.CheckConstraint("war_partic = war_side || ',' || belligerent")
 
 class War4ParticDate(Base, Mixin):
     """ Date interval in which a belligerent participated in a war """
     __tablename__ = 'war4_partic_dates'
-    
-    war_num = sa.Column(sa.Integer,
-                        primary_key=True)
-    belligerent = sa.Column(sa.Unicode, primary_key=True)
-    side = sa.Column(sa.Boolean, primary_key=True)
+
+    war_partic = sa.Column(sa.Unicode,
+                           ForeignKey(War4Partic.__table__.c.war_partic),
+                           primary_key=True)
     partic_num = sa.Column(sa.Integer, primary_key=True)
     start_date_min = sa.Column(sa.Date)
     start_date_max = sa.Column(sa.Date)
     end_date_min = sa.Column(sa.Date)
     end_date_max = sa.Column(sa.Date)
     ongoing = sa.Column(sa.Boolean, nullable = False)
-    sa.ForeignKeyConstraint(['war_num', 'ccode', 'side'],
-                            [War4Partic.__table__.c.war_num,
-                             War4Partic.__table__.c.belligerent,
-                             War4Partic.__table__.c.side],
-                            initially="DEFERRED", deferrable=True)
 
     @property
     def start_date(self):
@@ -634,7 +629,7 @@ class War3(Base, Mixin):
     
     war_no = sa.Column(sa.Integer, primary_key=True)
     war_type = sa.Column(sa.Integer,
-                         sa.ForeignKey(CowWarType.__table__.c.value),
+                         ForeignKey(CowWarType.__table__.c.value),
                          nullable = False)
     war_name = sa.Column(sa.Unicode(50),
                          nullable = False)
@@ -651,9 +646,9 @@ class War3(Base, Mixin):
     asia = sa.Column(sa.Boolean)
     oceania = sa.Column(sa.Boolean)
     edition = sa.Column(sa.Integer,
-                        sa.ForeignKey(War3Edition.__table__.c.value))
+                        ForeignKey(War3Edition.__table__.c.value))
     winner = sa.Column(sa.Integer,
-                       sa.ForeignKey(War3Winner.__table__.c.value))
+                       ForeignKey(War3Winner.__table__.c.value))
     interven = sa.Column(sa.Boolean)
     st_deaths = sa.Column(sa.Integer)
     to_deaths = sa.Column(sa.Integer)
@@ -663,7 +658,7 @@ class War3(Base, Mixin):
     # censubin -> censubsy
     # insurgnt -> nonstate
     state_num = sa.Column(sa.Integer,
-                         sa.ForeignKey(CowState.__table__.c.ccode))
+                         ForeignKey(CowState.__table__.c.ccode))
 
 
 class War3Date(Base, Mixin):
@@ -672,9 +667,7 @@ class War3Date(Base, Mixin):
     __tablename__ = 'war3_dates'
     
     war_no = sa.Column(sa.Integer, 
-                      sa.ForeignKey(War3.__table__.c.war_no,
-                                    deferrable = True,
-                                    initially = "DEFERRED"),
+                      ForeignKey(War3.__table__.c.war_no),
                       primary_key=True)
     spell_no = sa.Column(sa.Integer, primary_key=True)
     date_beg_min = sa.Column(sa.Date)
@@ -700,18 +693,18 @@ class War3Partic(Base, Mixin):
     """
     __tablename__ = 'war3_partic'
     
-    war_no = sa.Column(sa.Integer, sa.ForeignKey(War3.__table__.c.war_no),
+    war_no = sa.Column(sa.Integer, ForeignKey(War3.__table__.c.war_no),
                       primary_key=True)
-    state_num = sa.Column(sa.Integer, sa.ForeignKey(CowState.__table__.c.ccode),
+    state_num = sa.Column(sa.Integer, ForeignKey(CowState.__table__.c.ccode),
                       primary_key=True)
     partic_no = sa.Column(sa.Integer, primary_key=True)
     #duration = sa.Column(sa.Integer)
     deaths = sa.Column(sa.Integer)
     outcome = sa.Column(sa.Integer,
-                        sa.ForeignKey(War3Outcome.__table__.c.value))
+                        ForeignKey(War3Outcome.__table__.c.value))
     initiate = sa.Column(sa.Boolean)
     sys_stat = sa.Column(sa.Integer,
-                         sa.ForeignKey(War3SysStat.__table__.c.value))
+                         ForeignKey(War3SysStat.__table__.c.value))
     pr_war_pop = sa.Column(sa.Integer)
     pr_war_arm = sa.Column(sa.Integer)
     west_hem = sa.Column(sa.Boolean)
@@ -721,7 +714,7 @@ class War3Partic(Base, Mixin):
     asia = sa.Column(sa.Boolean)
     oceania = sa.Column(sa.Boolean)
     int_side = sa.Column(sa.Integer,
-                         sa.ForeignKey(War3IntSide.__table__.c.value))
+                         ForeignKey(War3IntSide.__table__.c.value))
 
 
 class War3ParticDate(Base, Mixin):
@@ -740,10 +733,10 @@ class War3ParticDate(Base, Mixin):
     date_end_min = sa.Column(sa.Date)
     date_end_max = sa.Column(sa.Date)
     sa.CheckConstraint('date_end_max >= date_end_min')
-    sa.ForeignKey(['war_no', 'state_num'],
-                  [War3Partic.__table__.c.war_no,
-                   War3Partic.__table__.c.state_num,
-                   War3Partic.__table__.c.partic_no])
+    sa.ForeignKeyConstraint(['war_no', 'state_num'],
+                            [War3Partic.__table__.c.war_no,
+                             War3Partic.__table__.c.state_num,
+                             War3Partic.__table__.c.partic_no])
 
 
 
@@ -760,15 +753,15 @@ class ContDir(Base, Mixin):
     ONGOING = datetime.date(2006, 12, 31)
     
     statelno = sa.Column(sa.Integer,
-                         sa.ForeignKey(CowState.__table__.c.ccode),
+                         ForeignKey(CowState.__table__.c.ccode),
                          primary_key=True)
     statehno = sa.Column(sa.Integer, 
-                         sa.ForeignKey(CowState.__table__.c.ccode),
+                         ForeignKey(CowState.__table__.c.ccode),
                          primary_key=True)
     start_date = sa.Column(sa.Date, primary_key=True)
     end_date = sa.Column(sa.Date)
     conttype = sa.Column(sa.Integer,
-                         sa.ForeignKey(ContType.__table__.c.value))
+                         ForeignKey(ContType.__table__.c.value))
     notes = sa.Column(sa.Unicode)
     #version = sa.Column(sa.Unicode)
 
@@ -791,7 +784,7 @@ class KsgP4duse(Base, Mixin):
     __tablename__ = 'ksgp4duse'
 
     ccode = sa.Column(sa.Integer,
-                      sa.ForeignKey(KsgState.__table__.c.idnum),
+                      ForeignKey(KsgState.__table__.c.idnum),
                       primary_key=True)
     startdate = sa.Column(sa.Date, primary_key=True)
     enddate = sa.Column(sa.Date, primary_key=True)
@@ -805,7 +798,7 @@ class KsgP4duse(Base, Mixin):
     autocracy = sa.Column(sa.Integer)
     polity = sa.Column(sa.Integer)
     origin = sa.Column(sa.Integer,
-                       sa.ForeignKey(KsgP4dOrigin.__table__.c.value))
+                       ForeignKey(KsgP4dOrigin.__table__.c.value))
 
 
 class KsgP4use(Base, Mixin):
@@ -816,7 +809,7 @@ class KsgP4use(Base, Mixin):
     __tablename__ = 'ksgp4use'
 
     ccode = sa.Column(sa.Integer,
-                      sa.ForeignKey(KsgState.__table__.c.idnum),
+                      ForeignKey(KsgState.__table__.c.idnum),
                       primary_key=True)
     year = sa.Column(sa.Integer, primary_key=True)
     xrreg = sa.Column(sa.Integer)
@@ -829,5 +822,5 @@ class KsgP4use(Base, Mixin):
     autocracy = sa.Column(sa.Integer)
     polity = sa.Column(sa.Integer)
     origin = sa.Column(sa.Integer,
-                       sa.ForeignKey(KsgP4dOrigin.__table__.c.value))
+                       ForeignKey(KsgP4dOrigin.__table__.c.value))
 
