@@ -13,6 +13,10 @@ from irdata import csv2
 from irdata import model
 from irdata.load import utils
 
+KLS = [model.CowState,
+       model.CowSysMembership,
+       model.CowMajor]
+
 def load_cow_states(src):
     """ Load data into cow_statelist and cow_system_membership """
     session = model.SESSION()
@@ -72,7 +76,10 @@ def load_cow_system():
                                         frac_year = frac_year))
         session.flush()
     session.commit()
-    
+
+def unload():
+    for x in reversed(KLS):
+        x.__table__.delete().execute()
 
 def load_all(external):
     """ Load all COW System data """

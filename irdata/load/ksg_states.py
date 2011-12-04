@@ -12,6 +12,8 @@ from irdata import csv2
 from irdata import model
 from irdata.load import utils
 
+KLS = [model.KsgState, model.KsgSysMembership]
+
 def _iisystem_dates(x):
     """ Parse iisystem dates
 
@@ -59,6 +61,10 @@ def load_ksg_system():
                                         year = yr))
         session.flush()
     session.commit()
+
+def unload():
+    for x in reversed(KLS):
+        x.__table__.delete().execute()
 
 def load_all(external):
     """ Load all KSG data """

@@ -11,6 +11,15 @@ from irdata import csv2
 from irdata import model
 from irdata.load import utils
 
+KLS = [model.NmcPecqualitycode,
+       model.NmcPecanomalycode,
+       model.NmcIrstqualitycode,
+       model.NmcIrstanomalycode,
+       model.NmcTpopqualitycode,
+       model.NmcTpopanomalycode,
+       model.NmcUpopqualitycode,
+       model.Nmc]
+
 def load_nmc_codes(src):
     session = model.SESSION()
     for tbl, v in yaml.load(src).iteritems():
@@ -52,6 +61,10 @@ def load_nmc(src):
             row[k]  = v
         session.add(model.Nmc(**row))
     session.commit()
+
+def unload():
+    for x in reversed(KLS):
+        x.__table__.delete().execute()
 
 def load_all(external):
     """ Load all COW National Military Capabilities data """

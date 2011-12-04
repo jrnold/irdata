@@ -194,6 +194,10 @@ def load_ksg2cowyear():
         session.flush()
     session.commit()
 
+def unload():
+    for x in reversed(KLS):
+        x.__table__.delete().execute()
+
 def load_all(external):
     print("loading ksg_to_cow")
     load_ksg2cow()

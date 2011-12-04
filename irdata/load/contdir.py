@@ -11,6 +11,9 @@ from irdata import csv2
 from irdata import model
 from irdata.load import utils
 
+KLS = [model.ContType,
+       model.ContDir]
+
 def load_contdir(src):
     """ Load direct contiguity data from csv file"""
     session = model.SESSION()
@@ -34,7 +37,8 @@ def load_contdir(src):
     session.commit()
 
 def unload():
-    pass
+    for x in reversed(KLS):
+        x.__table__.delete().execute()
 
 def load_all(external):
     """ Load all direct contiguity data """

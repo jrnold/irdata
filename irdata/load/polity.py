@@ -12,6 +12,11 @@ from irdata import xls
 from irdata import model
 from irdata.load import utils
 
+KLS = [model.PolityState,
+       model.PolitySysMembership,
+       model.PolityStateYear,
+       model.PolityCase]
+
 def load_polity_states(src):
     POLITY_MAX_YEAR = model.PolitySysMembership.ONGOING
     session = model.SESSION()
@@ -72,6 +77,10 @@ def load_polityd(src):
             row['edate'] = utils.row_ymd(row, 'eyear', 'emonth', 'eday')
         session.add(model.PolityCase(**utils.subset(row, columns)))
     session.commit()
+
+def unload():
+    for x in reversed(KLS):
+        x.__table__.delete().execute()
 
 def load_all(external):
     """ Load all Polity 4 data """

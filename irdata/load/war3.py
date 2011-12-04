@@ -11,6 +11,16 @@ from irdata import csv2
 from irdata import model
 from irdata.load import utils
 
+KLS = [model.War3Outcome,
+       model.War3SysStat,
+       model.War3Winner,
+       model.War3IntSide,
+       model.War3Edition,
+       model.War3,
+       model.War3Date,
+       model.War3Partic,
+       model.War3ParticDate]
+
 def load_war3(src):
     """ Load COW War Data v. 3 """
 
@@ -104,6 +114,10 @@ def load_war3_partic(src):
         for i in (1, 2):
              _dates(row, i)
     session.commit()
+
+def unload():
+    for x in reversed(KLS):
+        x.__table__.delete().execute()
 
 def load_all(external):
     """ Load all COW War Data v. 3 (Inter-, Intra-, and Extra-State)"""

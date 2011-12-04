@@ -17,7 +17,7 @@ from irdata import csv2
 from irdata import model
 from irdata.load import utils
 
-_KLS = (model.CowWarType,
+KLS = (model.CowWarType,
         model.War4Outcome,
         model.War4,
         model.War4Side,
@@ -25,9 +25,6 @@ _KLS = (model.CowWarType,
         model.War4Belligerent,
         model.War4ParticDate,
         model.War4List)
-
-_TABLES = (x.__table__.name for x in _KLS)
-
 
 WHERE_FOUGHT = {1: {"west_hem": True,
                     "europe": False,
@@ -489,10 +486,8 @@ def load_war4_links(inter, intra, nonstate):
     session.commit()
 
 def drop_all():
-    session = model.SESSION()
-    for x in _KLS:
-        session.query(x).delete()
-    session.commit()
+    for x in reversed(KLS)
+        KLS.__table__.delete().execute()
 
 def load_all(external):
     """ Load all COW War v. 4 data """
@@ -506,7 +501,6 @@ def load_all(external):
     load_war4_links(utils.get_data("InterStateWarData_v4.0.csv"),
                     utils.get_data("IntraStateWarData_v4.1.csv"),
                     utils.get_data("NonStateWarData_v4.0.csv"))
-
 def main():
     drop_all()
     load_all()

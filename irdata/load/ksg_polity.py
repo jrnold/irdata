@@ -12,6 +12,12 @@ from irdata import csv2
 from irdata import model
 from irdata.load import utils
 
+KLS = [KsgP4dOrigin,
+       KsgP4Origin,
+       KsgP4duse,
+       KsgP4use]
+
+
 def _strpftime(x):
     """ Strpftime that works before 1900"""
     d, m, y = x.split('/')
@@ -45,6 +51,9 @@ def load_ksgp4use(src):
         session.add(model.KsgP4use(**utils.subset(row, cols)))
     session.commit()
 
+def unload():
+    for x in KLS:
+        x.__table__.delete().execute()
 
 def load_all(external):
     utils.load_enum_from_yaml(utils.get_data("ksgp4_enum.yaml"))
