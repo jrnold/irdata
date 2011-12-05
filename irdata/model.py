@@ -841,11 +841,16 @@ class MidSettle(Base, IntFactorMixin):
 class MidFatality(Base, IntFactorMixin):
     __tablename__ = 'mid_fatality'
 
-class MidHiAct(Base, IntFactorMixin):
-    __tablename__ = 'mid_hi_act'
-
 class MidHostLev(Base, IntFactorMixin):
     __tablename__ = 'mid_host_lev'
+
+class MidAction(Base, Mixin):
+    __tablename__ = 'mid_action_host_lev'
+    value = sa.Column(sa.Integer,
+                       primary_key=True)
+    label = sa.Column(sa.Unicode)
+    host_lev = sa.Column(sa.Integer,
+                         ForeignKey(MidHostLev.__table__.c.value))
 
 class MidA(Base, Mixin):
     __tablename__ = "mid_a"
@@ -866,7 +871,7 @@ class MidA(Base, Mixin):
     max_dur = sa.Column(sa.Integer)
     min_dur = sa.Column(sa.Integer)
     hi_act = sa.Column(sa.Integer,
-                       ForeignKey(MidHiAct.__table__.c.value))
+                       ForeignKey(MidAction.__table__.c.value))
     host_lev = sa.Column(sa.Integer,
                          ForeignKey(MidHostLev.__table__.c.value))
     recip = sa.Column(sa.Boolean)
@@ -918,7 +923,7 @@ class MidB(Base, Mixin):
                          ForeignKey(MidFatality.__table__.c.value))
     fatal_pre = sa.Column(sa.Integer)
     hi_act = sa.Column(sa.Integer,
-                      ForeignKey(MidHiAct.__table__.c.value))
+                      ForeignKey(MidAction.__table__.c.value))
     host_lev = sa.Column(sa.Integer,
                         ForeignKey(MidHostLev.__table__.c.value))
     orig = sa.Column(sa.Boolean)
@@ -939,7 +944,7 @@ class MidI(Base, Mixin):
                          ForeignKey(MidFatality.__table__.c.value))
     fatal_pre = sa.Column(sa.Integer)
     action = sa.Column(sa.Integer,
-                       ForeignKey(MidHiAct.__table__.c.value))
+                       ForeignKey(MidAction.__table__.c.value))
     host_lev = sa.Column(sa.Integer,
                        ForeignKey(MidHostLev.__table__.c.value))
     num_a = sa.Column(sa.Integer)
@@ -964,10 +969,11 @@ class MidIP(Base, Mixin):
                          ForeignKey(MidFatality.__table__.c.value))
     fatal_pre = sa.Column(sa.Integer)
     action = sa.Column(sa.Integer,
-                       ForeignKey(MidHiAct.__table__.c.value))
+                       ForeignKey(MidAction.__table__.c.value))
     host_lev = sa.Column(sa.Integer,
                          ForeignKey(MidHostLev.__table__.c.value))
     rev_type1 = sa.Column(sa.Integer,
                          ForeignKey(MidRevType.__table__.c.value))
     rev_type2 = sa.Column(sa.Integer,
                          ForeignKey(MidRevType.__table__.c.value))
+
