@@ -13,8 +13,9 @@ from irdata import model
 from irdata.load import utils
 
 KLS = [model.MidA, model.MidB, model.MidLinkMid, model.MidLinkWar,
-       model.MidOutcome, model.MidSettle, model.MidFatality, model.MidHiAct,
-       model.MidHostLev, model.MidRevType, model.MidI]
+       model.MidOutcome, model.MidSettle, model.MidFatality,
+       model.MidHostLev, model.MidRevType, model.MidI,
+       model.MidAction]
 
 def _int(x):
     try:
@@ -128,10 +129,11 @@ def load_midip(src):
     session.commit()
 
 
-
 def load_all(EXTERNAL):
     cow_path = "www.correlatesofwar.org/COW2 Data/MIDs"
     utils.load_enum_from_yaml(utils.get_data("mid.yaml"))
+    utils.load_from_yaml(utils.get_data('mid_actions.yaml'),
+                         model.MidAction.__table__)
     load_mida(utils.get_data("MIDA_3.10.csv"))
     load_mid_links(utils.get_data("MIDA_3.10.csv"))                             
     load_midb(utils.get_data("MIDB_3.10.csv"))
