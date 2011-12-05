@@ -8,3 +8,4 @@ external
 *.egg-info
 *.egg
 *.sql.gz
+doc/source/schema_graph.dot
