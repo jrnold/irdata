@@ -23,6 +23,13 @@ The database currently includes the following datasets:
 - Kristian Skrede Gleditsh (KSG) `List of independent states <http://privatewww.essex.ac.uk/~ksg/statelist.html>`_
 - Kristian Skrede Gleditsh (KSG) `Modified Polity data <http://privatewww.essex.ac.uk/~ksg/polity.html>`_
 
+Documentation
+==================
+
+.. toctree::
+
+   install
+   schema
 
 
 Database Tables
