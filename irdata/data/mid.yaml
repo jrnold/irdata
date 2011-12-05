@@ -1,0 +1,59 @@
+mid_outcome:
+  1: Victory for side A
+  2: Victory for side B
+  3: Yield by side A
+  4: Yield by side B
+  5: Stalemate
+  6: Compromise
+  7: Released
+  8: Unclear
+  9: Joins ongoing war
+mid_settle:
+  1: Negotiated
+  2: Imposed
+  3: None
+  4: Unclear
+mid_fatality:
+  0: None
+  1: 1-25 deaths
+  2: 26-100 deaths
+  3: 101-250 deaths
+  4: 251-500 deaths
+  5: 501-999 deaths
+  6: "> 999 deaths"
+mid_hi_act:
+  0: No militarized action 
+  1: Threat to use force 
+  2: Threat to blockade 
+  3: Threat to occupy territory 
+  4: Threat to declare war 
+  5: Threat to use CBR weapons 
+  6: Threat to join war
+  7: Show of force 
+  8: Alert 
+  9: Nuclear alert 
+  10: Mobilization 
+  11: Fortify border 
+  12: Border violation 
+  13: Blockade 
+  14: Occupation of territory 
+  15: Seizure 
+  16: Attack 
+  17: Clash 
+  18: Declaration of war 
+  19: Use of CBR weapons 
+  20: Begin interstate war 
+  21: Join interstate war 
+mid_host_lev:
+  1: No militarized action
+  2: Threat to use force
+  3: Display of force
+  4: Use of force
+  5: War
+mid_rev_type:
+  0: Not applicable
+  1: Territory
+  2: Policy
+  3: Regime/government
+  4: Other
+

@@ -485,13 +485,9 @@ def load_war4_links(inter, intra, nonstate):
     load_file(nonstate)
     session.commit()
 
-def drop_all():
-    for x in reversed(KLS):
-        KLS.__table__.delete().execute()
 
 def load_all(external):
     """ Load all COW War v. 4 data """
-    model.Base.metadata.create_all(checkfirst=True)
     load_cow_war_types(utils.get_data("cow_war_types.yaml"))
     utils.load_enum_from_yaml(utils.get_data("war4_enum.yaml"))
     load_war4_list(utils.get_data("WarList_NEW.txt"))
@@ -501,12 +497,3 @@ def load_all(external):
     load_war4_links(utils.get_data("InterStateWarData_v4.0.csv"),
                     utils.get_data("IntraStateWarData_v4.1.csv"),
                     utils.get_data("NonStateWarData_v4.0.csv"))
-def main():
-    drop_all()
-    load_all()
-
-if __name__ == '__main__':
-    engine = sys.argv[1]
-    model.Base.metadata.bind = sa.create_engine(engine)
-    main()
-    

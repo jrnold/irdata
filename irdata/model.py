@@ -831,3 +831,143 @@ class KsgP4use(Base, Mixin):
     origin = sa.Column(sa.Integer,
                        ForeignKey(KsgP4dOrigin.__table__.c.value))
 
+
+class MidOutcome(Base, IntFactorMixin):
+    __tablename__ = 'mid_outcome'
+
+class MidSettle(Base, IntFactorMixin):
+    __tablename__ = 'mid_settle'
+
+class MidFatality(Base, IntFactorMixin):
+    __tablename__ = 'mid_fatality'
+
+class MidHiAct(Base, IntFactorMixin):
+    __tablename__ = 'mid_hi_act'
+
+class MidHostLev(Base, IntFactorMixin):
+    __tablename__ = 'mid_host_lev'
+
+class MidA(Base, Mixin):
+    __tablename__ = "mid_a"
+    VERSION = '3.10'
+    
+    disp_num = sa.Column(sa.Integer, primary_key=True)
+    st_date_min = sa.Column(sa.Date)
+    st_date_max = sa.Column(sa.Date)
+    end_date_min = sa.Column(sa.Date)
+    end_date_max = sa.Column(sa.Date)
+    outcome = sa.Column(sa.Integer,
+                        ForeignKey(MidOutcome.__table__.c.value))
+    settle = sa.Column(sa.Integer,
+                       ForeignKey(MidSettle.__table__.c.value))
+    fatality = sa.Column(sa.Integer,
+                         ForeignKey(MidFatality.__table__.c.value))
+    fatal_pre = sa.Column(sa.Integer)
+    max_dur = sa.Column(sa.Integer)
+    min_dur = sa.Column(sa.Integer)
+    hi_act = sa.Column(sa.Integer,
+                       ForeignKey(MidHiAct.__table__.c.value))
+    host_lev = sa.Column(sa.Integer,
+                         ForeignKey(MidHostLev.__table__.c.value))
+    recip = sa.Column(sa.Boolean)
+    num_a = sa.Column(sa.Integer)
+    num_b = sa.Column(sa.Integer)
+    ongo2001 = sa.Column(sa.Boolean)
+
+class MidLinkMid(Base, Mixin):
+    __tablename__ = 'mid_link_mid'
+    linkid = sa.Column(sa.Integer, primary_key=True)
+    disp_num_1 = sa.Column(sa.Integer,
+                           ForeignKey(MidA.__table__.c.disp_num))
+    disp_num_2 = sa.Column(sa.Integer,
+                           ForeignKey(MidA.__table__.c.disp_num))
+    
+class MidLinkWar(Base, Mixin):
+    __tablename__ = 'mid_link_war'
+    linkid = sa.Column(sa.Integer, primary_key=True)
+    disp_num = sa.Column(sa.Integer,
+                         ForeignKey(MidA.__table__.c.disp_num))
+    war_num = sa.Column(sa.Integer,
+                        ForeignKey(War3.__table__.c.war_no))
+    
+
+class MidRevType(Base, IntFactorMixin):
+    __tablename__ = 'mid_rev_type'
+
+class MidB(Base, Mixin):
+    """ States can have multiple entries for a single MID"""
+    __tablename__ = "mid_b"
+    disp_num = sa.Column(sa.Integer,
+                        ForeignKey(MidA.__table__.c.disp_num),
+                         primary_key=True)
+    ccode = sa.Column(sa.Integer,
+                      ForeignKey(CowState.__table__.c.ccode),
+                      primary_key = True)
+    spell_num = sa.Column(sa.Integer, primary_key=True)
+    st_date_min = sa.Column(sa.Date)
+    st_date_max = sa.Column(sa.Date)
+    end_date_min = sa.Column(sa.Date)
+    end_date_max = sa.Column(sa.Date)
+    side_a = sa.Column(sa.Boolean)
+    rev_state = sa.Column(sa.Boolean)
+    rev_type1 = sa.Column(sa.Integer,
+                         ForeignKey(MidRevType.__table__.c.value))
+    rev_type2 = sa.Column(sa.Integer,
+                         ForeignKey(MidRevType.__table__.c.value))
+    fatality = sa.Column(sa.Integer,
+                         ForeignKey(MidFatality.__table__.c.value))
+    fatal_pre = sa.Column(sa.Integer)
+    hi_act = sa.Column(sa.Integer,
+                      ForeignKey(MidHiAct.__table__.c.value))
+    host_lev = sa.Column(sa.Integer,
+                        ForeignKey(MidHostLev.__table__.c.value))
+    orig = sa.Column(sa.Boolean)
+
+
+class MidI(Base, Mixin):
+    __tablename__ = "mid_i"
+    incid_num = sa.Column(sa.Integer, primary_key=True)
+    disp_num = sa.Column(sa.Integer,
+                        ForeignKey(MidA.__table__.c.disp_num))
+    st_date_min = sa.Column(sa.Date)
+    st_date_max = sa.Column(sa.Date)
+    end_date_min = sa.Column(sa.Date)
+    end_date_max = sa.Column(sa.Date)
+    duration = sa.Column(sa.Integer)
+    tbi = sa.Column(sa.Integer)
+    fatality = sa.Column(sa.Integer,
+                         ForeignKey(MidFatality.__table__.c.value))
+    fatal_pre = sa.Column(sa.Integer)
+    action = sa.Column(sa.Integer,
+                       ForeignKey(MidHiAct.__table__.c.value))
+    host_lev = sa.Column(sa.Integer,
+                       ForeignKey(MidHostLev.__table__.c.value))
+    num_a = sa.Column(sa.Integer)
+    rev_type1 = sa.Column(sa.Integer,
+                         ForeignKey(MidRevType.__table__.c.value))
+    rev_type2 = sa.Column(sa.Integer,
+                         ForeignKey(MidRevType.__table__.c.value))
+
+class MidIP(Base, Mixin):
+    __tablename__ = 'mid_ip'
+    incid_num = sa.Column(sa.Integer, primary_key=True)
+    ccode = sa.Column(sa.Integer,
+                      ForeignKey(CowState.__table__.c.ccode),
+                      primary_key=True)
+    st_date_min = sa.Column(sa.Date)
+    st_date_max = sa.Column(sa.Date)
+    end_date_min = sa.Column(sa.Date)
+    end_date_max = sa.Column(sa.Date)
+    inside_a = sa.Column(sa.Boolean)
+    side_a = sa.Column(sa.Boolean)
+    fatality = sa.Column(sa.Integer,
+                         ForeignKey(MidFatality.__table__.c.value))
+    fatal_pre = sa.Column(sa.Integer)
+    action = sa.Column(sa.Integer,
+                       ForeignKey(MidHiAct.__table__.c.value))
+    host_lev = sa.Column(sa.Integer,
+                         ForeignKey(MidHostLev.__table__.c.value))
+    rev_type1 = sa.Column(sa.Integer,
+                         ForeignKey(MidRevType.__table__.c.value))
+    rev_type2 = sa.Column(sa.Integer,
+                         ForeignKey(MidRevType.__table__.c.value))
