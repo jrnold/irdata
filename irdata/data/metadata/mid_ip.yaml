@@ -1,0 +1,27 @@
+columns:
+  incid_num: 'Incident number'
+  ccode: 'COW country code of participant'
+  end_date_max: 'End date of incident (minimum estimate)'
+  end_date_min: 'End date of incident (maximum estimate)'
+  st_date_max: 'Start date of dispute (mimimum estimate)'
+  st_date_min: 'Start date of dispute (maximum estimate)'
+  inside_a: 'Incident Side A'
+  side_a: 'Dispute Side A'
+  fatality: 'Fatality level of incident'
+  fatal_pre: 'Precise fatalities, if known'
+  action: 'Action in incident'
+  host_lev: 'Hostility level of incident'
+  rev_type1: 'Revision type #1'
+  rev_type2: 'Revision type #2'
+creator: ''
+date: ''
+see_also:
+  - "Ghosn, Faten, Glenn Palmer, and Stuart Bremer. 2004. \"The MID3 Data Set, 1993–2001: Procedures, Coding Rules, and Description.\" Conflict Management and Peace Science 21:133-154."
+  -  "Ghosn, Faten, and Scott Bennett. 2003. Codebook for the Dyadic Militarized Interstate Incident Data, Version 3.10. Online: http://correlatesofwar.org"
+  - http://www.correlatesofwar.org/COW2%20Data/MIDs/MID310.html
+  - http://www.correlatesofwar.org/COW2%20Data/MIDs/Codebook%20for%20MID%20Incident%20Data.pdf
+source:
+  - http://www.correlatesofwar.org/COW2%20Data/MIDs/MIDI_3.10.csv
+description: |
+  Militarized Interstate Dispute Data, Version 3.10: Incident level data
+version: '3.10'

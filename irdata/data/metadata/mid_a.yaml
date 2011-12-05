@@ -1,0 +1,40 @@
+columns:
+  disp_num: 'Dispute number'
+  end_date_max: 'End date of dispute (minimum estimate)'
+  end_date_min: 'End date of dispute (maximum estimate)'
+  fatal_pre: 'Precise fatalities, if known'
+  fatality: 'Fatality level of dispute'
+  hi_act: 'Highest action in dispute'
+  host_lev: 'Hostility level of dispute'
+  max_dur: 'Maximum duration of dispute'
+  min_dur: 'Mimumum duration of distpute'
+  num_a: 'Number of states on side A'
+  num_b: 'Number of states on side B'
+  ongo2001: 'Ongoing after 2001'
+  outcome: 'Outcome of dispute'
+  recip: 'Reciprocated dispute'
+  settle: 'Settlement of dispute'
+  st_date_max: 'Start date of dispute (mimimum estimate)'
+  st_date_min: 'Start date of dispute (maximum estimate)'
+creator: ''
+date: ''
+see_also:
+  - "Ghosn, Faten, Glenn Palmer, and Stuart Bremer. 2004. \"The MID3 Data Set, 1993–2001: Procedures, Coding Rules, and Description.\" Conflict Management and Peace Science 21:133-154."
+  - http://www.correlatesofwar.org/COW2%20Data/MIDs/MID310.html
+  - http://www.correlatesofwar.org/COW2%20Data/MIDs/MID_v3.0.codebook.pdf
+  - http://www.correlatesofwar.org/COW2%20Data/MIDs/MID_v3.0.associated%20document.pdf
+  - http://www.correlatesofwar.org/COW2%20Data/MIDs/MID_v3.0.narratives.pdf
+source:
+  - http://www.correlatesofwar.org/COW2%20Data/MIDs/MIDA_3.10.csv
+description: |
+  Militarized Interstate Dispute Data, Version 3.0: Dispute data
+
+  From `correlatesofwar.org <http://www.correlatesofwar.org/COW2%20Data/MIDs/MID310.html>`_, 
+  
+      Version 3.0 of the Militarized Interstate Dispute (MID) data collection compiled by the Correlates of War Project provides information about conflicts in which one or more states threaten, display, or use force against one or more other states between 1816 and 2001. Version 2.1 of the MID data set covered the 1816-1992 period. The data collection project that culminated in version 3.0 gathered new data on all MIDs that began between 1993 and 2001, along with those MIDs that began before 1993 but were still ongoing on December 31, 1992.
+
+    Version 3.10 (released on September 26, 2007) updates the data set with corrections made after an investigation of over 200 cases where errors or discrepancies had been reported to the COW project between 2003 and 2006. Version 3.10 includes a new version of the dyadic MID data set based on the corrected underlying MID data. Since all currently reported errors and discrepancies have been investigated and either corrected, or the original data judged correct, these official dyadic MID data should be considered to supersede other dyadic MID data sets.
+
+    “Militarized interstate disputes are united historical cases of conflict in which the threat, display or use of military force short of war by one member state is explicitly directed towards the government, official representatives, official forces, property, or territory of another state. Disputes are composed of incidents that range in intensity from threats to use force to actual combat short of war” (Jones et al. 1996: 163).
+
+  This table containts the dispute level data.

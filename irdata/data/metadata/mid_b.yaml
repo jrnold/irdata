@@ -1,0 +1,30 @@
+columns:
+  disp_num: 'Dispute number'
+  ccode: 'COW country code of the participant'
+  spell_num: 'nth participation in the dispute'
+  end_date_max: 'End date of participation in  dispute (minimum estimate)'
+  end_date_min: 'End date of participation in dispute (maximum estimate)'
+  fatal_pre: 'Precise fatalities, if known'
+  fatality: 'Fatality level'
+  hi_act: 'Highest action in dispute'
+  host_lev: 'Hostility level of dispute'
+  side_a: 'Side A?'
+  orig: 'Originator of dispute'
+  rev_state: 'Revisionist state' 
+  rev_type1: 'Revision type #1'
+  rev_type2: 'Revision type #2' 
+  st_date_max: 'Start date of participation in dispute (mimimum estimate)'
+  st_date_min: 'Start date of participation in dispute (maximum estimate)'
+creator: ''
+date: ''
+see_also:
+  - "Ghosn, Faten, Glenn Palmer, and Stuart Bremer. 2004. \"The MID3 Data Set, 1993–2001: Procedures, Coding Rules, and Description.\" Conflict Management and Peace Science 21:133-154."
+  - http://www.correlatesofwar.org/COW2%20Data/MIDs/MID310.html
+  - http://www.correlatesofwar.org/COW2%20Data/MIDs/MID_v3.0.codebook.pdf
+  - http://www.correlatesofwar.org/COW2%20Data/MIDs/MID_v3.0.associated%20document.pdf
+  - http://www.correlatesofwar.org/COW2%20Data/MIDs/MID_v3.0.narratives.pdf
+source:
+  - http://www.correlatesofwar.org/COW2%20Data/MIDs/MIDB_3.10.csv
+description: |
+  Militarized Interstate Dispute Data, Version 3.0: Participant level data
+version: '3.10'
