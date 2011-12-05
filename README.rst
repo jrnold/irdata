@@ -8,7 +8,7 @@ I put it all together in a relational database.
 It is similar to `EUGene <http://eugenesoftware.org/>`_, but uses an
 relational database backend, and is much less complete.
 
-The database currency 
+The database currently includes the following datasets:
 
 - COW State System Membership 2008.1 http://www.correlatesofwar.org/
 - COW Wars v 4.0 http://www.correlatesofwar.org/ (Inter-, Intra-, and Non-State Wars)
@@ -54,7 +54,6 @@ First create the database if it doesn't exist.
 Roadmap
 =================
 
-- documentation for all tables
 - add all datasets currently in COW and EUGene
 - add a HTSQL frontend
 
