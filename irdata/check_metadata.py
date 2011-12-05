@@ -30,14 +30,14 @@ def main():
             src = pkgutil.get_data("irdata", metadata)
         except IOError:
             print("WARNING: data/metadata/%s.yaml missing" % tablename)
-            break
+            continue
 
         try:
             data = yaml.load(src)
         except yaml.parser.ParserError as e:
             print("WARNING: %s did not parse" % metadata)
             print(e)
-            break
+            continue
 
         colnames = [c.name for c in table.columns]
         for col in colnames:
